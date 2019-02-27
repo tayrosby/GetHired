@@ -1,0 +1,14 @@
+[2019-02-25 19:46:20] local.INFO: Entering UserDAO.getAll()  
+[2019-02-25 19:47:15] local.INFO: Entering ContactDataService.findContact()  
+[2019-02-25 19:47:15] local.INFO: Leaving ContactDataService.findContact() with rowCount  
+[2019-02-25 19:47:15] local.INFO: Entering SkillsDataService.findAll()  
+[2019-02-25 19:47:15] local.INFO: Leaving SkillsDataService.findSkill() with rowCount  
+[2019-02-25 19:47:15] local.INFO: Entering EducationDataService.findEducation()  
+[2019-02-25 19:47:15] local.INFO: Leaving EducationDataService.findEducation() with rowCount  
+[2019-02-25 19:47:15] local.INFO: Entering ExperienceDataService.findExperience()  
+[2019-02-25 19:47:15] local.INFO: Leaving ExperienceDataService.findExperience() with rowCount  
+[2019-02-25 19:49:37] local.INFO: Entering UserDAO.getAll()  
+[2019-02-25 19:49:41] local.INFO: Entering JobDataService.findJob()  
+[2019-02-25 19:49:41] local.INFO: Leaving JobDataService.findJob() with rowCount  
+[2019-02-25 19:49:41] local.INFO: Entering JobDataService.findJob()  
+[2019-02-25 19:49:41] local.INFO: Leaving JobDataService.findJob() with rowCount  
