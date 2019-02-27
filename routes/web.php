@@ -28,7 +28,7 @@ Route::get('/register', function()
 {
     return view('registrationpage');
 });
-Route::post('/registrationpage', 'RegisterController@register');
+Route::get('/registrationpage', 'RegisterController@register');
 
 Route::get('/profile', function () 
 {
