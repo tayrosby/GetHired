@@ -31,7 +31,7 @@ class Connection
         $conn = new PDO("mysql:host=$this->sn;dbname=$this->db", $this->un, $this->pw);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        if(!conn){
+        if(!$conn){
            Log::error("Connection Error: ", array("message" => $e->getMessage())); 
         }
         else {
