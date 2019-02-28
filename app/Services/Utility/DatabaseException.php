@@ -6,7 +6,7 @@
  */
 namespace App\Services\Utility;
 use Exception;
-class DatabaseException
+class DatabaseException extends Exception
 {
     
     // Non-Default constructor
