@@ -33,7 +33,7 @@ class UserDataService
             $username = $user->username;
             $password = $user->password;
             // Create SQL statement using prepare()
-            $stmt = $this->conn->prepare('SELECT * FROM users WHERE BINARY USERNAME = :username AND BINARY PASSWORD = :password');
+            $stmt = $this->conn->prepare('SELECT * FROM USERS WHERE BINARY USERNAME = :username AND BINARY PASSWORD = :password');
             $stmt->bindParam(':username', $username);
             $stmt->bindParam(':password', $password);
             $stmt->execute();
@@ -70,7 +70,7 @@ class UserDataService
             $password = $user->credential->password;
             $role = 0;
             // Create SQL statement using prepare()
-            $stmt = $this->conn->prepare("INSERT INTO users (ID, FIRSTNAME, LASTNAME, EMAIL, USERNAME, PASSWORD, ROLE) VALUES (NULL, :firstName, :lastName, :email, :username, :password, :role)");
+            $stmt = $this->conn->prepare("INSERT INTO USERS (ID, FIRSTNAME, LASTNAME, EMAIL, USERNAME, PASSWORD, ROLE) VALUES (NULL, :firstName, :lastName, :email, :username, :password, :role)");
             $stmt->bindParam(':firstName', $firstName);
             $stmt->bindParam(':lastName', $lastName);
             $stmt->bindParam(':email', $email);
@@ -101,7 +101,7 @@ class UserDataService
         try
         {
             //creates the sql statement
-            $stmt = $this->conn->prepare("UPDATE `users` SET `ROLE` = -1 WHERE `users`.`ID` = :id");
+            $stmt = $this->conn->prepare("UPDATE `USERS` SET `ROLE` = -1 WHERE `users`.`ID` = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
             //save the row count
@@ -127,7 +127,7 @@ class UserDataService
         try
         {
             // prepares a SQL statement to delete a user. the delete is based on matching IDs
-            $stmt = $this->conn->prepare("DELETE FROM users WHERE ID = :id");
+            $stmt = $this->conn->prepare("DELETE FROM USERS WHERE ID = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
             //saves the row count
@@ -153,7 +153,7 @@ class UserDataService
         try
         {
             //prepares a sql statement
-            $stmt = $this->conn->prepare("SELECT * FROM `users` WHERE `users`.`ID` = :id");
+            $stmt = $this->conn->prepare("SELECT * FROM `USERS` WHERE `USERS`.`ID` = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
             // Stores the results of the SELECT in an associative array
@@ -177,7 +177,7 @@ class UserDataService
         try
         {
             //prepares a sql statement
-            $stmt = $this->conn->prepare("SELECT * FROM `users`");
+            $stmt = $this->conn->prepare("SELECT * FROM `USERS`");
             $stmt->execute();
             
             //creates an array of users
