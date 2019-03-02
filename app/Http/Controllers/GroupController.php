@@ -129,7 +129,7 @@ class GroupController extends Controller
         try {
             $service = new GroupBusinessService();
             
-            $success = $service->findAll();
+            $success = $service->findAllGroups();
             
             if($success)
             {
