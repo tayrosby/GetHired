@@ -18,7 +18,7 @@
       <li class="nav-item">
         <a class="nav-link" href="profile">Profile</a>
       </li>
-        @if(!session('ID'))
+        @if(!session('userID'))
       <li class="nav-item">
         <a class="nav-link" href="login">Login</a>
       </li>
