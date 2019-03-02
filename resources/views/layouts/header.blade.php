@@ -18,7 +18,7 @@
       <li class="nav-item">
         <a class="nav-link" href="profile">Profile</a>
       </li>
-        @if(!session('userID'))
+        @if(session('userID') == NULL)
       <li class="nav-item">
         <a class="nav-link" href="login">Login</a>
       </li>
@@ -31,7 +31,7 @@
       </li>
       @endif
       
-      @if(session('ROLE') == 1)
+      @if(session('role') == "1")
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Admin
