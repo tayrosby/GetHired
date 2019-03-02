@@ -11,7 +11,7 @@
 		<hr>
 		<table>
 		<tr>
-			<td><input type="hidden" name = "userID" value = "9"><td>
+			<td><input type="hidden" name = "userID" value = "11"><td>
 			<tr>
 			<tr>
 				<td>Group Name: </td>
