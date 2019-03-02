@@ -9,7 +9,7 @@ use App\Services\Business\GroupBusinessService;
 
 $gbs = new GroupBusinessService();
 
-$group = $gbs->findAll();
+$group = $gbs->findAllGroups();
 
 @endphp
 
