@@ -12,14 +12,16 @@ class GroupModel
     private $id;
     private $groupName;
     private $groupDescription;
+    private $interest;
     private $userID;
     
     //constructor
-    public function __construct($id, $groupName, $groupDescription, $userID)
+    public function __construct($id, $groupName, $groupDescription, $interest, $userID)
     {
         $this->id = $id;
         $this->groupName = $groupName;
         $this->groupDescription = $groupDescription;
+        $this->interest = $interest;
         $this->userID = $userID;
     }
     
