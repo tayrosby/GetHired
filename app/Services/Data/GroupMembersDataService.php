@@ -28,10 +28,12 @@ public function createMember(GroupMemberModel $member)
     try
     {
         // Taking user info from user
+        $groupid = $member->groupID;
         $userid = $member->userID;
         
         // Create SQL statement using prepare()
-        $stmt = $this->conn->prepare("INSERT INTO GROUP_MEMBERS (ID, USERS_ID) VALUES (NULL, :userid)");
+        $stmt = $this->conn->prepare("INSERT INTO GROUP_MEMBERS (ID, GROUPS_ID, USERS_ID) VALUES (NULL, :groupid, :userid)");
+        $stmt->bindParam(':groupid', $groupid);
         $stmt->bindParam(':userid', $userid);
         $stmt->execute();
         // Save the row count
