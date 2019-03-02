@@ -94,7 +94,7 @@ class GroupBusinessService
         $service = new GroupDataService($conn);
         
         //calls the find all method in the data service
-        $groups = $service->findAll();
+        $groups = $service->findAllGroups();
         
         //closes the connection
         $conn = null;
