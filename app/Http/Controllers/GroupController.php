@@ -21,7 +21,7 @@ class GroupController extends Controller
         
         try {
             //validate the form data(will redirect back to login view if errors)
-            $this->validateForm($request);
+            //$this->validateForm($request);
             
             $groupName = $request->input('groupName');
             $groupDescription = $request->input('groupDescription');
@@ -60,7 +60,7 @@ class GroupController extends Controller
     {
         try {
             //validate the form data(will redirect back to login view if errors)
-            $this->validateForm($request);
+           // $this->validateForm($request);
             
             $id = $request->input('id');
             $groupName = $request->input('groupName');
