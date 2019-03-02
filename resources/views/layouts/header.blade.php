@@ -24,6 +24,7 @@
       <li class="nav-item">
         <a class="nav-link" href="register">Sign up</a>
       </li>
+       @if(session('role') == 1)
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Admin
@@ -34,6 +35,7 @@
           <a class="dropdown-item" href="managejob">Manage Job</a>
         </div>
       </li>
+      @endif
     </ul>
   </div>
 </nav>
