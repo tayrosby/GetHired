@@ -86,6 +86,10 @@ Route::post('/editJob', 'JobController@editJob');
 
 Route::post('/deleteJob', 'JobController@deleteJob');
 
+Route::get('/addgroups', function(){
+    return view('addgroups');
+});
+
 Route::post('/addgroup', 'GroupController@addGroup');
 
 Route::get('/managegroups', 'GroupController@findAllGroups');
