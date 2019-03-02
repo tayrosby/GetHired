@@ -15,7 +15,7 @@ use App\Model\GroupMemberModel;
 class GroupMemberController extends Controller
 {
     //
-    public function addGroup(Request $request){
+    public function addMember(Request $request){
         
         try {
 
