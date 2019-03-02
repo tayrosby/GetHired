@@ -1,0 +1,38 @@
+@php
+use App\Services\Business\GroupBusinessService;
+@endphp
+
+@extends('layouts.maintemplate')
+@section('title', 'Get Hired! | My Profile')
+
+@php
+
+$gbs = new GroupBusinessService();
+
+$group = $gbs->findAll();
+
+@endphp
+
+@section('content')
+
+<table class = "registerform">
+ <thead>
+    <h4>Groups</h4>
+        <tr>
+            <th> Name</th>
+            <th> Interest</th>
+            <th> Description</th>
+        </tr>
+    </thead>
+    <tbody>
+          @for ($i = 0; $i < count($group); $i++)
+          <tr>
+              <td> {{ $group[$i]['GROUP_NAME'] }} </td>
+              <td> {{ $group[$i]['INTEREST'] }} </td>
+              <td> {{ $group[$i]['GROUP_DESCRIPTION'] }} </td>
+
+              <td>
+                        </tr>
+         @endfor
+   </tbody>
+</table>
