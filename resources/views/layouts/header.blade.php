@@ -18,13 +18,20 @@
       <li class="nav-item">
         <a class="nav-link" href="profile">Profile</a>
       </li>
+        @if(!session('ID'))
       <li class="nav-item">
         <a class="nav-link" href="login">Login</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="register">Sign up</a>
       </li>
-       @if(session('role') == 1)
+      @else
+       <li class="nav-item">
+        <a class="nav-link" href="logout">Log Out</a>
+      </li>
+      @endif
+      
+      @if(session('ROLE') == 1)
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Admin
