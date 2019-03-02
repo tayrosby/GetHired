@@ -31,7 +31,7 @@ $group = $gbs->findAllGroups();
               <td> {{ $group[$i]['INTEREST'] }} </td>
               <td> {{ $group[$i]['GROUP_DESCRIPTION'] }} </td>
 
-                          <form id="joinGroup{{$group[$i]['ID']}}" action="addMember" method="POST">
+                          <form id="joinGroup{{$group[$i]['ID']}}" action="addmember" method="POST">
 						<input type="hidden" name="_token" value="{{csrf_token()}}"/>
 						<input type="hidden" name="ID" value="{{$group[$i]['ID']}}"/>
 						<input type="hidden" name="ID" value="{{$group[$i]['USERS_ID']}}"/>
