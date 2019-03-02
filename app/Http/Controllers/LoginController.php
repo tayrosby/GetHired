@@ -31,6 +31,11 @@ class LoginController extends Controller
         // sends the info from the form to the authenticate method in security method
         $success = $instance->authenticate($user);
         // if login is successful, send the user back to the home page
+        
+        $user_session = $success['user'];
+        session(['userID' => $user_session['ID']]);
+        session(['role' => $user_session['ROLE']]);
+        
         if ($success)
         {
             return view('homepage');
