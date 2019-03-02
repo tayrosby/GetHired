@@ -28,7 +28,7 @@ Route::get('/register', function()
 {
     return view('registrationpage');
 });
-Route::get('/registrationpage', 'RegisterController@register');
+Route::post('/registrationpage', 'RegisterController@register');
 
 Route::get('/profile', function () 
 {
@@ -85,3 +85,17 @@ Route::get('/joppage', 'JobController@findAllJob');
 Route::post('/editJob', 'JobController@editJob');
 
 Route::post('/deleteJob', 'JobController@deleteJob');
+
+Route::post('/addgroup', 'GroupController@addGroup');
+
+Route::get('/managegroups', 'GroupController@findAllGroups');
+
+Route::get('/allgroups', 'GroupController@findAllGroups');
+
+Route::post('/editGroup', 'GroupController@editGroup');
+
+Route::post('/deleteGroup', 'GroupController@deleteGroup');
+
+Route::post('/addmember', 'GroupMemberController@addMember');
+
+Route::post('/deletemember', 'GroupMemberController@deleteMember');
