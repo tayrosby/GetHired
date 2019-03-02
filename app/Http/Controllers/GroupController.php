@@ -21,7 +21,7 @@ class GroupController extends Controller
         
         try {
             //validate the form data(will redirect back to login view if errors)
-            //$this->validateForm($request);
+            $this->validateForm($request);
             
             $groupName = $request->input('groupName');
             $groupDescription = $request->input('groupDescription');
@@ -60,7 +60,7 @@ class GroupController extends Controller
     {
         try {
             //validate the form data(will redirect back to login view if errors)
-           // $this->validateForm($request);
+            $this->validateForm($request);
             
             $id = $request->input('id');
             $groupName = $request->input('groupName');
@@ -150,14 +150,12 @@ class GroupController extends Controller
         }
     }
     
-    private function validateForm(Request $request){
+   private function validateForm(Request $request){
         //setup data validation rules for login form
         
-        $rules = ['position' => 'Required | Alpha',
-            'company' => 'Required | Alpha',
-            'location' => 'Required | Alpha',
-            'yearsActive' => 'Required | Max:2 | Numeric',
-            'duties' => 'Required | Alpha'];
+        $rules = ['groupName' => 'Required | Max:25',
+            'groupDescription' => 'Required | Max:250',
+            'interest' => 'Required | Max:25'];
         
         //run data validation rules
         $this->validate($request, $rules);
