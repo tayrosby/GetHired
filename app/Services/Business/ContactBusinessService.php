@@ -1,8 +1,8 @@
 <?php
 /*
- * Authors: Taylor Rosby and Ruben Cerrato
+ * Authors: Taylor Rosby
  * Date: January 20, 2019
- * Description: UserBusinessService is responsible for handling User related requests.
+ * Description: ContactBusinessService is responsible for handling contact related requests.
  */
 namespace App\Services\Business;
 use App\Services\Data\ContactDataService;
@@ -10,7 +10,7 @@ use App\Services\Utility\Connection;
 class ContactBusinessService
 {
     //passes the model to the data service
-    public function edit($contact)
+    public function editContacts($contact)
     {
         //creates a connection
         $db = new Connection();
@@ -32,7 +32,7 @@ class ContactBusinessService
     }
     
     //passes the model to the data service
-    public function create($contact)
+    public function addContacts($contact)
     {
         //creates a connection
         $db = new Connection();
@@ -54,7 +54,7 @@ class ContactBusinessService
     }
     
     //finds all the contacts in the data service
-    public function findAll()
+    public function findAllContacts()
     {
         //creates a connection
         $db = new Connection();
@@ -77,7 +77,7 @@ class ContactBusinessService
     }
     
     //passes the model to the data service
-    public function delete($contact)
+    public function deleteContacts($contact)
     {
         //creates a connection
         $db = new Connection();
