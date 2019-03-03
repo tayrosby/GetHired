@@ -17,7 +17,7 @@
           Groups
         </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="allgroups">Groups</a>
+          <a class="dropdown-item" href="groups">Groups</a>
           <a class="dropdown-item" href="addgroups">Add Group</a>
           <a class="dropdown-item" href="managegroups">Manage Group</a>
         </div>
