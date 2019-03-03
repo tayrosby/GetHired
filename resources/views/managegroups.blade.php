@@ -77,5 +77,5 @@ $group = $gbs->findAllGroups();
           </tr>
          @endfor
                  </tbody>
-</table>
+</table> 
 @endsection
