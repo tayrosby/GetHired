@@ -18,16 +18,20 @@ class GroupMemberController extends Controller
     public function addMember(Request $request){
         
         try {
-
+            //takes information from the user
             $userID = $request->input('userID');
             $groupID = $request->input('groupID');
             
+            //creates a new member object
             $member = new GroupMemberModel(-1, $groupID, $userID);
             
+            //calls the group members business service
             $service = new GroupMembersBusinessService();
             
+            //sends the member object to the join group method in the business service
             $success = $service->joinGroup($member);
             
+            //if it fails or succeeds return to the all groups
             if($success)
             {
                 return view("allgroups");
@@ -46,20 +50,24 @@ class GroupMemberController extends Controller
         }
     }
     
- public function deleteMember(Request $request)
+    public function deleteMember(Request $request)
     {
         try {
-            
+            //takes information from the user
             $id = $request->input('id');
             $userID = $request->input('userID');
             $groupID = $request->input('groupID');
             
+            //creates a new member object
             $member = new GroupMemberModel($id, $groupID, $userID);
             
+            //calls the group members business service
             $service = new GroupMembersBusinessService();
             
+            //sends the member object to the join group method in the business service
             $success = $service->leaveGroup($member);
             
+            //if it fails or succeeds return to the all groups
             if($success)
             {
                 return view("allgroups");
@@ -78,3 +86,4 @@ class GroupMemberController extends Controller
         }
     }
 }
+
