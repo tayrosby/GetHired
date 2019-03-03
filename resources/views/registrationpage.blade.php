@@ -3,7 +3,7 @@
 
 @section('content')
 	<div class="container-fluid">
-	<form class = "registerform" action="registrationpage" method="GET">
+	<form class = "registerform" action="registrationpage" method="POST">
 		<input type="hidden" name="_token" value="<?php echo csrf_token() ?>"/>
 		
 		<div align="center">
