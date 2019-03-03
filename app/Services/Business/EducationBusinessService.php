@@ -1,8 +1,8 @@
 <?php
 /*
- * Authors: Taylor Rosby and Ruben Cerrato
+ * Authors: Taylor Rosby
  * Date: January 20, 2019
- * Description: UserBusinessService is responsible for handling User related requests.
+ * Description: EducationBusinessService is responsible for handling education related requests.
  */
 namespace App\Services\Business;
 use App\Services\Data\EducationDataService;
@@ -10,7 +10,7 @@ use App\Services\Utility\Connection;
 class EducationBusinessService
 {
     //passes the model to the data service
-    public function edit($education)
+    public function editEducation($education)
     {
         //creates a connection
         $db = new Connection();
@@ -33,7 +33,7 @@ class EducationBusinessService
     }
     
     //passes the model to the data service
-    public function create($education)
+    public function addEducation($education)
     {
         //creates a connection
         $db = new Connection();
@@ -55,7 +55,7 @@ class EducationBusinessService
     }
     
     //finds all the education in the database
-    public function findAll()
+    public function findAllEducation()
     {
         //creates a connection
         $db = new Connection();
@@ -78,7 +78,7 @@ class EducationBusinessService
     }
     
     //passes the model to the data service
-    public function delete($education, $id)
+    public function deleteEducation($education, $id)
     {
         //creates a connection
         $db = new Connection();
