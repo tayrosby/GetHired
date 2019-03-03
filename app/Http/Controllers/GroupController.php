@@ -23,24 +23,29 @@ class GroupController extends Controller
             //validate the form data(will redirect back to login view if errors)
             $this->validateForm($request);
             
+            //takes information from the user
             $groupName = $request->input('groupName');
             $groupDescription = $request->input('groupDescription');
             $interest = $request->input('interest');
             $userID = $request->input('userID');
             
+            //creates a group model
             $group = new GroupModel(-1, $groupName, $groupDescription, $interest, $userID);
             
+            //calls the business service
             $service = new GroupBusinessService();
             
+            //passes the model to the add method in the business service
             $success = $service->addGroup($group);
             
+            //fail or succeed return to all groups
             if($success)
             {
                 return view("allgroups");
             }
             else
             {
-                return view("addgroup");
+                return view("addgroups");
             }
         }
                 catch (ValidationException $e1){
@@ -62,18 +67,23 @@ class GroupController extends Controller
             //validate the form data(will redirect back to login view if errors)
             $this->validateForm($request);
             
+            //takes information from the user
             $id = $request->input('id');
             $groupName = $request->input('groupName');
             $groupDescription = $request->input('groupDescription');
             $interest = $request->input('interest');
             $userID = $request->input('userID');
             
+            //creates a group model
             $group = new GroupModel($id, $groupName, $groupDescription, $interest, $userID);
             
+            //calls the business service
             $service = new GroupBusinessService();
             
+            //passes the model to the update method in the business service
             $success = $service->updateGroup($group);
             
+            //fail or succeed return to all groups
             if($success)
             {
                 return view("managegroups");
@@ -99,13 +109,16 @@ class GroupController extends Controller
     public function deleteGroups(Request $request)
     {
         try {
-            
+            //takes information from the user
             $id = $request->input('id');
             
+            //calls the business service
             $service = new GroupBusinessService();
             
+            //passes the model to the delete method in the business service
             $success = $service->deleteGroup($id);
             
+            //fail or succeed return to all groups
             if($success)
             {
                 return view("managegroups");
@@ -127,10 +140,13 @@ class GroupController extends Controller
     public function findAllGroups(Request $request)
     {
         try {
+            //calls the business service
             $service = new GroupBusinessService();
             
+            //calls the find all method in the business service
             $success = $service->findAllGroups();
             
+            //fail or succeed return to all groups
             if($success)
             {
                 return view("allgroups");
@@ -150,7 +166,7 @@ class GroupController extends Controller
         }
     }
     
-   private function validateForm(Request $request){
+    private function validateForm(Request $request){
         //setup data validation rules for login form
         
         $rules = ['groupName' => 'Required | Max:25',
@@ -161,3 +177,4 @@ class GroupController extends Controller
         $this->validate($request, $rules);
     }
 }
+
