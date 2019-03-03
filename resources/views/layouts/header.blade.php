@@ -12,9 +12,16 @@
       <li class="nav-item">
         <a class="nav-link" href="joppage">Jobs</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Groups</a>
-      </li>
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Groups
+        </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="allgroups">Groups</a>
+          <a class="dropdown-item" href="addgroups">Add Group</a>
+          <a class="dropdown-item" href="managegroups">Manage Group</a>
+        </div>
+ 		</li>
       <li class="nav-item">
         <a class="nav-link" href="profile">Profile</a>
       </li>
