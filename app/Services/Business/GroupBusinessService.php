@@ -35,7 +35,7 @@ class GroupBusinessService
     }
     
     //allows the group admin to delete the group
-    public function delete($id)
+    public function deleteGroup($id)
     {
         //creates a connection
         $db = new Connection();
@@ -45,7 +45,7 @@ class GroupBusinessService
         $service = new GroupDataService($conn);
         
         //sends the model to the delete function in the data service
-        $success = $service->deleteJob($id);
+        $success = $service->deleteGroup($id);
         
         //closes the connection
         $conn = null;
@@ -68,7 +68,7 @@ class GroupBusinessService
         $service = new GroupDataService($conn);
         
         //sends the model to the edit function in the data service
-        $success = $service->editJob($group);
+        $success = $service->editGroup($group);
         
         //closes the connection
         $conn = null;
@@ -101,5 +101,22 @@ class GroupBusinessService
         
         //return the array
         return $groups;
+    }
+    
+    //gets all the members in a group
+    function findAllGroupMembers(){
+        //creates an array
+        $groupMembers = Array();
+        
+        //creates a database connection
+        $db = new Connection();
+        $conn = $db->open();
+        
+        //sends connection to data service
+        $dbService = new GroupDataService($conn);
+        
+        //return the array
+        $groupMembers = $dbService->findAllGroupMembers();
+        return $groupMembers;
     }
 }
