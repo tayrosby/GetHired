@@ -39,6 +39,13 @@ $group = $gbs->findAllGroups();
 					
 					<td><input form="joinGroup{{$group[$i]['ID']}}" class="btn" type="submit" value="Join Group"/></td>
                     
+                      <form id="leaveGroup{{$id}}" action="deletemember" method="POST">
+						<input type="hidden" name="_token" value="{{csrf_token()}}"/>
+						<input type="hidden" name="ID" value="{{$id}}"/>
+			</form>
+			
+			<td><input form="leaveGroup{{$id}}" class="btn" type="submit" value="Leave Group"/></td>
+                    
                     <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id02').style.display='block'">Edit Group</button>
 
