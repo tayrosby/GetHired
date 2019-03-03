@@ -94,7 +94,7 @@ Route::post('/addgroup', 'GroupController@addGroup');
 
 Route::get('/managegroups', 'GroupController@findAllGroups');
 
-Route::get('/allgroups', function(){
+Route::get('/groups', function(){
     return view('allgroups');
 });
 
