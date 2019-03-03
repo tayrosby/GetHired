@@ -46,15 +46,19 @@ class GroupMemberController extends Controller
         }
     }
     
-    public function deleteMember(Request $request)
+ public function deleteMember(Request $request)
     {
         try {
             
             $id = $request->input('id');
+            $userID = $request->input('userID');
+            $groupID = $request->input('groupID');
+            
+            $member = new GroupMemberModel($id, $groupID, $userID);
             
             $service = new GroupMembersBusinessService();
             
-            $success = $service->leaveGroup($id);
+            $success = $service->leaveGroup($member);
             
             if($success)
             {
