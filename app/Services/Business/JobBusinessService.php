@@ -11,7 +11,7 @@ use App\Services\Utility\Connection;
 class JobBusinessService
 {
     //passes the model to the data service
-    public function edit($job)
+    public function editJob($job)
     {
         //creates a connection
         $db = new Connection();
@@ -33,7 +33,7 @@ class JobBusinessService
     }
     
     //passes the model to the data service
-    public function create($job)
+    public function addJob($job)
     {
         //creates a connection
         $db = new Connection();
@@ -54,7 +54,7 @@ class JobBusinessService
         else { return false; }
     }
     
-    public function findAll()
+    public function findAllJobs()
     {
         //creates a connection
         $db = new Connection();
@@ -77,7 +77,7 @@ class JobBusinessService
     }
     
     //passes the model to the data service
-    public function delete($id)
+    public function deleteJobs($id)
     {
         //creates a connection
         $db = new Connection();
