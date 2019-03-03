@@ -38,7 +38,7 @@ class ContactController extends Controller
         $service = new ContactBusinessService();
         
         //sends the contact object to the create method in the business service
-        $success = $service->create($contact);
+        $success = $service->addContacts($contact);
         
         //if it fails or succeeds return to the profile page
         if($success)
@@ -86,7 +86,7 @@ class ContactController extends Controller
         $service = new ContactBusinessService();
         
         //sends the contact object to the edit method in the business service
-        $success = $service->edit($contact);
+        $success = $service->editContacts($contact);
         
         //if it fails or succeeds return to the profile page
         if($success)
@@ -132,7 +132,7 @@ class ContactController extends Controller
         $service = new ContactBusinessService();
         
         //sends the contact object to the delete method in the business service
-        $success = $service->delete($contact);
+        $success = $service->deleteContacts($contact);
         
         //if it fails or succeeds return to the profile page
         if($success)
@@ -166,7 +166,7 @@ class ContactController extends Controller
         $service = new ContactBusinessService();
         
         //calls the findAll method in the business service
-        $success = $service->findAll();
+        $success = $service->findAllContacts();
         
        //if it fails or succeeds return to the profile page
         if($success)
