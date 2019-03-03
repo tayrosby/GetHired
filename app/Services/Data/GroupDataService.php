@@ -100,7 +100,7 @@ class GroupDataService
         try
         {
             // Taking user info from user
-            $id = $job->id;
+            $id = $group->id;
             $groupName = $group->groupName;
             $groupDescription = $group->groupDescription;
             $interest = $group->interest;
