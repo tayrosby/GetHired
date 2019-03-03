@@ -39,10 +39,12 @@ $groupMembers = $gbs->findAllGroupMembers();
 						<input type="hidden" name="groupID" value="{{$group[$i]['ID']}}"/>
 						<input type="hidden" name="userID" value="{{$group[$i]['USERS_ID']}}"/>
 						
-						@for ($j = 0; $j < count($groupMembers); $j++)
+						<td>
+					    @for ($j = 0; $j < count($groupMembers); $j++)
 							{{ $groupMembers[$j]['FIRSTNAME'] }}
 							{{ $groupMembers[$j]['LASTNAME'] }}
 						@endfor
+						 </td>
 			</form>
 					
 					<td><input form="joinGroup{{$group[$i]['ID']}}" class="btn" type="submit" value="Join Group"/></td>
