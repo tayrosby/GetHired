@@ -41,14 +41,6 @@ $group = $gbs->findAllGroups();
 					
                         </tr>
          @endfor
-         
-         <form id="leaveGroup{{$group[$i]['ID']}}" action="deletemember" method="POST">
-						<input type="hidden" name="_token" value="{{csrf_token()}}"/>
-						<input type="hidden" name="groupID" value="{{$group[$i]['ID']}}"/>
-						<input type="hidden" name="userID" value="{{$group[$i]['USERS_ID']}}"/>
-			</form>
-			
-			<td><input form="leaveGroup{{$group[$i]['ID']}}" class="btn" type="submit" value="Leave Group"/></td>
    </tbody>
 </table>
 @endsection
