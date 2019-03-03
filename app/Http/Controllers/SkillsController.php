@@ -1,4 +1,10 @@
 <?php
+/*
+ * Authors: Taylor Rosby
+ * Date: February 24, 2019
+ * Description: SkillsController is responsible for linking the skills information in the profile
+ * the business side of the program.
+ */
 
 namespace App\Http\Controllers;
 
@@ -19,15 +25,20 @@ class SkillsController extends Controller
             //validate the form data(will redirect back to login view if errors)
             $this->validateForm($request);
             
+           //takes information from the user
         $skillName = $request->input('skillName');
         $id = $request->input('user_id');
         
+        //creates a skills object
         $skills = new UserSkillsModel($id, $skillName);
         
+        //calls the business service
         $service = new SkillsBusinessService();
         
-        $success = $service->create($skills);
+        //passes the model to the add method in the business service
+        $success = $service->addSkills($skills);
         
+        //fail or succeed return to the profile page
         if($success)
         {
             return view("profilepage");
@@ -58,15 +69,20 @@ class SkillsController extends Controller
             //validate the form data(will redirect back to login view if errors)
             $this->validateForm($request);
             
+            //takes information from the user
         $skillName = $request->input('skillName');
         $id = $request->input('id');
         
+        //creates a skills object
         $skills = new UserSkillsModel($id, $skillName);
         
+        //calls the business service
         $service = new SkillsBusinessService();
         
-        $success = $service->edit($skills);
+        //passes the model to the edit method in the business service
+        $success = $service->editSkills($skills);
         
+        //fail or succeed return to the profile page
         if($success)
         {
             return view("profilepage");
@@ -92,15 +108,20 @@ class SkillsController extends Controller
     public function deleteSkill(Request $request)
     {
         try {
+            //takes information from the user
         $skillName = $request->input('skillName');
         $id = $request->input('id');
         
+        //creates a skills object
         $skills = new UserSkillsModel($id, $skillName);
         
+        //calls the business service
         $service = new SkillsBusinessService();;
         
-        $success = $service->delete($skills);
+        //passes the model to the delete method in the business service
+        $success = $service->deleteSkills($skills);
         
+        //fail or succeed return to the profile page
         if($success)
         {
             return view("profilepage");
@@ -122,10 +143,13 @@ class SkillsController extends Controller
     public function findAllSkill(Request $request)
     {   
         try {
+            //calls the business service
         $service = new SkillsBusinessService();
         
-        $success = $service->findAll();
+        //calls the find all method in the business service
+        $success = $service->findAllSkills();
         
+        //fail or succeed return to the profile page
         if($success)
         {
             return view("profilepage");
@@ -147,7 +171,7 @@ class SkillsController extends Controller
     private function validateForm(Request $request){
         //setup data validation rules for login form
         
-        $rules = ['skillName' => 'Required | Between:2,29 | Alpha'];
+        $rules = ['skillName' => 'Required | Between:2,29'];
         
         //run data validation rules
         $this->validate($request, $rules);
