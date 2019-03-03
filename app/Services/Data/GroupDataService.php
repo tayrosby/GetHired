@@ -104,7 +104,6 @@ class GroupDataService
             $groupName = $group->groupName;
             $groupDescription = $group->groupDescription;
             $interest = $group->interest;
-            $userID = $group->userID;
             
             //creates a sql statement
             $stmt = $this->conn->prepare("UPDATE `GROUPS` SET `GROUP_NAME` = :groupName, `GROUP_DESCRIPTION` = :groupDescription, `INTEREST` = :interest WHERE `GROUPS`.`ID` = :id");
@@ -112,7 +111,6 @@ class GroupDataService
             $stmt->bindParam(':groupName', $groupName);
             $stmt->bindParam(':groupDescription', $groupDescription);
             $stmt->bindParam(':interest', $interest);
-            $stmt->bindParam(':usersid', $userID);
             $stmt->execute();
             
             //saves the row count
