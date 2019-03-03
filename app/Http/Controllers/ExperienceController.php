@@ -1,5 +1,10 @@
 <?php
-
+/*
+ * Authors: Taylor Rosby
+ * Date: February 24, 2019
+ * Description: ExperienceController is responsible for linking the experience information in the profile
+ * the business side of the program.
+ */
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -30,7 +35,7 @@ class ExperienceController extends Controller
         
         $service = new ExperienceBusinessService();
         
-        $success = $service->create($experience);
+        $success = $service->addExperience($experience);
         
         if($success)
         {
@@ -71,7 +76,7 @@ class ExperienceController extends Controller
         
         $service = new ExperienceBusinessService();
         
-        $success = $service->edit($experience);
+        $success = $service->editExperience($experience);
         
         if($success)
         {
@@ -110,7 +115,7 @@ class ExperienceController extends Controller
         
         $service = new ExperienceBusinessService();
         
-        $success = $service->delete($experience, $id);
+        $success = $service->deleteExperience($experience, $id);
         
         if($success)
         {
@@ -135,7 +140,7 @@ class ExperienceController extends Controller
         try {
         $service = new ExperienceBusinessService();
         
-        $success = $service->findAll();
+        $success = $service->findAllExperience();
         
         if($success)
         {
