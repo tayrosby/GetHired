@@ -37,7 +37,7 @@ class EducationController extends Controller
         $service = new EducationBusinessService();
         
         //sends the education object to the create method in the business service
-        $success = $service->create($education);
+        $success = $service->addEducation($education);
         
         //if it fails or succeeds return to the profile page
         if($success)
@@ -82,7 +82,7 @@ class EducationController extends Controller
         $service = new EducationBusinessService();
         
         //sends the education object to the edit method in the business service
-        $success = $service->edit($education);
+        $success = $service->editEducation($education);
         
         //if it fails or succeeds return to the profile page
         if($success)
@@ -125,7 +125,7 @@ class EducationController extends Controller
         $service = new EducationBusinessService();
         
         //sends the education object to the delete method in the business service
-        $success = $service->delete($education, $id);
+        $success = $service->deleteEducation($education, $id);
         
         //if it fails or succeeds return to the profile page
         if($success)
@@ -155,7 +155,7 @@ class EducationController extends Controller
         $service = new EducationBusinessService();
         
         //calls the findAll method in the business service
-        $success = $service->findAll();
+        $success = $service->findAllEducation();
         
         //if it fails or succeeds return to the profile page
         if($success)
