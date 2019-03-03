@@ -40,7 +40,7 @@ class JobController extends Controller
             $service = new JobBusinessService();
             
             //sends the job object to the create method in the business service
-            $success = $service->create($job);
+            $success = $service->addJob($job);
             
             //if it succeeds take the admin to manage jobs
             if($success)
@@ -91,7 +91,7 @@ class JobController extends Controller
             $service = new JobBusinessService();
             
             //sends the job object to the edit method in the business service
-            $success = $service->edit($job);
+            $success = $service->editJob($job);
             
             //if it fails or succeeds return to the manage jobs
             if($success)
@@ -127,7 +127,7 @@ class JobController extends Controller
             $service = new JobBusinessService();
             
             //sends the job id to the delete method in the business service
-            $success = $service->delete($id);
+            $success = $service->deleteJobs($id);
             
             //if it fails or succeeds return to the manage jobs
             if($success)
@@ -156,7 +156,7 @@ class JobController extends Controller
             $service = new JobBusinessService();
             
             //calls the findAll method in the business service
-            $jobs = $service->findAll();
+            $jobs = $service->findAllJobs();
             
             //puts the results into an associate array
             $data = ['jobs' => $jobs];
