@@ -159,4 +159,42 @@ class GroupDataService
         }
         
     }
+    
+    //READ Method
+    public function findAllGroupMembers()
+    {
+        Log::info("Entering GroupMembersDataService.findAllGroupMembers()");
+        
+        try
+        {
+            //preapres a sql statement
+            $stmt = $this->conn->prepare("SELECT USERS.FIRSTNAME, USERS.LASTNAME
+                                      FROM USERS
+                                      JOIN GROUP_MEMBERS ON GROUP_MEMBERS.USERS_ID = USERS.ID
+                                      JOIN GROUPS ON GROUP_MEMBERS.GROUPS_ID = GROUPS.ID");
+            $stmt->execute();
+            
+            //creates an array of members
+            $groupMembers = [];
+            
+            // Fetches the members found and pushes them to an array
+            while($groupMember = $stmt->fetch(PDO::FETCH_ASSOC))
+            {
+                array_push($groupMembers, $groupMember);
+            }
+            
+            //closes the statement
+            $stmt = null;
+            
+            //returns the members
+            Log::info("Leaving GroupMembersDataService.findAllGroupMembers() with rowCount");
+            return $groupMembers;
+            
+        }
+        catch(PDOException $e)
+        {
+            Log::error("Exception: ", array("message" => $e->getMessage()));
+            throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
+        }
+    }
 }
