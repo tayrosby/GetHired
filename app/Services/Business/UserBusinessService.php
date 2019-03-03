@@ -11,7 +11,7 @@ use App\Services\Utility\Connection;
 class UserBusinessService
 {
     //passes the model to the data service
-    public function suspend($id)
+    public function suspendUser($id)
     {
         $db = new Connection();
         $conn = $db->open();
@@ -26,7 +26,7 @@ class UserBusinessService
         else { return false; }
     }
     
-    public function delete($id)
+    public function deleteUser($id)
     {
         $db = new Connection();
         $conn = $db->open();
@@ -50,7 +50,7 @@ class UserBusinessService
         return $result;
     }
     
-    public function getAll()
+    public function getAllUsers()
     {
         $db = new Connection();
         $conn = $db->open();
