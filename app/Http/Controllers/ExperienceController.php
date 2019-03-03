@@ -22,8 +22,9 @@ class ExperienceController extends Controller
     {
         try {
             //validate the form data(will redirect back to login view if errors)
-            //$this->validateForm($request);
-            
+            $this->validateForm($request);
+           
+            //takes info from the user
         $id = $request->input('id');
         $position = $request->input('position');
         $company = $request->input('company');
@@ -31,12 +32,16 @@ class ExperienceController extends Controller
         $yearsActive = $request->input('yearsActive');
         $duties = $request->input('duties');
         
+        //creates an experience object
         $experience = new UserExperienceModel($id, $position, $company, $location, $yearsActive, $duties);
         
+        //calls the business service
         $service = new ExperienceBusinessService();
         
+        //passes the model to add method in the business service
         $success = $service->addExperience($experience);
         
+        //fail or succeed return to profile page
         if($success)
         {
             return view("profilepage");
@@ -46,10 +51,10 @@ class ExperienceController extends Controller
             return view("profilepage");
         }
         }
-//         catch (ValidationException $e1){
-//             //catch and rethrow the data validation exceptions (so we can catch all others in our next exception catch block)
-//             throw $e1;
-//         }
+        catch (ValidationException $e1){
+            //catch and rethrow the data validation exceptions (so we can catch all others in our next exception catch block)
+            throw $e1;
+        }
         catch (Exception $e){
             //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
             //log the exception and display exception view
@@ -63,8 +68,9 @@ class ExperienceController extends Controller
     {
         try {
             //validate the form data(will redirect back to login view if errors)
-           // $this->validateForm($request);
+            $this->validateForm($request);
             
+            //takes info from the user
         $id = $request->input('id');
         $position = $request->input('position');
         $company = $request->input('company');
@@ -72,12 +78,16 @@ class ExperienceController extends Controller
         $yearsActive = $request->input('yearsActive');
         $duties = $request->input('duties');
         
+        //creates an experience object
         $experience = new UserExperienceModel($id, $position, $company, $location, $yearsActive, $duties);
         
+        //calls the business service
         $service = new ExperienceBusinessService();
         
+        //passes the model to edit method in the business service
         $success = $service->editExperience($experience);
         
+        //fail or succeed return to profile page
         if($success)
         {
             return view("profilepage");
@@ -87,10 +97,10 @@ class ExperienceController extends Controller
             return view("profilepage");
         }
         }
-//         catch (ValidationException $e1){
-//             //catch and rethrow the data validation exceptions (so we can catch all others in our next exception catch block)
-//             throw $e1;
-//         }
+        catch (ValidationException $e1){
+            //catch and rethrow the data validation exceptions (so we can catch all others in our next exception catch block)
+            throw $e1;
+        }
         catch (Exception $e){
             //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
             //log the exception and display exception view
@@ -104,6 +114,7 @@ class ExperienceController extends Controller
     {
         try {
             
+            //takes info from the user
         $id = $request->input('id');
         $position = $request->input('position');
         $company = $request->input('company');
@@ -111,12 +122,16 @@ class ExperienceController extends Controller
         $yearsActive = $request->input('yearsActive');
         $duties = $request->input('duties');
         
+        //creates an experience object
         $experience = new UserExperienceModel($id, $position, $company, $location, $yearsActive, $duties);
         
+        //calls the business service
         $service = new ExperienceBusinessService();
         
+        //passes the model to delete method in the business service
         $success = $service->deleteExperience($experience, $id);
         
+        //fail or succeed return to profile page
         if($success)
         {
             return view("profilepage");
@@ -138,10 +153,13 @@ class ExperienceController extends Controller
     public function findAllExperience(Request $request)
     {
         try {
+            //calls the business service
         $service = new ExperienceBusinessService();
         
+        //calls the find all method in the business service
         $success = $service->findAllExperience();
         
+        //fail or succeed return to profile page
         if($success)
         {
             return view("profilepage");
@@ -164,11 +182,11 @@ class ExperienceController extends Controller
     private function validateForm(Request $request){
         //setup data validation rules for login form
         
-        $rules = ['position' => 'Required | Alpha',
-            'company' => 'Required | Alpha',
-            'location' => 'Required | Alpha',
+        $rules = ['position' => 'Required',
+            'company' => 'Required',
+            'location' => 'Required',
             'yearsActive' => 'Required | Max:2 | Numeric',
-            'duties' => 'Required | Alpha'];
+            'duties' => 'Required'];
         
         //run data validation rules
         $this->validate($request, $rules);
