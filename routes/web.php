@@ -98,9 +98,9 @@ Route::get('/groups', function(){
     return view('allgroups');
 });
 
-Route::post('/editGroup', 'GroupController@editGroup');
+Route::post('/editGroup', 'GroupController@editGroups');
 
-Route::post('/deleteGroup', 'GroupController@deleteGroup');
+Route::post('/deleteGroup', 'GroupController@deleteGroups');
 
 Route::post('/addmember', 'GroupMemberController@addMember');
 
