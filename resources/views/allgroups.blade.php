@@ -1,5 +1,6 @@
 @php
 use App\Services\Business\GroupBusinessService;
+use App\Model\GroupModel;
 @endphp
 
 @extends('layouts.maintemplate')
@@ -10,6 +11,8 @@ use App\Services\Business\GroupBusinessService;
 $gbs = new GroupBusinessService();
 
 $group = $gbs->findAllGroups();
+
+$id = $member->id;
 
 @endphp
 
