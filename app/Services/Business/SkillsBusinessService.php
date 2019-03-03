@@ -1,6 +1,6 @@
 <?php
 /*
- * Authors: Taylor Rosby and Ruben Cerrato
+ * Authors: Taylor Rosby
  * Date: January 20, 2019
  * Description: SkillsBusinessService is responsible for handling Skill related requests.
  */
@@ -10,7 +10,7 @@ use App\Services\Utility\Connection;
 class SkillsBusinessService
 {
     //passes the model to the data service
-    public function edit($skills)
+    public function editSkills($skills)
     {
         $db = new Connection();
         $conn = $db->open();
@@ -23,7 +23,7 @@ class SkillsBusinessService
         else { return false; }
     }
     
-    public function create($skills)
+    public function addSkills($skills)
     {
         $db = new Connection();
         $conn = $db->open();
@@ -36,7 +36,7 @@ class SkillsBusinessService
         else { return false; }
     }
     
-    public function findAll()
+    public function findAllSkills()
     {
         $db = new Connection();
         $conn = $db->open();
@@ -51,7 +51,7 @@ class SkillsBusinessService
         return $skills;
     }
     
-    public function delete($skills)
+    public function deleteSkills($skills)
     {
         $db = new Connection();
         $conn = $db->open();
