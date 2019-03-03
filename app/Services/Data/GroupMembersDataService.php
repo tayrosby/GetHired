@@ -52,15 +52,18 @@ public function createMember(GroupMemberModel $member)
 }
 
 // Delete Method
-public function deleteMember($id)
+public function deleteMember(GroupMemberModel $member)
 {
     Log::info("Entering GroupMembersDataService.deleteMember()");
     
     try
     {
+        $groupid = $member->groupID;
+        $userid = $member->userID;
         // prepares a SQL statement to delete a user. the delete is based on matching IDs
-        $stmt = $this->conn->prepare("DELETE FROM GROUP_MEMBERS WHERE ID = :id");
-        $stmt->bindParam(':id', $id);
+        $stmt = $this->conn->prepare("DELETE FROM GROUP_MEMBERS WHERE GROUPS_ID = :groupid AND USERS_ID = :userid");
+        $stmt->bindParam(':groupid', $groupid);
+        $stmt->bindParam(':userid', $userid);
         $stmt->execute();
         //saves the row count
         $count = $stmt->rowCount();
