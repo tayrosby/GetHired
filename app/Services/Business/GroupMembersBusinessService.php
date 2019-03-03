@@ -37,7 +37,7 @@ class GroupMembersBusinessService {
     }
     
     //allows the user to remove themselves from the group
-    public function leaveGroup($id)
+  public function leaveGroup($member)
     {
         //creates a new connection
         $db = new Connection();
@@ -47,7 +47,7 @@ class GroupMembersBusinessService {
         $service = new GroupMembersDataService($conn);
         
         //call the delete function in the data service
-        $success = $service->deleteMember($id);
+        $success = $service->deleteMember($member);
         
         //closes the connection
         $conn = null;
