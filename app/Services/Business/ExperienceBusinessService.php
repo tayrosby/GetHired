@@ -1,8 +1,8 @@
 <?php
 /*
- * Authors: Taylor Rosby and Ruben Cerrato
+ * Authors: Taylor Rosby
  * Date: January 20, 2019
- * Description: UserBusinessService is responsible for handling User related requests.
+ * Description: ExperienceBusinessService is responsible for handling experience related requests.
  */
 namespace App\Services\Business;
 use App\Services\Data\ExperienceDataService;
@@ -11,7 +11,7 @@ class ExperienceBusinessService
 {
     
     //passes the model to the data service
-    public function edit($experience)
+    public function editExperience($experience)
     {
         //creates a connection
         $db = new Connection();
@@ -33,7 +33,7 @@ class ExperienceBusinessService
     }
     
     //passes the model to the data service
-    public function create($experience)
+    public function addExperience($experience)
     {
         //creates a connection
         $db = new Connection();
@@ -53,7 +53,7 @@ class ExperienceBusinessService
         else { return false; }
     }
     
-    public function findAll()
+    public function findAllExperience()
     {
         //creates a connection
         $db = new Connection();
@@ -76,7 +76,7 @@ class ExperienceBusinessService
     }
     
     //passes the model to the data service
-    public function delete($experience, $id)
+    public function deleteExperience($experience, $id)
     {
         //creates a connection
         $db = new Connection();
