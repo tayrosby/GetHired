@@ -422,7 +422,7 @@ hr {
       <input type="text" placeholder="Enter Years Active" name="yearsActive" required>
 
       <label for="Location"><b>Duties</b></label>
-      <input type="text" placeholder="Duties" name="duties1" required>
+      <input type="text" placeholder="Duties" name="duties" required>
       
 
       <div class="clearfix">
