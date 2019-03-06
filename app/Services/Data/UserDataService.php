@@ -101,7 +101,7 @@ class UserDataService
         try
         {
             //creates the sql statement
-            $stmt = $this->conn->prepare("UPDATE `USERS` SET `ROLE` = -1 WHERE `users`.`ID` = :id");
+            $stmt = $this->conn->prepare("UPDATE `USERS` SET `ROLE` = -1 WHERE `USERS`.`ID` = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
             //save the row count
