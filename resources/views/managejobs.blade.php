@@ -9,7 +9,7 @@ use App\Services\Business\JobBusinessService;;
 
 $jbs = new JobBusinessService();
 
-$job = $jbs->findAllJob();
+$job = $jbs->findAllJobs();
 
 @endphp
 
