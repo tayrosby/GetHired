@@ -41,7 +41,7 @@ class RegisterController extends Controller
         $duplicate = $security->checkDUP($user);
         
         //if there is a duplicate keep the user on the registration page
-        if ($duplicate) {
+        if (!$duplicate) {
             return view('registrationpage');
         }
         //else let the registration process continues
