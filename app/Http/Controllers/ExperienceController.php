@@ -22,7 +22,7 @@ class ExperienceController extends Controller
     {
         try {
             //validate the form data(will redirect back to login view if errors)
-            $this->validateForm($request);
+           // $this->validateForm($request);
            
             //takes info from the user
         $id = $request->input('id');
