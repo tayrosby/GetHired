@@ -23,7 +23,7 @@ class AdminController extends Controller
         // Calls the business service
         $service = new UserBusinessService();
         // Gets all the users in the database
-        $users = $service->getAll();
+        $users = $service->getAllUsers();
         // Puts the users in an associative array
         $data = ['users' => $users];
         // Return to the Admin page with the data
@@ -47,7 +47,7 @@ class AdminController extends Controller
             // Calls the business service
             $service = new UserBusinessService();
             // suspends the user
-            $service->suspend($ID);
+            $service->suspendUser($ID);
             // redirects to the admin page
             return redirect("/admin");
         }
@@ -69,7 +69,7 @@ class AdminController extends Controller
         // Calls the business service
         $service = new UserBusinessService();
         // deletes the user based on their id
-        $service->delete($ID);
+        $service->deleteUser($ID);
         // redirects to the admin page
         return redirect("/admin");
         }
