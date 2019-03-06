@@ -12,19 +12,19 @@ use App\Services\Business\ExperienceBusinessService;
 
 $cbs = new ContactBusinessService();
 
-$contact = $cbs->findAll();
+$contact = $cbs->findAllContact();
 
 $sbs = new SkillsBusinessService();
 
-$skills = $sbs->findAll();
+$skills = $sbs->findAllSkill();
 
 $edbs = new EducationBusinessService();
 
-$education = $edbs->findAll();
+$education = $edbs->findAllEducation();
 
 $exbs = new ExperienceBusinessService();
 
-$experience = $exbs->findAll();
+$experience = $exbs->findAllExperience();
 
 @endphp
 
