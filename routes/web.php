@@ -104,7 +104,7 @@ Route::post('/addmember', 'GroupMemberController@addMember');
 
 Route::post('/deletemember', 'GroupMemberController@deleteMember');
 
-Route::post('/searchjobs', function(){
+Route::get('/searchjobs', function(){
     return view('jobsearch');
 });
 
