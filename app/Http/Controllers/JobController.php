@@ -17,7 +17,12 @@ use Exception;
 
 class JobController extends Controller
 {
-    //adds the job information to the database
+    /**
+     * adds the job information to the database
+     * @param Request $request
+     * @throws ValidationException
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function addJob(Request $request)
     {
         try {
@@ -67,7 +72,12 @@ class JobController extends Controller
         
     }
     
-    //edits the job information to the database
+    /**
+     * edits the job information to the database
+     * @param Request $request
+     * @throws ValidationException
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function editJob(Request $request)
     {
         try {
@@ -116,7 +126,11 @@ class JobController extends Controller
         }
     }
     
-    //deletes the delete information to the database
+    /**
+     * deletes the delete information to the database
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function deleteJob(Request $request)
     {
         try {
@@ -148,7 +162,11 @@ class JobController extends Controller
         }
     }
     
-    //finds all the job information to the database
+    /**
+     * finds all the job information to the database
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function findAllJob(Request $request)
     {
         try {
@@ -182,7 +200,47 @@ class JobController extends Controller
         }
     }
     
-    //validates the data in the form
+    /**
+     * finds all the jobs matching the search term in the description
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
+    public function findJobByDescription(Request $request){
+        try {
+            //takes information from the user
+            $description = $request->input('descriptionSearch');
+            
+            //calls the job business service
+            $service = new JobBusinessService();
+            
+            //creates an array of jobs
+            $jobs = Array();
+            
+            //calls the find by dscription method in the business service
+            $jobs = $service->findJobByDescription($description);
+            
+            //if there are jobs to to a search results page
+            if($jobs){
+                return view("jobresults")->with($jobs);
+            }
+            //else return a jobs not found page
+            {
+                return view("nojobresults");
+            }           
+            
+        }
+        catch (Exception $e) {
+            Log::error("Exception: ", array("message" => $e->getMessage()));
+            $data = ['errorMSG' => $e->getMessage()];
+            return ($data);
+        }
+        
+    }
+    
+    /**
+     * validates the data in the form
+     * @param Request $request
+     */
     private function validateForm(Request $request){
         //setup data validation rules for login form
         
