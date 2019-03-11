@@ -16,12 +16,21 @@ class JobDataService {
     
     private $conn;
     
+    /**
+     * 
+     * @param $conn - connection to the database
+     */
     public function __construct($conn)
     {
         $this->conn = $conn;
     }
     
-    // Create Method
+    /**
+     * Create Method
+     * @param JobModel $job
+     * @throws DatabaseException
+     * @return $count - the number of affected rows
+     */
     public function createJob(JobModel $job)
     {
         Log::info("Entering JobDataService.createJob()");
@@ -61,7 +70,11 @@ class JobDataService {
         }
     }
     
-    //READ Method
+    /**
+     * READ Method
+     * @throws DatabaseException
+     * @return array
+     */
     public function findAll()
     {
         Log::info("Entering JobDataService.findJob()");
@@ -96,7 +109,12 @@ class JobDataService {
         }
     }
     
-    // Update Method
+    /**
+     * Update Method
+     * @param JobModel $job
+     * @throws DatabaseException
+     * @return $count - nummber of affected rows
+     */
     public function editJob(JobModel $job)
     {
         Log::info("Entering JobDataService.editJob()");
@@ -140,7 +158,12 @@ class JobDataService {
         }
     }
     
-    // Delete Method
+    /**
+     * Delete Method
+     * @param  $id - the id of the job in the database
+     * @throws DatabaseException
+     * @return $count - number of affected rows
+     */
     public function deleteJob($id)
     {
         Log::info("Entering JobDataService.deleteJob()");
@@ -168,5 +191,44 @@ class JobDataService {
             throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
         }
         
+    }
+    
+    /**
+     * searches the database for a job matching the search term
+     * @param $description - a term in the description used to search
+     * @throws DatabaseException
+     * @return array
+     */
+    public function findJobByDescription($description) 
+    {
+        Log::info("Entering JobDataService.findJobByDescription()");
+        
+        try {
+            //creates a sql statement
+            $stmt = $this->conn->prepare("SELECT * FROM JOB WHERE NAME LIKE :description");
+            $stmt->bindParam(':description', $description);
+            $stmt->execute();
+            
+            //creates an array of jobs
+            $jobs = [];
+            
+            //fetched the jobs and pushes them into ann array
+            while($job = $stmt->fetch(PDO::FETCH_ASSOC))
+            {
+                array_push($jobs, $job);
+            }
+            
+            //closes the statement
+            $stmt = null;
+            
+            //returns the jobs
+            Log::info("Leaving JobDataService.findJobByDescription() with rowCount");
+            return $jobs;
+        }
+        catch(PDOException $e)
+        {
+            Log::error("Exception: ", array("message" => $e->getMessage()));
+            throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
+        }
     }
 }
