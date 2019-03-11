@@ -94,14 +94,18 @@ Route::post('/addgroup', 'GroupController@addGroup');
 
 Route::get('/managegroups', 'GroupController@findAllGroups');
 
-Route::get('/groups', function(){
-    return view('allgroups');
-});
+Route::get('/allgroups', 'GroupController@findAllGroups');
 
-Route::post('/editGroup', 'GroupController@editGroups');
+Route::post('/editGroup', 'GroupController@editGroup');
 
-Route::post('/deleteGroup', 'GroupController@deleteGroups');
+Route::post('/deleteGroup', 'GroupController@deleteGroup');
 
 Route::post('/addmember', 'GroupMemberController@addMember');
 
 Route::post('/deletemember', 'GroupMemberController@deleteMember');
+
+Route::post('/searchjobs', function(){
+    return view('jobsearch');
+});
+
+Route::post('/searchDescription', 'JobController@findJobByDescription');
