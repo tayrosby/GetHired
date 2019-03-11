@@ -13,7 +13,7 @@
         <a class="nav-link" href="joppage">Jobs</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="jobsearch">Job Search</a>
+        <a class="nav-link" href="searchjobs">Job Search</a>
       </li>
        <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
