@@ -140,5 +140,31 @@ class JobBusinessService
         //return jobs
         return $jobs;
     }
+    
+     /**
+     * searches the database for a job by id
+     * @param $id - id of the job in the database
+     * @return array
+     */
+    public function findJobByID($id){
+        //creates a connection
+        $db = new Connection();
+        $conn = $db->open();
+        
+        //calls the data service
+        $service = new JobDataService($conn);
+        
+        //creates an array of jobs
+        $jobs = Array();
+        
+        //calls the find by description method in the data service
+        $jobs = $service->findJobByID($id);
+        
+        //closes the connection
+        $conn = null;
+        
+        //return jobs
+        return $jobs;
+    }
 }
 ?>
