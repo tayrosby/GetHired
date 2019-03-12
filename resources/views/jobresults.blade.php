@@ -16,7 +16,7 @@
             <!--  allows for user input and passes the info to the processor file -->
             
             <div class="form-group">
-            <input type="text" name="descriptionSearch" maxlength="10" value="{{ $jobs[$i]['POSITION'] }}">{{ $errors->first('descriptionSearch') }}<br>
+            <input type="text" name="descriptionSearch" maxlength="10" value="{{ $jobs[$x]['POSITION'] }}">{{ $errors->first('descriptionSearch') }}<br>
             </div>
               
              <input type = "submit" value = "Search"/><br>
