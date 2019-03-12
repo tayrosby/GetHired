@@ -108,4 +108,8 @@ Route::get('/searchjobs', function(){
     return view('jobsearch');
 });
 
+Route::post('/jobDetails', function(){
+    return view('jobdetails');
+});
+
 Route::post('/searchDescription', 'JobController@findJobByDescription');
