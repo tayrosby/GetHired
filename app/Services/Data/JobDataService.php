@@ -205,7 +205,7 @@ class JobDataService {
         
         try {
             //creates a sql statement
-            $stmt = $this->conn->prepare("SELECT * FROM JOB WHERE NAME LIKE :description");
+            $stmt = $this->conn->prepare("SELECT * FROM JOB WHERE DESCRIPTION LIKE :description");
             $stmt->bindParam(':description', $description);
             $stmt->execute();
             
