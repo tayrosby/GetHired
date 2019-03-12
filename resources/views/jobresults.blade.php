@@ -10,16 +10,19 @@
 
 @for($x = 0; $x < count($jobs); $x++)
 
-			<form class = "loginform" action="searchDescription" method="GET">
+			<form class = "loginform" action="jobDetails" method="POST">
             <input type = "hidden" name ="_token" value = "<?php echo csrf_token()?>"/>
             <hr>
             <!--  allows for user input and passes the info to the processor file -->
             
             <div class="form-group">
-            <input type="text" name="descriptionSearch" maxlength="10" value="{{ $jobs[$x]['POSITION'] }}">{{ $errors->first('descriptionSearch') }}<br>
+            
+            <input type="hidden" name = "id" value = "{{ $jobs[$x]['ID'] }}">
+            
+            <button type = 'submit' class='btn btn-link'>{{ $jobs[$x]['POSITION'] }}</button><<br>
+            <input type="text" value="{{ $jobs[$x]['COMPANY'] }}"><br>
+            <input type="text" value="{{ $jobs[$x]['LOCATION'] }}"><br>
             </div>
-              
-             <input type = "submit" value = "Search"/><br>
              <hr>
              </form>
 				
