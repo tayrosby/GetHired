@@ -8,7 +8,7 @@
 <h1 class = "h1">Get Hired!</h1>
 
 <div class="container-fluid">
-<form class = "loginform" action="searchDescription" method="GET">
+<form class = "loginform" action="searchDescription" method="POST">
 <input type = "hidden" name ="_token" value = "<?php echo csrf_token()?>"/>
 <h2>Search</h2>
 <hr>
