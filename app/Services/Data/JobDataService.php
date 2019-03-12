@@ -231,4 +231,42 @@ class JobDataService {
             throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
         }
     }
+    
+    /**
+     * 
+     * @param  $id - id of the job in the database
+     * @throws DatabaseException
+     * @return array
+     */
+    public function findJobByID($id){
+        Log::info("Entering JobDataService.findJobByID()");
+        
+        try {
+            //creates a sql statement
+            $stmt = $this->conn->prepare("SELECT * FROM JOB WHERE `JOB`.`ID` = :id");
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            
+            //creates an array of jobs
+            $jobs = [];
+            
+            //fetched the jobs and pushes them into ann array
+            while($job = $stmt->fetch(PDO::FETCH_ASSOC))
+            {
+                array_push($jobs, $job);
+            }
+            
+            //closes the statement
+            $stmt = null;
+            
+            //returns the jobs
+            Log::info("Leaving JobDataService.findJobByID() with rowCount");
+            return $jobs;
+        }
+        catch(PDOException $e)
+        {
+            Log::error("Exception: ", array("message" => $e->getMessage()));
+            throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
+        }
+    }
 }
