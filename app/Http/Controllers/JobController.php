@@ -238,6 +238,37 @@ class JobController extends Controller
         
     }
     
+      /**
+     * finds a job based on a matching id
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
+    public function findJobByID(Request $request){
+        try {
+            //takes information from the user
+            $id = $request->input('id');
+            
+            //calls the job business service
+            $service = new JobBusinessService();
+            
+            //calls the find by dscription method in the business service
+            $jobs = $service->findJobByID($id);
+            
+            //creates an array of jobs
+            // Puts the users in an associative array
+            $data = ['jobs' => $jobs];
+            
+                return view("jobdetails")->with($data);
+            
+        }
+        catch (Exception $e) {
+            Log::error("Exception: ", array("message" => $e->getMessage()));
+            $data = ['errorMSG' => $e->getMessage()];
+            return ($data);
+        }
+        
+    }
+    
     /**
      * validates the data in the form
      * @param Request $request
