@@ -222,7 +222,7 @@ class JobController extends Controller
             
             //if there are jobs to to a search results page
             if($jobs){
-                return view("jobresults")->with($jobs);
+                return view("jobresults")->with($data);
             }
             //else return a jobs not found page
             {
