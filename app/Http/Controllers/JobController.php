@@ -205,7 +205,7 @@ class JobController extends Controller
      * @param Request $request
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
      */
-    public function findJobByDescription(Request $request){
+   public function findJobByDescription(Request $request){
         try {
             //takes information from the user
             $description = $request->input('descriptionSearch');
@@ -213,11 +213,12 @@ class JobController extends Controller
             //calls the job business service
             $service = new JobBusinessService();
             
-            //creates an array of jobs
-            $jobs = Array();
-            
             //calls the find by dscription method in the business service
             $jobs = $service->findJobByDescription($description);
+            
+            //creates an array of jobs
+            // Puts the users in an associative array
+            $data = ['jobs' => $jobs];
             
             //if there are jobs to to a search results page
             if($jobs){
