@@ -21,8 +21,7 @@ Route::get('/homepage', function () {
 Route::get('/login', function() {
     return view('loginpage');
 });
-
-Route::get('/loginpage', 'LoginController@authenticate');
+Route::post('/loginpage', 'LoginController@authenticate');
 
 Route::get('/register', function()
 {
