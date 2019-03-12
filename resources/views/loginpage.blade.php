@@ -8,7 +8,7 @@
 <h1 class = "h1">Get Hired!</h1>
 
 <div class="container-fluid">
-<form class = "loginform" action="loginpage" method="GET">
+<form class = "loginform" action="loginpage" method="POST">
 <input type = "hidden" name ="_token" value = "<?php echo csrf_token()?>"/>
 <h2>Log In</h2>
 <hr>
