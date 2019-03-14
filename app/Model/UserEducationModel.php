@@ -14,7 +14,13 @@ class UserEducationModel
     private $degree;
     private $graduationYear;
     
-    //constructor
+    /**
+     * constructor
+     * @param $id
+     * @param $schoolName
+     * @param $degree
+     * @param $graduationYear
+     */
     public function __construct($id, $schoolName, $degree, $graduationYear)
     {
         $this->id = $id;
@@ -23,7 +29,11 @@ class UserEducationModel
         $this->graduationYear = $graduationYear;
     }
     
-    // Getter
+    /**
+     * Getter
+     * @param $property
+     * @return $property
+     */
     public function __get($property)
     {
         if (property_exists($this, $property)) { return $this->$property; }
