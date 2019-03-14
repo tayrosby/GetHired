@@ -194,9 +194,9 @@ class GroupController extends Controller
     private function validateForm(Request $request){
         //setup data validation rules for login form
         
-        $rules = ['groupName' => 'Required | Max:25',
-            'groupDescription' => 'Required | Max:250',
-            'interest' => 'Required | Max:25'];
+        $rules = ['groupName' => 'Required | Between:5,25',
+            'groupDescription' => 'Required | Between:5,250',
+            'interest' => 'Required | Between:5,25'];
         
         //run data validation rules
         $this->validate($request, $rules);
