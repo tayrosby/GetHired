@@ -79,11 +79,11 @@ class LoginController extends Controller
      * validates the form data
      * @param Request $request
      */
-    private function validateForm(Request $request){
+   private function validateForm(Request $request){
           //setup data validation rules for login form
         
-        $rules = ['username' => 'Required | Between:3,10 | Alpha',
-                  'password' => 'Required | Between:3,10'];
+        $rules = ['username' => 'Required | Between:3,10',
+                  'password' => 'Required | Between:3,10 | alpha_num'];
         
         //run data validation rules
         $this->validate($request, $rules);
