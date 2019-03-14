@@ -15,12 +15,21 @@ use App\Model\GroupMemberModel;
 class GroupMembersDataService {
 private $conn;
 
-//constructor
+/**
+ * constructor
+ * @param $conn
+ */
 public function __construct($conn)
 {
     $this->conn = $conn;
 }
-// Create Method
+
+/**
+ * Create Method
+ * @param GroupMemberModel $member
+ * @throws DatabaseException
+ * @return $count - row count
+ */
 public function createMember(GroupMemberModel $member)
 {
     Log::info("Entering GroupMembersDataService.createMember()");
@@ -51,7 +60,12 @@ public function createMember(GroupMemberModel $member)
     }
 }
 
-// Delete Method
+/**
+ * Delete Method
+ * @param GroupMemberModel $member
+ * @throws DatabaseException
+ * @return $count - row count
+ */
 public function deleteMember(GroupMemberModel $member)
 {
     Log::info("Entering GroupMembersDataService.deleteMember()");
