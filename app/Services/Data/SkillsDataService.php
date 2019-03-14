@@ -16,12 +16,21 @@ class SkillsDataService
     //attribute for the connection
     private $conn;
     
-    //constructor
+    /**
+     * constructor
+     * @param $conn
+     */
     public function __construct($conn)
     {
         $this->conn = $conn;
     }
-    // Create Method
+
+    /**
+     * Create Method
+     * @param UserSkillsModel $skills
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function createSkill(UserSkillsModel $skills)
     {
         Log::info("Entering SkillsDataService.createSkill()");
@@ -53,7 +62,11 @@ class SkillsDataService
         }
     }
     
-    //READ Method
+    /**
+     * READ Method
+     * @throws DatabaseException
+     * @return array
+     */
     public function findAll()
     {
         Log::info("Entering SkillsDataService.findAll()");
@@ -88,7 +101,12 @@ class SkillsDataService
         }
     }
     
-    // Update Method
+    /**
+     * Update Method
+     * @param UserSkillsModel $skills
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function editSkill(UserSkillsModel $skills)
     {
         Log::info("Entering SkillsDataService.editSkill()");
@@ -121,7 +139,13 @@ class SkillsDataService
             throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
         }
     }
-    // Delete Method
+    
+    /**
+     * Delete Method
+     * @param UserSkillsModel $skills
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function deleteSkill(UserSkillsModel $skills)
     {
         Log::info("Entering SkillsDataService.deleteSkill()");
