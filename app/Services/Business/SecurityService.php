@@ -12,7 +12,11 @@ use App\Services\Data\UserDataService;
 use App\Services\Utility\Connection;
 class SecurityService
 {
-    // checks if the user is in the databse and logs them in
+    /**
+     * checks if the user is in the database and logs them in
+     * @param Credentials $user
+     * @return boolean
+     */
     public function authenticate(Credentials $user)
     {
         Log::info("Entering SecurityService.authenticate()");
@@ -28,12 +32,22 @@ class SecurityService
         // If the user has been suspended, return false automatically.
         if ($results['user']['ROLE'] == -1) { return false; }
         // If the search was successful, return true.
-        if ($results['result'] == 1) { return true; }
+        if ($results['result'] == 1) 
+        {
+            session(['userID' => $results['user']['ID']]);
+            session(['role' => $results['user']['ROLE']]);
+            return true; 
+        }
         // If the search was unsuccessful, return false.
         else { return false; }
     
     }
-    // adds the user to the database, effectively registering them.
+
+    /**
+     * adds the user to the database, effectively registering them.
+     * @param UserObjectModel $user
+     * @return boolean
+     */
     public function register(UserObjectModel $user)
     {
         Log::info("Entering SecurityService.register()");
@@ -56,6 +70,11 @@ class SecurityService
         }
     }
     
+    /**
+     * Checks if the user already exists in the database
+     * @param UserObjectModel $user
+     * @return boolean
+     */
     public function checkDUP(UserObjectModel $user) {
         Log::info("Entering SecurityService.checkDUP()");
         
