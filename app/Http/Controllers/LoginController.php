@@ -16,7 +16,12 @@ use Exception;
 class LoginController extends Controller
 {
     
-    // authenticate() is responsible for authenticating the user.
+    /**
+     * authenticate() is responsible for authenticating the user.
+     * @param Request $request
+     * @throws ValidationException
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function authenticate(Request $request)
     {
     try {
@@ -32,10 +37,9 @@ class LoginController extends Controller
         $success = $instance->authenticate($user);
         // if login is successful, send the user back to the home page
         
-        $user_session = $success['user'];
-        session(['userID' => $user_session['ID']]);
-        session(['role' => $user_session['ROLE']]);
-        
+
+        $request->session()->put('userID', );
+
         if ($success)
         {
             return view('homepage');
@@ -59,6 +63,22 @@ class LoginController extends Controller
         }
     }
     
+    /**
+     * deletes the session information to log out the user
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function logout(Request $request) 
+    {
+        $request->session()->forget('userID');
+        
+        return view('homepage');
+    }
+    
+    /**
+     * validates the form data
+     * @param Request $request
+     */
     private function validateForm(Request $request){
           //setup data validation rules for login form
         
