@@ -14,7 +14,12 @@ class GroupMemberModel
     private $groupID;
     private $userID;
     
-    //constructor
+    /**
+     * constructor
+     * @param $id
+     * @param $groupID
+     * @param $userID
+     */
     public function __construct($id, $groupID, $userID)
     {
         $this->id = $id;
@@ -22,7 +27,11 @@ class GroupMemberModel
         $this->userID = $userID;
     }
     
-    // Getter
+    /**
+     * Getter
+     * @param $property
+     * @return $property
+     */
     public function __get($property)
     {
         if (property_exists($this, $property)) { return $this->$property; }
