@@ -202,9 +202,9 @@ class EducationController extends Controller
     private function validateForm(Request $request){
         //setup data validation rules for login form
         
-        $rules = ['schoolName' => 'Required | Between:3,150 | Alpha',
-            'degree' => 'Required | Between:3,150 | Alpha',
-            'graduationYear' => 'Required | Numeric'];
+        $rules = ['schoolName' => 'Required | Between:3,150',
+            'degree' => 'Required | Between:3,150',
+            'graduationYear' => 'Required | Between:4,4 | Numeric'];
         
         //run data validation rules
         $this->validate($request, $rules);
