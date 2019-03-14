@@ -16,7 +16,13 @@ use Exception;
 
 class ContactController extends Controller
 {
-    //adds the contact information to the database
+
+    /**
+     * /adds the contact information to the database
+     * @param Request $request
+     * @throws ValidationException
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function addContact(Request $request)
     {
         try {
@@ -64,7 +70,12 @@ class ContactController extends Controller
         
     }
     
-    //edits the contact information in the database
+    /**
+     * edits the contact information in the database
+     * @param Request $request
+     * @throws ValidationException
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function editContact(Request $request)
     {
         try {
@@ -111,7 +122,12 @@ class ContactController extends Controller
         }
     }
     
-    //deleted the contact in the database
+    /**
+     * deleted the contact in the database
+     * @param Request $request
+     * @throws ValidationException
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function deleteContact(Request $request)
     {
         try {
@@ -157,7 +173,11 @@ class ContactController extends Controller
       }
     }
     
-    //finds all the contacts in the database
+    /**
+     * finds all the contacts in the database
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function findAllContact(Request $request)
     {
         try {
@@ -188,7 +208,10 @@ class ContactController extends Controller
         }
     }
     
-    //validates the data in the form
+    /**
+     * validates the data in the form
+     * @param Request $request
+     */
     private function validateForm(Request $request){
         //setup data validation rules for form
         
