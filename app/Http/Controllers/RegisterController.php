@@ -15,7 +15,12 @@ use Exception;
 
 class RegisterController extends Controller
 {
-    // register() is responsible for registering a user.
+    /**
+     * register() is responsible for registering a user.
+     * @param Request $request
+     * @throws ValidationException
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function register(Request $request)
     {
         try {
@@ -48,10 +53,11 @@ class RegisterController extends Controller
         else{
         // saves the result of the registration.
         $success = $security->register($user);
-            
+        
         $user_session = $success['user'];
         session(['userID' => $user_session['ID']]);
         session(['role' => $user_session['ROLE']]);
+        
         
         // if register is successful, send the user to the login page
         if ($success)
@@ -79,7 +85,10 @@ class RegisterController extends Controller
         }
     }
     
-    //validates the data in the form
+    /**
+     * validates the data in the form
+     * @param Request $request
+     */
     private function validateForm(Request $request){
         //setup data validation rules for login form
         
