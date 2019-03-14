@@ -15,14 +15,18 @@ use Illuminate\Support\Facades\Log;
 use Exception;
 
 class ExperienceController extends Controller
-{
-    //
-    
+{   
+    /**
+     * adds the experience information to the database
+     * @param Request $request
+     * @throws ValidationException
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function addExperience(Request $request)
     {
         try {
             //validate the form data(will redirect back to login view if errors)
-           // $this->validateForm($request);
+            $this->validateForm($request);
            
             //takes info from the user
         $id = $request->input('id');
@@ -64,6 +68,12 @@ class ExperienceController extends Controller
         }
     }
     
+    /**
+     * edits the experience information in the database
+     * @param Request $request
+     * @throws ValidationException
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function editExperience(Request $request)
     {
         try {
@@ -110,6 +120,11 @@ class ExperienceController extends Controller
         }
     }
     
+    /**
+     * deletes the experience information in the database
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function deleteExperience(Request $request)
     {
         try {
@@ -150,6 +165,11 @@ class ExperienceController extends Controller
         }
     }
     
+    /**
+     * finds all the experience information in the database
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function findAllExperience(Request $request)
     {
         try {
@@ -179,6 +199,10 @@ class ExperienceController extends Controller
         }
     }
     
+    /**
+     * validates the data in the form
+     * @param Request $request
+     */
     private function validateForm(Request $request){
         //setup data validation rules for login form
         
