@@ -89,13 +89,13 @@ class RegisterController extends Controller
      * validates the data in the form
      * @param Request $request
      */
-    private function validateForm(Request $request){
+     private function validateForm(Request $request){
         //setup data validation rules for login form
         
         $rules = ['firstname' => 'Required | Between:3,15',
             'lastname' => 'Required | Between:2,10',
             'email' => 'Required | email',
-            'username' => 'Required | Between:3,10 | Alpha',
+            'username' => 'Required | Between:3,10',
             'password' => 'Required | Between:3,10 | alpha_num',
 
         ];
