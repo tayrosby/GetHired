@@ -9,7 +9,11 @@ use App\Services\Data\ContactDataService;
 use App\Services\Utility\Connection;
 class ContactBusinessService
 {
-    //passes the model to the data service
+    /**
+     * passes the model to the data service
+     * @param $contact
+     * @return boolean
+     */
     public function editContacts($contact)
     {
         //creates a connection
@@ -31,7 +35,11 @@ class ContactBusinessService
         else { return false; }
     }
     
-    //passes the model to the data service
+    /**
+     * passes the model to the data service
+     * @param $contact
+     * @return boolean
+     */
     public function addContacts($contact)
     {
         //creates a connection
@@ -52,8 +60,11 @@ class ContactBusinessService
         //else return flase
         else { return false; }
     }
-    
-    //finds all the contacts in the data service
+
+    /**
+     * finds all the contacts in the data service
+     * @return array
+     */
     public function findAllContacts()
     {
         //creates a connection
@@ -76,7 +87,11 @@ class ContactBusinessService
         return $contact;
     }
     
-    //passes the model to the data service
+    /**
+     * passes the model to the data service
+     * @param $contact
+     * @return boolean
+     */
     public function deleteContacts($contact)
     {
         //creates a connection
