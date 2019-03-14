@@ -16,7 +16,15 @@ class UserExperienceModel
     private $yearsActive;
     private $duties;
     
-    //constructor
+    /**
+     * constructor
+     * @param $id
+     * @param $position
+     * @param $company
+     * @param $location
+     * @param $yearsActive
+     * @param $duties
+     */
     public function __construct($id, $position, $company, $location, $yearsActive, $duties)
     {
         $this->id = $id;
@@ -27,7 +35,11 @@ class UserExperienceModel
         $this->duties = $duties;
     }
     
-    // Getter
+    /**
+     * Getter
+     * @param $property
+     * @return $property
+     */
     public function __get($property)
     {
         if (property_exists($this, $property)) { return $this->$property; }
