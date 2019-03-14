@@ -18,7 +18,16 @@ class JobModel {
     private $level;
     private $description;
     
-    //constructor
+    /**
+     * constructor
+     * @param $id
+     * @param $position
+     * @param $company
+     * @param $location
+     * @param $requirements
+     * @param $level
+     * @param $description
+     */
     public function __construct($id, $position, $company, $location, $requirements, $level, $description) {
      
         $this->id = $id;
@@ -30,7 +39,11 @@ class JobModel {
         $this->description = $description;
     }
     
-    // Getter
+    /**
+     * Getter
+     * @param $property
+     * @return $property
+     */
     public function __get($property)
     {
         if (property_exists($this, $property)) { return $this->$property; }
