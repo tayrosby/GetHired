@@ -276,12 +276,13 @@ class JobController extends Controller
     private function validateForm(Request $request){
         //setup data validation rules for login form
         
-        $rules = ['position' => 'Required | Alpha',
-            'company' => 'Required | Alpha',
-            'location' => 'Required | Alpha',
-            'requirements' => 'Required | alpha_dash',
-            'level' => 'Required | Max:10 | Alpha',
-            'description' => 'Required | alpha_dash'];
+        $rules = ['position' => 'Required | Between:5,50',
+            'company' => 'Required | Between:5,50',
+            'location' => 'Required | Between:5,50',
+            'requirements' => 'Required | Between:5,50',
+            'level' => 'Required | Between:5,50',
+            'description' => 'Required | Between:5,250',
+            'descriptionSearch' => 'Required | Between:5,50'];
         
         //run data validation rules
         $this->validate($request, $rules);
