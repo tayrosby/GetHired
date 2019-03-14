@@ -17,7 +17,12 @@ use Exception;
 
 class EducationController extends Controller
 {
-    //adds the education information to the database
+    /**
+     * adds the education information to the database
+     * @param Request $request
+     * @throws ValidationException
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function addEducation(Request $request)
     {
         try { 
@@ -61,8 +66,13 @@ class EducationController extends Controller
             return ($data);
         }
     }
-    
-    //edits the education information to the database
+
+    /**
+     * edits the education information to the database
+     * @param Request $request
+     * @throws ValidationException
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function editEducation(Request $request)
     {
         try {
@@ -107,7 +117,11 @@ class EducationController extends Controller
         }
     }
     
-    //deletes the education information to the database
+    /**
+     * deletes the education information to the database
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function deleteEducation(Request $request)
     {
         try {
@@ -146,7 +160,11 @@ class EducationController extends Controller
     }
     }
     
-    //finds all the education information to the database
+    /**
+     * finds all the education information to the database
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function findAllEducation(Request $request)
     {
         try {
@@ -177,7 +195,10 @@ class EducationController extends Controller
         
     }
     
-    //validates the data in the form
+    /**
+     * validates the data in the form
+     * @param Request $request
+     */
     private function validateForm(Request $request){
         //setup data validation rules for login form
         
