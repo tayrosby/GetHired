@@ -15,11 +15,21 @@ class EducationDataService
 {
     private $conn;
     
+    /**
+     * constructor
+     * @param $conn
+     */
     public function __construct($conn)
     {
         $this->conn = $conn;
     }
-    // Create Method
+    
+    /**
+     * Create Method
+     * @param UserEducationModel $education
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function createEducation(UserEducationModel $education)
     {
         Log::info("Entering EducationDataService.createEducation()");
@@ -55,7 +65,11 @@ class EducationDataService
         }
     }
     
-    //READ Method
+    /**
+     * READ Method
+     * @throws DatabaseException
+     * @return array
+     */
     public function findAll()
     {
         Log::info("Entering EducationDataService.findEducation()");
@@ -90,7 +104,12 @@ class EducationDataService
         }
     }
     
-    // Update Method
+    /**
+     * Update Method
+     * @param UserEducationModel $education
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function editEducation(UserEducationModel $education)
     {
         Log::info("Entering EducationDataService.editEducation()");
@@ -127,7 +146,13 @@ class EducationDataService
             throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
         }
     }
-    // Delete Method
+    /**
+     * Delete Method
+     * @param UserEducationModel $education
+     * @param $id
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function deleteEducation(UserEducationModel $education, $id)
     {
         Log::info("Entering EducationDataService.deleteEducation()");
