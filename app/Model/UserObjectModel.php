@@ -15,7 +15,14 @@ class UserObjectModel
     private $email;
     private $role;
 
-    //constructor
+    /**
+     * constructor
+     * @param $firstName
+     * @param $lastName
+     * @param $credential
+     * @param $email
+     * @param $role
+     */
     public function __construct($firstName, $lastName, $credential, $email, $role)
     {
         $this->firstName = $firstName;
@@ -25,20 +32,14 @@ class UserObjectModel
         $this->role = $role;
     }
     
-    // Getter
+    /**
+     * Getter
+     * @param $property
+     * @return $property
+     */
     public function __get($property)
     {
         if (property_exists($this, $property)) { return $this->$property; }
-    }
-    
-    
-    /**
-     * @param mixed $role
-     */
-    //setter
-    public function setRole($role)
-    {
-        $this->role = $role;
     }
 }
 ?>
