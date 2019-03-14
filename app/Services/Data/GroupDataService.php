@@ -21,7 +21,12 @@ class GroupDataService
         $this->conn = $conn;
     }
     
-    // Create Method
+    /**
+     * Create Method
+     * @param GroupModel $group
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function createGroup(GroupModel $group)
     {
         Log::info("Entering GroupDataService.createGroup()");
@@ -56,8 +61,12 @@ class GroupDataService
             throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
         }
     }
-    
-    //READ Method
+
+    /**
+     * READ Method
+     * @throws DatabaseException
+     * @return array
+     */
     public function findAllGroups()
     {
         Log::info("Entering GroupDataService.findAllGroups()");
@@ -91,8 +100,13 @@ class GroupDataService
             throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
         }
     }
-    
-    // Update Method
+
+    /**
+     * Update Method
+     * @param GroupModel $group
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function editGroup(GroupModel $group)
     {
         Log::info("Entering GroupDataService.editGroups()");
@@ -129,8 +143,13 @@ class GroupDataService
             throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
         }
     }
-    
-    // Delete Method
+
+    /**
+     * Delete Method
+     * @param $id
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function deleteGroup($id)
     {
         Log::info("Entering GroupDataService.deleteGroups()");
@@ -159,8 +178,12 @@ class GroupDataService
         }
         
     }
-    
-    //READ Method
+
+    /**
+     * READ Method
+     * @throws DatabaseException
+     * @return array
+     */
     public function findAllGroupMembers()
     {
         Log::info("Entering GroupMembersDataService.findAllGroupMembers()");
