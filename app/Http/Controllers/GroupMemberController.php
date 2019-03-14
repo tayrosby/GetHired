@@ -14,7 +14,11 @@ use App\Model\GroupMemberModel;
 
 class GroupMemberController extends Controller
 {
-    //
+    /**
+     * adds the group member information to the database
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function addMember(Request $request){
         
         try {
@@ -50,6 +54,11 @@ class GroupMemberController extends Controller
         }
     }
     
+    /**
+     * deletes the group memeber information from the database
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function deleteMember(Request $request)
     {
         try {
