@@ -16,6 +16,10 @@ class GroupDataService
 {
     private $conn;
     
+     /**
+     * constructor
+     * @param $conn
+     */
     public function __construct($conn)
     {
         $this->conn = $conn;
