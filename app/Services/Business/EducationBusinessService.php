@@ -9,7 +9,11 @@ use App\Services\Data\EducationDataService;
 use App\Services\Utility\Connection;
 class EducationBusinessService
 {
-    //passes the model to the data service
+    /**
+     * passes the model to the data service
+     * @param $education
+     * @return boolean
+     */
     public function editEducation($education)
     {
         //creates a connection
@@ -32,7 +36,11 @@ class EducationBusinessService
         else { return false; }
     }
     
-    //passes the model to the data service
+    /**
+     * passes the model to the data service
+     * @param $education
+     * @return boolean
+     */
     public function addEducation($education)
     {
         //creates a connection
@@ -53,8 +61,11 @@ class EducationBusinessService
         //else return false
         else { return false; }
     }
-    
-    //finds all the education in the database
+
+    /**
+     * finds all the education in the database
+     * @return array
+     */
     public function findAllEducation()
     {
         //creates a connection
@@ -77,7 +88,12 @@ class EducationBusinessService
         return $education;
     }
     
-    //passes the model to the data service
+    /**
+     * passes the model to the data service
+     * @param $education
+     * @param $id
+     * @return boolean
+     */
     public function deleteEducation($education, $id)
     {
         //creates a connection
