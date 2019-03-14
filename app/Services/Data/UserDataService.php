@@ -16,13 +16,21 @@ class UserDataService
 {
     private $conn;
     
-    //constructor
+    /**
+     * constructor
+     * @param $conn
+     */
     public function __construct($conn)
     {
         $this->conn = $conn;
     }
-    
-    // Read Method
+
+    /**
+     * Read Method
+     * @param Credentials $user
+     * @throws DatabaseException
+     * @return array
+     */
     public function findByUser(Credentials $user)
     {
         Log::info("Entering UserDAO.findByUser()");
@@ -33,7 +41,7 @@ class UserDataService
             $username = $user->username;
             $password = $user->password;
             // Create SQL statement using prepare()
-            $stmt = $this->conn->prepare('SELECT * FROM USERS WHERE BINARY USERNAME = :username AND BINARY PASSWORD = :password');
+            $stmt = $this->conn->prepare('SELECT * FROM users WHERE BINARY USERNAME = :username AND BINARY PASSWORD = :password');
             $stmt->bindParam(':username', $username);
             $stmt->bindParam(':password', $password);
             $stmt->execute();
@@ -55,7 +63,13 @@ class UserDataService
             throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
         }
     }
-    // Create Method
+
+    /**
+     * Create Method
+     * @param UserObjectModel $user
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function createUser(UserObjectModel $user)
     {
         Log::info("Entering UserDAO.createUser()");
@@ -70,7 +84,7 @@ class UserDataService
             $password = $user->credential->password;
             $role = 0;
             // Create SQL statement using prepare()
-            $stmt = $this->conn->prepare("INSERT INTO USERS (ID, FIRSTNAME, LASTNAME, EMAIL, USERNAME, PASSWORD, ROLE) VALUES (NULL, :firstName, :lastName, :email, :username, :password, :role)");
+            $stmt = $this->conn->prepare("INSERT INTO users (ID, FIRSTNAME, LASTNAME, EMAIL, USERNAME, PASSWORD, ROLE) VALUES (NULL, :firstName, :lastName, :email, :username, :password, :role)");
             $stmt->bindParam(':firstName', $firstName);
             $stmt->bindParam(':lastName', $lastName);
             $stmt->bindParam(':email', $email);
@@ -93,7 +107,12 @@ class UserDataService
         }
     }
     
-    //update method
+    /**
+     * update method
+     * @param $id
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function updateUser($id)
     {
         Log::info("Entering UserDAO.suspendUser()");
@@ -101,7 +120,7 @@ class UserDataService
         try
         {
             //creates the sql statement
-            $stmt = $this->conn->prepare("UPDATE `USERS` SET `ROLE` = -1 WHERE `USERS`.`ID` = :id");
+            $stmt = $this->conn->prepare("UPDATE `users` SET `ROLE` = -1 WHERE `users`.`ID` = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
             //save the row count
@@ -119,7 +138,12 @@ class UserDataService
         }
     }
     
-    // Delete Method
+    /**
+     * Delete Method
+     * @param $id
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function deleteUser($id)
     {
         Log::info("Entering UserDAO.deleteUser()");
@@ -127,7 +151,7 @@ class UserDataService
         try
         {
             // prepares a SQL statement to delete a user. the delete is based on matching IDs
-            $stmt = $this->conn->prepare("DELETE FROM USERS WHERE ID = :id");
+            $stmt = $this->conn->prepare("DELETE FROM users WHERE ID = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
             //saves the row count
@@ -145,7 +169,12 @@ class UserDataService
         }
     }
     
-    // Returns a single user based on their ID
+    /**
+     * Returns a single user based on their ID
+     * @param $id
+     * @throws DatabaseException
+     * @return NULL[]
+     */
     public function getUser($id)
     {
         Log::info("Entering UserDAO.getUser()");
@@ -153,7 +182,7 @@ class UserDataService
         try
         {
             //prepares a sql statement
-            $stmt = $this->conn->prepare("SELECT * FROM `USERS` WHERE `USERS`.`ID` = :id");
+            $stmt = $this->conn->prepare("SELECT * FROM `users` WHERE `users`.`ID` = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
             // Stores the results of the SELECT in an associative array
@@ -169,7 +198,12 @@ class UserDataService
             throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
         }
     }
-    // Gets every user in the database
+
+    /**
+     * Gets every user in the database
+     * @throws DatabaseException
+     * @return array
+     */
     public function findAll()
     {
         Log::info("Entering UserDAO.getAll()");
@@ -177,7 +211,7 @@ class UserDataService
         try
         {
             //prepares a sql statement
-            $stmt = $this->conn->prepare("SELECT * FROM `USERS`");
+            $stmt = $this->conn->prepare("SELECT * FROM `users`");
             $stmt->execute();
             
             //creates an array of users
