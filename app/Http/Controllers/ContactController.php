@@ -212,13 +212,13 @@ class ContactController extends Controller
      * validates the data in the form
      * @param Request $request
      */
-    private function validateForm(Request $request){
+     private function validateForm(Request $request){
         //setup data validation rules for form
         
-        $rules = ['phoneNumber' => 'Required | Max:11 | Numeric',
+        $rules = ['phoneNumber' => 'Required | Between:1,11 | Numeric',
             'email' => 'Required | email',
-            'city' => 'Required | Alpha',
-            'state' => 'Required | Alpha'];
+            'city' => 'Required | Between:5,50',
+            'state' => 'Required | Between:5,50'];
         
         //run data validation rules
         $this->validate($request, $rules);
