@@ -11,8 +11,12 @@ use App\Services\Utility\Connection;
 
 class GroupBusinessService 
 {
-    
-    //allows the creation of a group
+
+    /**
+     * allows the creation of a group
+     * @param $group
+     * @return boolean
+     */
     public function addGroup($group)
     {
         //creates a connection
@@ -33,8 +37,12 @@ class GroupBusinessService
         //else return false
         else { return false; }
     }
-    
-    //allows the group admin to delete the group
+
+    /**
+     * allows the group admin to delete the group
+     * @param $id
+     * @return boolean
+     */
     public function deleteGroup($id)
     {
         //creates a connection
@@ -56,8 +64,12 @@ class GroupBusinessService
         //else return false
         else { return false; }
     }
-    
-    //allows the group admin to update the group
+
+    /**
+     * allows the group admin to update the group
+     * @param $group
+     * @return boolean
+     */
     public function updateGroup($group)
     {
         //creates a connection
@@ -80,7 +92,10 @@ class GroupBusinessService
         else { return false; }
     }
     
-    //gets all the groups in the database
+    /**
+     * gets all the groups in the database
+     * @return array
+     */
     public function findAllGroups()
     {
         //creates a connection
@@ -103,7 +118,10 @@ class GroupBusinessService
         return $groups;
     }
     
-    //gets all the members in a group
+    /**
+     * gets all the members in a group
+     * @return array
+     */
     function findAllGroupMembers(){
         //creates an array
         $groupMembers = Array();
