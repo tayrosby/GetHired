@@ -15,11 +15,20 @@ class ExperienceDataService
 {
     private $conn;
     
+    /**
+     * constructor
+     * @param $conn
+     */
     public function __construct($conn)
     {
         $this->conn = $conn;
     }
-    // Create Method
+    /**
+     * Create Method
+     * @param UserExperienceModel $experience
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function createExperience(UserExperienceModel $experience)
     {
         Log::info("Entering ExperienceDataService.createExperience()");
@@ -60,7 +69,11 @@ class ExperienceDataService
         }
     }
     
-    //READ Method
+    /**
+     * READ Method
+     * @throws DatabaseException
+     * @return array
+     */
     public function findAll()
     {
         Log::info("Entering ExperienceDataService.findExperience()");
@@ -95,7 +108,12 @@ class ExperienceDataService
         }
     }
     
-    // Update Method
+    /**
+     * Update Method
+     * @param UserExperienceModel $experience
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function editExperience(UserExperienceModel $experience)
     {
         Log::info("Entering ExperienceDataService.editExperience()");
@@ -136,7 +154,14 @@ class ExperienceDataService
             throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
         }
     }
-    // Delete Method
+
+    /**
+     * Delete Method
+     * @param UserExperienceModel $experience
+     * @param $id
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function deleteExperience(UserExperienceModel $experience, $id)
     {
         Log::info("Entering ExperienceDataService.deleteExperience()");
