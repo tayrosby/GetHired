@@ -15,7 +15,14 @@ class GroupModel
     private $interest;
     private $userID;
     
-    //constructor
+    /**
+     * constructor
+     * @param $id
+     * @param $groupName
+     * @param $groupDescription
+     * @param $interest
+     * @param $userID
+     */
     public function __construct($id, $groupName, $groupDescription, $interest, $userID)
     {
         $this->id = $id;
@@ -25,7 +32,11 @@ class GroupModel
         $this->userID = $userID;
     }
     
-    // Getter
+    /**
+     *  Getter
+     * @param $property
+     * @return $property
+     */
     public function __get($property)
     {
         if (property_exists($this, $property)) { return $this->$property; }
