@@ -9,8 +9,11 @@ use App\Services\Data\ExperienceDataService;
 use App\Services\Utility\Connection;
 class ExperienceBusinessService
 {
-    
-    //passes the model to the data service
+    /**
+     * passes the model to the data service
+     * @param $experience
+     * @return boolean
+     */
     public function editExperience($experience)
     {
         //creates a connection
@@ -31,8 +34,12 @@ class ExperienceBusinessService
         //else return false
         else { return false; }
     }
-    
-    //passes the model to the data service
+
+    /**
+     * passes the model to the data service
+     * @param $experience
+     * @return boolean
+     */
     public function addExperience($experience)
     {
         //creates a connection
@@ -53,6 +60,10 @@ class ExperienceBusinessService
         else { return false; }
     }
     
+    /**
+     * finds all the experience in the database
+     * @return array
+     */
     public function findAllExperience()
     {
         //creates a connection
@@ -74,8 +85,13 @@ class ExperienceBusinessService
         //returns the experience array
         return $experience;
     }
-    
-    //passes the model to the data service
+
+    /**
+     * passes the model to the data service
+     * @param $experience
+     * @param $id
+     * @return boolean
+     */
     public function deleteExperience($experience, $id)
     {
         //creates a connection
