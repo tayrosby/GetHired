@@ -16,6 +16,14 @@ class UserContactModel
     private $state;
     
     //constructor
+    /**
+     * 
+     * @param $id
+     * @param $phoneNumber
+     * @param $email
+     * @param $city
+     * @param $state
+     */
     public function __construct($id, $phoneNumber, $email, $city, $state)
     {
         $this->id = $id;
@@ -26,6 +34,11 @@ class UserContactModel
     }
     
     // Getter
+    /**
+     * 
+     * @param $property
+     * @return $property
+     */
     public function __get($property)
     {
         if (property_exists($this, $property)) { return $this->$property; }
