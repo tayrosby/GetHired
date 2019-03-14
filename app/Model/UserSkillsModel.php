@@ -12,15 +12,23 @@ class UserSkillsModel
     private $id;
     private $skillName;
 
-    //constructor
+    /**
+     * constructor
+     * @param $id
+     * @param $skillName
+     */
     public function __construct($id, $skillName)
     {
         $this->id = $id;
         $this->skillName = $skillName;
 
     }
-    
-    // Getter
+
+    /**
+     * Getter
+     * @param $property
+     * @return $property
+     */
     public function __get($property)
     {
         if (property_exists($this, $property)) { return $this->$property; }
