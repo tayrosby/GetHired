@@ -16,12 +16,20 @@ class ContactDataService
     //attribute for the connection
     private $conn;
     
-    //constructor
+    /**
+     * constructor
+     * @param $conn
+     */
     public function __construct($conn)
     {
         $this->conn = $conn;
     }
-    // Create Method
+    /**
+     *  Create Method
+     * @param UserContactModel $contact
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function createContact(UserContactModel $contact)
     {
         Log::info("Entering ContactDataService.createContact()");
@@ -57,7 +65,11 @@ class ContactDataService
         }
     }
     
-    //READ Method
+    /**
+     * READ Method
+     * @throws DatabaseException
+     * @return array
+     */
     public function findAll()
     {
         Log::info("Entering ContactDataService.findContact()");
@@ -92,7 +104,12 @@ class ContactDataService
         }
     }
     
-    // Update Method
+    /**
+     * Update Method
+     * @param UserContactModel $contact
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function editContact(UserContactModel $contact)
     {
         Log::info("Entering ContactDataService.editContact()");
@@ -131,7 +148,12 @@ class ContactDataService
             throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
         }
     }
-    // Delete Method
+    /**
+     * Delete Method
+     * @param UserContactModel $contact
+     * @throws DatabaseException
+     * @return $count - row count
+     */
     public function deleteContact(UserContactModel $contact)
     {
         Log::info("Entering ContactDataService.deleteContact()");
