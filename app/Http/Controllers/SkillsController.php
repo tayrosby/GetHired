@@ -17,7 +17,12 @@ use Exception;
 
 class SkillsController extends Controller
 {
-    //
+    /**
+     * adds skill information to the database
+     * @param Request $request
+     * @throws ValidationException
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function addSkill(Request $request)
     {
         try {
@@ -62,6 +67,12 @@ class SkillsController extends Controller
         }
     }
     
+    /**
+     * edit skill information in the database
+     * @param Request $request
+     * @throws ValidationException
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function editSkill(Request $request)
     {
         try {
@@ -105,6 +116,11 @@ class SkillsController extends Controller
         }
     }
     
+    /**
+     * delete skill information in the database
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function deleteSkill(Request $request)
     {
         try {
@@ -140,6 +156,11 @@ class SkillsController extends Controller
         }
     }
     
+    /**
+     * finds all the skills in the database
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function findAllSkill(Request $request)
     {   
         try {
@@ -168,6 +189,10 @@ class SkillsController extends Controller
         }
     }
     
+    /**
+     * validates the form data
+     * @param Request $request
+     */
     private function validateForm(Request $request){
         //setup data validation rules for login form
         
@@ -177,3 +202,4 @@ class SkillsController extends Controller
         $this->validate($request, $rules);
     }
 }
+
