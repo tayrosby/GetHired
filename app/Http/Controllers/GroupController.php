@@ -16,7 +16,12 @@ use App\Services\Business\GroupBusinessService;
 
 class GroupController extends Controller
 {
-    //
+    /**
+     * adds the group information to the database
+     * @param Request $request
+     * @throws ValidationException
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function addGroup(Request $request){
         
         try {
@@ -61,6 +66,12 @@ class GroupController extends Controller
         }
     }
     
+    /**
+     * edits the group information in the database
+     * @param Request $request
+     * @throws ValidationException
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function editGroups(Request $request)
     {
         try {
@@ -106,6 +117,11 @@ class GroupController extends Controller
         }
     }
     
+    /**
+     * deletes the group information in the database
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function deleteGroups(Request $request)
     {
         try {
@@ -137,6 +153,11 @@ class GroupController extends Controller
         }
     }
     
+    /**
+     * finds all the groups in the database
+     * @param Request $request
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
+     */
     public function findAllGroups(Request $request)
     {
         try {
@@ -166,6 +187,10 @@ class GroupController extends Controller
         }
     }
     
+    /**
+     * validates the form data
+     * @param Request $request
+     */
     private function validateForm(Request $request){
         //setup data validation rules for login form
         
