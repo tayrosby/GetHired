@@ -12,7 +12,11 @@ use App\Services\Data\GroupMembersDataService;
 
 class GroupMembersBusinessService {
     
-    //allows the user to add themselves to a group
+    /**
+     * allows the user to add themselves to a group
+     * @param $member
+     * @return boolean
+     */
     public function joinGroup($member)
     {
         //creates a database connection
@@ -36,8 +40,12 @@ class GroupMembersBusinessService {
         else {return false;}
     }
     
-    //allows the user to remove themselves from the group
-  public function leaveGroup($member)
+    /**
+     * allows the user to remove themselves from the group
+     * @param $member
+     * @return boolean
+     */
+    public function leaveGroup($member)
     {
         //creates a new connection
         $db = new Connection();
