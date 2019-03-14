@@ -206,11 +206,11 @@ class ExperienceController extends Controller
     private function validateForm(Request $request){
         //setup data validation rules for login form
         
-        $rules = ['position' => 'Required',
-            'company' => 'Required',
-            'location' => 'Required',
-            'yearsActive' => 'Required | Max:2 | Numeric',
-            'duties' => 'Required'];
+        $rules = ['position' => 'Required | Between:5,50',
+            'company' => 'Required | Between:5,50',
+            'location' => 'Required | Between:5,50',
+            'yearsActive' => 'Required | Between:1,2 | Numeric',
+            'duties' => 'Required | Between:5,50'];
         
         //run data validation rules
         $this->validate($request, $rules);
