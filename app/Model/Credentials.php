@@ -11,14 +11,22 @@ class Credentials
     private $username;
     private $password;
     
-    //constructor
+    /**
+     * constructor
+     * @param username
+     * @param $password
+     */
     public function __construct($username, $password)
     {
         $this->username = $username;
         $this->password = $password;
     }
     
-    // Getter
+    /**
+     * Getter
+     * @param $property
+     * @return $property
+     */
     public function __get($property)
     {
         if (property_exists($this, $property)) { return $this->$property; }
