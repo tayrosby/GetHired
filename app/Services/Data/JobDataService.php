@@ -195,18 +195,19 @@ class JobDataService {
     
     /**
      * searches the database for a job matching the search term
-     * @param $description - a term in the description used to search
+     * @param $searchTerm - a term in the description used to search
      * @throws DatabaseException
      * @return array
      */
-    public function findJobByDescription($description) 
+   public function findJobByDescription($searchTerm) 
     {
         Log::info("Entering JobDataService.findJobByDescription()");
         
         try {
             //creates a sql statement
-            $stmt = $this->conn->prepare("SELECT * FROM JOB WHERE DESCRIPTION LIKE :description");
-            $stmt->bindParam(':description', $description);
+            $stmt = $this->conn->prepare("SELECT * FROM JOB WHERE DESCRIPTION LIKE %:description% OR POSITION LIKE %:position% ");
+            $stmt->bindParam(':description', $searchTerm);
+            $stmt->bindParam(':position', $searchTerm);
             $stmt->execute();
             
             //creates an array of jobs
