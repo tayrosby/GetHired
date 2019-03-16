@@ -12,11 +12,11 @@ use App\Services\Business\ExperienceBusinessService;
 
 $cbs = new ContactBusinessService();
 
-$contact = $cbs->findAllContacts();
+$contact = $cbs->findAllContact();
 
 $sbs = new SkillsBusinessService();
 
-$skills = $sbs->findAllSkills();
+$skills = $sbs->findAllSkill();
 
 $edbs = new EducationBusinessService();
 
@@ -141,7 +141,7 @@ hr {
 </style>
 
 @section('content')
-
+<div class = "registerform">
 <table class = "registerform">
     <thead>
     <h4>Contact</h4>
@@ -174,7 +174,7 @@ hr {
       <input type="hidden" name = "id" value = "{{ $contact[$i]['ID'] }}">
       
        <label for="position"><b>Contact</b></label>
-      <input type="text" placeholder="Enter Phone Number" name="phoneNumber"  value="{{ $contact[$i]['PHONE_NUMBER'] }} " required />{{ $errors->first('phoneNumber') }}
+      <input type="tel" placeholder="Enter Phone Number" name="phoneNumber"  value="{{ $contact[$i]['PHONE_NUMBER'] }} " required />{{ $errors->first('phoneNumber') }}
       <input type="text" placeholder="Enter Email Address" name="email" value="{{ $contact[$i]['EMAIL_ADDRESS'] }}" required />{{ $errors->first('email') }}
       <input type="text" placeholder="Enter City" name="city" value="{{ $contact[$i]['CITY'] }}" required />{{ $errors->first('city') }}
       <input type="text" placeholder="Enter State" name="state" value="{{ $contact[$i]['STATE'] }}" required />{{ $errors->first('state') }}
@@ -422,7 +422,7 @@ hr {
       <input type="text" placeholder="Enter Years Active" name="yearsActive" required>
 
       <label for="Location"><b>Duties</b></label>
-      <input type="text" placeholder="Duties" name="duties" required>
+      <input type="text" placeholder="Duties" name="duties1" required>
       
 
       <div class="clearfix">
@@ -494,6 +494,9 @@ hr {
          @endfor
    </tbody>
 </table>
+</div>
+
+
 
 <script>
 // Get the modal
