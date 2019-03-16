@@ -54,11 +54,6 @@ class RegisterController extends Controller
         // saves the result of the registration.
         $success = $security->register($user);
         
-        $user_session = $success['user'];
-        session(['userID' => $user_session['ID']]);
-        session(['role' => $user_session['ROLE']]);
-        
-        
         // if register is successful, send the user to the login page
         if ($success)
         {
