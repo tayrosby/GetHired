@@ -33,6 +33,17 @@ h4 {
 	text-align:left;
 }
 
+td, th {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+th {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    text-align: left;
+}
+
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
