@@ -23,6 +23,8 @@ Route::get('/login', function() {
 });
 Route::post('/loginpage', 'LoginController@authenticate');
 
+Route::get('/logout', 'LoginController@logout');
+
 Route::get('/register', function()
 {
     return view('registrationpage');
