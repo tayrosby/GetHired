@@ -29,7 +29,7 @@
         <a class="nav-link" href="profile">Profile</a>
       </li>
       <li class="nav-item">
-       @if(session('user') == NULL) 
+       @if(session('userID') == NULL)
         <a class="nav-link" href="login">Login</a>
       </li>
       <li class="nav-item">
@@ -37,13 +37,11 @@
       </li>
        <li class="nav-item">
        @else
-        <a class="nav-link" href="logout">Log Out</a>
-        
+        <a class="nav-link" href="logout">Log Out</a>  
       </li>
       
       <li class="nav-item dropdown">
-      @if(session()->has('user')) 
-      		@if(session['role'] == '1')
+      			@if(session('role') == "1")
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Admin
         </a>
@@ -52,7 +50,6 @@
           <a class="dropdown-item" href="addjob">Add Job</a>
           <a class="dropdown-item" href="managejob">Manage Job</a>
         </div>
-        	@endif
         @endif
         @endif
       </li>
