@@ -205,9 +205,11 @@ class JobDataService {
         
         try {
             //creates a sql statement
-            $stmt = $this->conn->prepare("SELECT * FROM JOB WHERE DESCRIPTION LIKE %:description% OR POSITION LIKE %:position% ");
-            $stmt->bindParam(':description', $searchTerm);
-            $stmt->bindParam(':position', $searchTerm);
+            $stmt = $this->conn->prepare("SELECT * FROM JOB WHERE DESCRIPTION LIKE :description OR POSITION LIKE :position ");
+            
+            $likeSearchTerm = '%' . $searchTerm . '%';
+            $stmt->bindParam(':description', $likeSearchTerm);
+            $stmt->bindParam(':position', $likeSearchTerm);
             $stmt->execute();
             
             //creates an array of jobs
