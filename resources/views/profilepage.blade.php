@@ -12,11 +12,11 @@ use App\Services\Business\ExperienceBusinessService;
 
 $cbs = new ContactBusinessService();
 
-$contact = $cbs->findAllContact();
+$contact = $cbs->findAllContacts();
 
 $sbs = new SkillsBusinessService();
 
-$skills = $sbs->findAllSkill();
+$skills = $sbs->findAllSkills();
 
 $edbs = new EducationBusinessService();
 
