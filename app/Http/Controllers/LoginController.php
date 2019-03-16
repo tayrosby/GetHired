@@ -37,8 +37,9 @@ class LoginController extends Controller
         $success = $instance->authenticate($user);
         // if login is successful, send the user back to the home page
         
+        $request->session()->put('userID', $success['user']['ID']);        
 
-        $request->session()->put('userID', );
+        $request->session()->put('role', $success['user']['ROLE']);
 
         if ($success)
         {
