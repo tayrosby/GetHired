@@ -29,6 +29,10 @@ $experience = $exbs->findAllExperience();
 @endphp
 
 <style>
+h4 {
+	text-align:left;
+}
+
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
