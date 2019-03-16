@@ -2,9 +2,11 @@
 @section('title', 'Get Hired! | Admin')
 
 <style>
+h4 {
+	text-align:left;
+}
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
-
 /* Full-width input fields */
 input[type=text], input[type=password] {
   width: 100%;
@@ -14,46 +16,39 @@ input[type=text], input[type=password] {
   border: none;
   background: #f1f1f1;
 }
-
 /* Add a background color when the inputs get focus */
 input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
 }
-
 /* Set a style for all buttons */
 button {
-  background-color: #4CAF50;
+  background-color: #D3D3D3;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 50%;
   opacity: 0.9;
 }
-
 button:hover {
   opacity:1;
 }
-
 /* Extra styles for the cancel button */
 .cancelbtn {
   padding: 14px 20px;
-  background-color: #f44336;
+  background-color: #EC340D;
 }
-
 /* Float cancel and signup buttons and add an equal width */
 .cancelbtn, .signupbtn {
   float: left;
   width: 50%;
 }
-
 /* Add padding to container elements */
 .container {
   padding: 16px;
 }
-
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -67,7 +62,6 @@ button:hover {
   background-color: #474e5d;
   padding-top: 50px;
 }
-
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
@@ -75,7 +69,6 @@ button:hover {
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 }
-
 /* Style the horizontal ruler */
 hr {
   border: 1px solid #f1f1f1;
@@ -91,20 +84,17 @@ hr {
   font-weight: bold;
   color: #f1f1f1;
 }
-
 .close:hover,
 .close:focus {
   color: #f44336;
   cursor: pointer;
 }
-
 /* Clear floats */
 .clearfix::after {
   content: "";
   clear: both;
   display: table;
 }
-
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
   .cancelbtn, .signupbtn {
@@ -115,7 +105,7 @@ hr {
 
 @section('content')
 
-<div>
+<div class = "registerform">
 	<table>
 	
 		<thead>
@@ -167,7 +157,7 @@ hr {
  	<p>Are you sure you want to delete?</p>
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id07').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signup">Delete</button>
+        <button type="submit" class="signupbtn">Delete</button>
       </div>
     </div>
   </form>
