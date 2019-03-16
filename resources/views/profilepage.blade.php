@@ -146,7 +146,7 @@ hr {
 
 @section('content')
 <div class = "registerform">
-<table>
+<table bgcolor="#D3D3D3">
     <thead>
     <h4>Contact</h4>
         <tr>
@@ -281,7 +281,7 @@ hr {
    </tbody>
 </table>
 
-<table>
+<table bgcolor="#D3D3D3">
     <thead>
     <h4>Education</h4>
         <tr>
