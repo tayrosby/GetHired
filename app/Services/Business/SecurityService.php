@@ -34,9 +34,7 @@ class SecurityService
         // If the search was successful, return true.
         if ($results['result'] == 1) 
         {
-            session(['userID' => $results['user']['ID']]);
-            session(['role' => $results['user']['ROLE']]);
-            return true; 
+            return $results; 
         }
         // If the search was unsuccessful, return false.
         else { return false; }
