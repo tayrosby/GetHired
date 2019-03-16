@@ -186,7 +186,7 @@ hr {
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id08').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signup">Edit</button>
+        <button type="submit" class="signupbtn">Edit</button>
       </div>
     </div>
   </form>
@@ -225,7 +225,7 @@ hr {
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signup">Add</button>
+        <button type="submit" class="signupbtn">Add</button>
       </div>
     </div>
   </form>
@@ -250,7 +250,7 @@ hr {
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signup">Edit</button>
+        <button type="submit" class="signupbtn">Edit</button>
       </div>
     </div>
   </form>
@@ -270,7 +270,7 @@ hr {
  	<p>Are you sure you want to delete?</p>
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id07').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signup">Delete</button>
+        <button type="submit" class="signupbtn">Delete</button>
       </div>
     </div>
   </form>
@@ -321,7 +321,7 @@ hr {
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signup">Add</button>
+        <button type="submit" class="signupbtn">Add</button>
       </div>
     </div>
   </form>
@@ -351,7 +351,7 @@ hr {
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id04').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signup">Edit</button>
+        <button type="submit" class="signupbtn">Edit</button>
       </div>
     </div>
   </form>
@@ -371,7 +371,7 @@ hr {
  	<p>Are you sure you want to delete?</p>
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id10').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signup">Delete</button>
+        <button type="submit" class="signupbtn">Delete</button>
       </div>
     </div>
   </form>
@@ -431,7 +431,7 @@ hr {
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id05').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signup">Add</button>
+        <button type="submit" class="signupbtn">Add</button>
       </div>
     </div>
   </form>
@@ -468,7 +468,7 @@ hr {
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id06').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signup">Edit</button>
+        <button type="submit" class="signupbtn">Edit</button>
       </div>
     </div>
   </form>
@@ -488,7 +488,7 @@ hr {
  	<p>Are you sure you want to delete?</p>
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id09').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signup">Delete</button>
+        <button type="submit" class="signupbtn">Delete</button>
       </div>
     </div>
   </form>
