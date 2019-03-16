@@ -142,7 +142,7 @@ hr {
 
 @section('content')
 <div class = "registerform">
-<table class = "registerform">
+<table>
     <thead>
     <h4>Contact</h4>
         <tr>
@@ -194,7 +194,7 @@ hr {
    </tbody>
 </table>
 
-<table class = "registerform">
+<table>
     <thead>
     <h4>Skills</h4>
     </thead>
@@ -277,7 +277,7 @@ hr {
    </tbody>
 </table>
 
-<table class = "registerform">
+<table>
     <thead>
     <h4>Education</h4>
         <tr>
@@ -378,7 +378,7 @@ hr {
    </tbody>
 </table>
 
-<table class = "registerform">
+<table>
     <thead>
     <h4>Experience</h4>
         <tr>
