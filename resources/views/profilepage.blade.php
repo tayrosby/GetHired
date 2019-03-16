@@ -33,17 +33,6 @@ h4 {
 	text-align:left;
 }
 
-td, th {
-    border: 1px solid #ddd;
-    padding: 5px;
-}
-
-th {
-    padding-top: 7px;
-    padding-bottom: 7px;
-    text-align: left;
-}
-
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
@@ -65,13 +54,13 @@ input[type=text]:focus, input[type=password]:focus {
 
 /* Set a style for all buttons */
 button {
-  background-color: #4CAF50;
+  background-color: #D3D3D3;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 50%;
   opacity: 0.9;
 }
 
@@ -82,7 +71,7 @@ button:hover {
 /* Extra styles for the cancel button */
 .cancelbtn {
   padding: 14px 20px;
-  background-color: #f44336;
+  background-color: #EC340D;
 }
 
 /* Float cancel and signup buttons and add an equal width */
