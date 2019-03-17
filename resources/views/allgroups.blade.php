@@ -81,7 +81,7 @@ $groupMembers = $gbs->findAllGroupMembers();
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signup">Edit</button>
+        <button type="submit" class="signupbtn">Edit</button>
       </div>
     </div>
   </form>
@@ -101,7 +101,7 @@ $groupMembers = $gbs->findAllGroupMembers();
  	<p>Are you sure you want to delete?</p>
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id07').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signup">Delete</button>
+        <button type="submit" class="signupbtn">Delete</button>
       </div>
     </div>
   </form>
