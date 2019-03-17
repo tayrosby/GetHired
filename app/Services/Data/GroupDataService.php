@@ -195,7 +195,7 @@ class GroupDataService
         try
         {
             //preapres a sql statement
-            $stmt = $this->conn->prepare("SELECT USERS.FIRSTNAME, USERS.LASTNAME
+             $stmt = $this->conn->prepare("SELECT USERS.FIRSTNAME, USERS.LASTNAME, GROUP_MEMBERS.USERS_ID
                                       FROM USERS
                                       JOIN GROUP_MEMBERS ON GROUP_MEMBERS.USERS_ID = USERS.ID
                                       JOIN GROUPS ON GROUP_MEMBERS.GROUPS_ID = GROUPS.ID");
