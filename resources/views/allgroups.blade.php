@@ -37,7 +37,7 @@ $groupMembers = $gbs->findAllGroupMembers();
               <form id="joinGroup{{$group[$i]['ID']}}" action="addmember" method="POST">
 						<input type="hidden" name="_token" value="{{csrf_token()}}"/>
 						<input type="hidden" name="groupID" value="{{$group[$i]['ID']}}"/>
-						<input type="hidden" name="userID" value="{{$group[$i]['USERS_ID']}}"/>
+						<input type="hidden" name="userID" value="{{ session()->get('userID') }}"/>
 						
                         <br>
 						<td>
@@ -56,7 +56,7 @@ $groupMembers = $gbs->findAllGroupMembers();
                         <form id="leaveGroup{{$group[$i]['ID']}}" action="deletemember" method="POST">
 						<input type="hidden" name="_token" value="{{csrf_token()}}"/>
 						<input type="hidden" name="groupID" value="{{$group[$i]['ID']}}"/>
-						<input type="hidden" name="userID" value="{{$group[$i]['USERS_ID']}}"/>
+						<input type="hidden" name="userID" value="{{ session()->get('userID') }}"/>
 			</form>
 			
 			<td><input form="leaveGroup{{$group[$i]['ID']}}" class="btn" type="submit" value="Leave Group"/></td>
