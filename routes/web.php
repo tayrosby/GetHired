@@ -97,7 +97,7 @@ Route::get('/managegroups', 'GroupController@findAllGroups');
 
 Route::get('/allgroups', 'GroupController@findAllGroups');
 
-Route::post('/editGroup', 'GroupController@editGroup');
+Route::post('/editGroup', 'GroupController@editGroups');
 
 Route::post('/deleteGroup', 'GroupController@deleteGroup');
 
