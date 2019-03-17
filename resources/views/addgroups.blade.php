@@ -11,7 +11,7 @@
 		<hr>
 		<table>
 		<tr>
-			<td><input type="hidden" name = "userID" value = "{{session('userID')}}"><td>
+			<td><input type="hidden" name = "userID" value = "{{session()->get('userID');}}"><td>
 			<tr>
 			<tr>
 				<td>Group Name: </td>
