@@ -26,7 +26,7 @@ class ExperienceController extends Controller
     {
         try {
             //validate the form data(will redirect back to login view if errors)
-            $this->validateForm($request);
+           // $this->validateForm($request);
            
             //takes info from the user
         $id = $request->input('id');
@@ -78,7 +78,7 @@ class ExperienceController extends Controller
     {
         try {
             //validate the form data(will redirect back to login view if errors)
-            $this->validateForm($request);
+           // $this->validateForm($request);
             
             //takes info from the user
         $id = $request->input('id');
@@ -207,7 +207,7 @@ class ExperienceController extends Controller
         //setup data validation rules for login form
         
         $rules = ['position' => 'Required | Between:5,50',
-            'company' => 'Required | Between:5,50',
+            'company' => 'Required | Between:4,50',
             'location' => 'Required | Between:5,50',
             'yearsActive' => 'Required | Between:1,2 | Numeric',
             'duties' => 'Required | Between:5,50'];
