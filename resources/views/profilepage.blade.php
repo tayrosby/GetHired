@@ -99,7 +99,7 @@ $experience = $exbs->findAllExperience();
     <div class="container">
       <h1>Add Skill</h1>
       <hr>
-      <input type="hidden" name = "user_id" value = "{{ $skills[$i]['USERS_ID'] }}">
+      <input type="hidden" name = "user_id" value = "{{ session('userID') }}">
       <label for="position"><b>Skill</b></label>
       <input type="text" placeholder="Enter Skill" name="skillName" required>
       
