@@ -171,15 +171,7 @@ $experience = $exbs->findAllExperience();
             <th> School Name</th>
             <th> Degree</th>
             <th> Graduation Year</th>
-        </tr>
-    </thead>
-    <tbody>
-          @for ($i = 0; $i < count($education); $i++)
-          <tr>
-              <td> {{ $education[$i]['SCHOOL_NAME'] }} </td>
-              <td> {{ $education[$i]['DEGREE'] }} </td>
-              <td> {{ $education[$i]['GRADUATION_YEAR'] }} </td>
-              <td> <!-- Button to open the modal -->
+            <th><!-- Button to open the modal -->
 <button onclick="document.getElementById('id03').style.display='block'">Add</button>
 
 <!-- The Modal (contains the Sign Up form) -->
@@ -187,7 +179,7 @@ $experience = $exbs->findAllExperience();
   <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">x</span>
   <form class="modal-content" action="add_edu" method="post">
   <input type="hidden" name="_token" value="<?php echo csrf_token() ?>" />
-  <input type="hidden" name="user_id" value="{{ $education[$i]['USERS_ID'] }}" />
+  <input type="hidden" name="user_id" value="{{ session('userID') }}" />
         
     <div class="container">
       <h1>Add Education</h1>
@@ -208,8 +200,15 @@ $experience = $exbs->findAllExperience();
       </div>
     </div>
   </form>
-</div>
-</td>
+</div></th>
+        </tr>
+    </thead>
+    <tbody>
+          @for ($i = 0; $i < count($education); $i++)
+          <tr>
+              <td> {{ $education[$i]['SCHOOL_NAME'] }} </td>
+              <td> {{ $education[$i]['DEGREE'] }} </td>
+              <td> {{ $education[$i]['GRADUATION_YEAR'] }} </td>
               <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id04').style.display='block'">Edit</button>
 
@@ -274,18 +273,7 @@ $experience = $exbs->findAllExperience();
             <th> Location</th>
             <th> Years Active</th>
             <th> Duties</th>
-            <th> </th>
-        </tr>
-    </thead>
-    <tbody>
-          @for ($i = 0; $i < count($experience); $i++)
-          <tr>
-              <td> {{ $experience[$i]['POSITION'] }} </td>
-              <td> {{ $experience[$i]['COMPANY'] }} </td>
-              <td> {{ $experience[$i]['LOCATION'] }} </td>
-              <td> {{ $experience[$i]['YEARS_ACTIVE'] }} </td>
-              <td> {{ $experience[$i]['DUTIES'] }} </td>
-              <td> <!-- Button to open the modal -->
+            <th>  <!-- Button to open the modal -->
 <button onclick="document.getElementById('id05').style.display='block'">Add</button>    <!-- The Modal (contains the Sign Up form) -->
 <div id="id05" class="modal">
   <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">x</span>
@@ -294,7 +282,7 @@ $experience = $exbs->findAllExperience();
     <div class="container">
       <h1>Add Experience</h1>
       <hr>
-      <input type="hidden" name = "id" value = "{{ $experience[$i]['USERS_ID'] }}">
+      <input type="hidden" name = "id" value = "{{ session('userID') }}">
       
       <label for="position"><b>Position</b></label>
       <input type="text" placeholder="Enter Position" name="position" required>
@@ -318,8 +306,17 @@ $experience = $exbs->findAllExperience();
       </div>
     </div>
   </form>
-</div>
-</td>
+</div> </th>
+        </tr>
+    </thead>
+    <tbody>
+          @for ($i = 0; $i < count($experience); $i++)
+          <tr>
+              <td> {{ $experience[$i]['POSITION'] }} </td>
+              <td> {{ $experience[$i]['COMPANY'] }} </td>
+              <td> {{ $experience[$i]['LOCATION'] }} </td>
+              <td> {{ $experience[$i]['YEARS_ACTIVE'] }} </td>
+              <td> {{ $experience[$i]['DUTIES'] }} </td>
               <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id06').style.display='block'">Edit</button>
 
