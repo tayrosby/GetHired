@@ -89,10 +89,7 @@ $experience = $exbs->findAllExperience();
     <tbody>
  <tr>
             <th> Skill</th>
-        </tr>
-          @for ($i = 0; $i < count($skills); $i++)
-              <td> {{ $skills[$i]['SKILL_NAME'] }} </td>
-              <td> <!-- Button to open the modal -->
+            <th><!-- Button to open the modal -->
 <button onclick="document.getElementById('id01').style.display='block'">Add</button>    <!-- The Modal (contains the Sign Up form) -->
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">x</span>
@@ -113,8 +110,10 @@ $experience = $exbs->findAllExperience();
       </div>
     </div>
   </form>
-</div>
-</td>
+</div></th>
+        </tr>
+          @for ($i = 0; $i < count($skills); $i++)
+              <td> {{ $skills[$i]['SKILL_NAME'] }} </td>             
               <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id02').style.display='block'">Edit</button>
 
