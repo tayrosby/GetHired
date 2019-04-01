@@ -30,10 +30,14 @@ class SecurityMiddleware
         Logger::info($secureCheck ? "Security Middleware in handle() ..... Needs Security" : "Security Middleware in handle() ...... No security required");
         
         //step 3: if entering a secure uri with no security token then do a redirect to the root uri or login page
-        if ($secureCheck && session('userID') != null)
+        if ($secureCheck && session('userID') == null)
         {
             Logger::info("Leaving Security Middleware in handle() doing a redirect back to login");
             return redirect('/login');
+        }
+        else if($secureCheck && session('userID') != null)
+        {
+            return $next($request);
         }
         
         //proceed as normal to next middleware in the chain
