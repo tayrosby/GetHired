@@ -116,3 +116,5 @@ Route::post('/searchDescription', 'JobController@findJobByDescription');
 Route::post('/jobApp', function(){
     return view('jobapplication');
 });
+
+Route::resource('/job','JobRestController');
