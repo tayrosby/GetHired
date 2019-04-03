@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\Business\JobBusinessService;
-use App\Models\DTO;
+use App\Model\DTO;
 use Exception;
 
 class JobRestController extends Controller
