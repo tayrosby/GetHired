@@ -117,4 +117,4 @@ Route::post('/jobApp', function(){
     return view('jobapplication');
 });
 
-Route::resource('/job','JobRestController');
+Route::resource('/jobs','JobRestController');
