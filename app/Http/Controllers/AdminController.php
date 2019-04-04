@@ -13,10 +13,16 @@ use Illuminate\Support\Facades\Log;
 use Exception;
 use App\Model\Credentials;
 use App\Model\UserObjectModel;
+use App\Services\Utility\ILoggerService;
 
 class AdminController extends Controller
 {
-
+ 
+    protected $logger;
+    
+    public function __construct(ILoggerService $logger){
+        $this->logger = $logger;
+    }
     /**
      * Goes from the navbar to the AdminPage
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
