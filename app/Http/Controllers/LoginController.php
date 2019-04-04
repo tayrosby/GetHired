@@ -9,12 +9,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Credentials;
 use App\Services\Business\SecurityService;
+use App\Services\Utility\ILoggerService;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Log;
 use Exception;
 
 class LoginController extends Controller
 {
+    
+    protected $logger;
+    
+    public function __construct(ILoggerService $logger){
+        $this->logger = $logger;
+    }
     
     /**
      * authenticate() is responsible for authenticating the user.
