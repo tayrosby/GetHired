@@ -13,10 +13,16 @@ use App\Services\Business\ContactBusinessService;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Log;
 use Exception;
+use App\Services\Utility\ILoggerService;
 
 class ContactController extends Controller
 {
-
+ 
+    protected $logger;
+    
+    public function __construct(ILoggerService $logger){
+        $this->logger = $logger;
+    }
     /**
      * /adds the contact information to the database
      * @param Request $request
