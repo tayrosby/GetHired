@@ -6,7 +6,7 @@
  */
 namespace App\Model;
 
-class UserExperienceModel
+class UserExperienceModel implements \JsonSerializable
 {
     //attributes
     private $id;
@@ -43,6 +43,11 @@ class UserExperienceModel
     public function __get($property)
     {
         if (property_exists($this, $property)) { return $this->$property; }
+    }
+    
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
     }
 }
 ?>
