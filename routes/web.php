@@ -118,3 +118,5 @@ Route::post('/jobApp', function(){
 });
 
 Route::resource('/jobs','JobRestController');
+
+Route::resource('/profile','ProfileRestController');
