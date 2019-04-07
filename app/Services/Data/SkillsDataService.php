@@ -175,4 +175,34 @@ class SkillsDataService
             throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
         }
     }
+    
+    public function findSkillByID($id) {
+        try {
+            //MyLogger1::info("Entering SecurityDAO.findByUserID()");
+            
+            //select all users
+            $sth = $this->conn->prepare('SELECT * FROM SKILLS WHERE USERS_ID = :id');
+            $sth->bindParam(':id', $id);
+            $sth->execute();
+            
+            //return an array of users
+            if($sth->rowCount() == 0){
+                //MyLogger1::info("Exit SecurityDAO.findByUserID() with 0 row count");
+                return null;
+            }
+            else {
+                
+                $row = $sth->fetch(PDO::FETCH_ASSOC);
+                $skill = new UserSkillsModel($row["ID"], $row["SKILL_NAME"]);
+                
+                //MyLogger1::info("Exit SecurityDAO.findByUserID() with user");
+                return $skill;
+            }
+        } catch (PDOException $e) {
+            //BEST PRACTICE Catch all exceptions (do not swallow exceptions), log the exception,
+            //do not throw technology specific exceptions, and throw a custom exception
+            //MyLogger1::error("Exception SecurityDAO:findByUserID(): ", array("message" => $e->getMessage()));
+            throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
+        }
+    }
 }
