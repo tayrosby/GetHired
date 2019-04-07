@@ -32,29 +32,34 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
     try {
+        $this->logger->info("Entering LoginController.authenticate()");
         //validate the form data(will redirect back to login view if errors)
         $this->validateForm($request);
         
         // display the form data
         $username = $request->input("username");
         $password = $request->input("password");
+        
+        $this->logger->info("Parameters are: ",array('username' => $username, 'password' => $password));
         $user = new Credentials($username, $password);
         $instance = new SecurityService();
         // sends the info from the form to the authenticate method in security method
         $success = $instance->authenticate($user);
         // if login is successful, send the user back to the home page
         
-        $request->session()->put('userID', $success['user']['ID']);        
-
+        $request->session()->put('userID', $success['user']['ID']);
+        
         $request->session()->put('role', $success['user']['ROLE']);
 
         if ($success)
         {
+            $this->logger->info("Exit LoginController::index() with login passing");
             return view('homepage');
         }
         // if login is unsuccessful, keep user at the login page
         else
         {
+            $this->logger->info("Exit LoginController::index() with login failing");
             return view('loginpage');
         }
     }
@@ -65,7 +70,7 @@ class LoginController extends Controller
     catch (Exception $e){
         //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
         //log the exception and display exception view
-        Log::error("Exception: ", array("message" => $e->getMessage()));
+        $this->logger->error("Exception: ", array("message" => $e->getMessage()));
         $data = ['errorMSG' => $e->getMessage()];
         return ($data);
         }
@@ -78,8 +83,9 @@ class LoginController extends Controller
      */
     public function logout(Request $request) 
     {
+        $this->logger->info("Entering LoginController.logout()");
         $request->session()->forget('userID');
-        
+        $this->logger->info("Exiting LoginController.logout()");
         return view('homepage');
     }
     
@@ -87,7 +93,8 @@ class LoginController extends Controller
      * validates the form data
      * @param Request $request
      */
-   private function validateForm(Request $request){
+    private function validateForm(Request $request){
+        $this->logger->info("Entering LoginController.validateForm()");
           //setup data validation rules for login form
         
         $rules = ['username' => 'Required | Between:3,10',
@@ -95,6 +102,7 @@ class LoginController extends Controller
         
         //run data validation rules
         $this->validate($request, $rules);
+        $this->logger->info("Exiting LoginController.validateForm()");
     }
     
 }
