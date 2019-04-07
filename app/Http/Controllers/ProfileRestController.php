@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\DTO;
+use App\Model\DTO;
 use Exception;
 use App\Services\Business\ProfileBusinessService;
 
