@@ -6,7 +6,7 @@
  */
 namespace App\Model;
 
-class UserContactModel
+class UserContactModel implements \JsonSerializable
 {
     //contact attributes
     private $id;
@@ -42,6 +42,11 @@ class UserContactModel
     public function __get($property)
     {
         if (property_exists($this, $property)) { return $this->$property; }
+    }
+    
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
     }
 }
 ?>
