@@ -2,28 +2,43 @@
 /*
  * Authors: Taylor Rosby
  * Date: February 24, 2019
- * Description: UserSkillsModel holds the attributes for skills in the profile
+ * Description: Job model holds attributes for a job post
  */
+
 namespace App\Model;
 
-class UserSkillsModel implements \JsonSerializable
-{
-    //attributes
+class JobModel implements \JsonSerializable{
+    
+    //job attributes
     private $id;
-    private $skillName;
-
+    private $position;
+    private $company;
+    private $location;
+    private $requirements;
+    private $level;
+    private $description;
+    
     /**
      * constructor
      * @param $id
-     * @param $skillName
+     * @param $position
+     * @param $company
+     * @param $location
+     * @param $requirements
+     * @param $level
+     * @param $description
      */
-    public function __construct($id, $skillName)
-    {
+    public function __construct($id, $position, $company, $location, $requirements, $level, $description) {
+     
         $this->id = $id;
-        $this->skillName = $skillName;
-
+        $this->position = $position;
+        $this->company = $company;
+        $this->location = $location;
+        $this->requirements = $requirements;
+        $this->level = $level;
+        $this->description = $description;
     }
-
+    
     /**
      * Getter
      * @param $property
@@ -39,4 +54,3 @@ class UserSkillsModel implements \JsonSerializable
         return get_object_vars($this);
     }
 }
-?>
