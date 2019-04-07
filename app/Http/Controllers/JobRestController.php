@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\Business\JobBusinessService;
-use App\Model\DTO;
+use App\Models\DTO;
 use Exception;
 
 class JobRestController extends Controller
@@ -23,7 +23,12 @@ class JobRestController extends Controller
             $jobs = $service->findAllJobs();
             
             //create DTO
-            $dto = new DTO(0, "OK", $jobs);
+            if($jobs == null){
+                $dto = new DTO(404, "User Not Found", "");
+            }
+            else{
+                $dto = new DTO(200, "OK", $jobs);
+            }
             
             //serialize the dto to json
             $json = json_encode($dto);
@@ -57,10 +62,10 @@ class JobRestController extends Controller
             
             //create DTO
             if($job == null){
-                $dto = new DTO(-1, "User Not Found", "");
+                $dto = new DTO(404, "Job Not Found", "");
             }
             else{
-                $dto = new DTO(0, "OK", $job);
+                $dto = new DTO(200, "OK", $job);
             }
             
             //serialize the dto to json
