@@ -41,7 +41,11 @@ public function getProfileByID($id)
     //closes the connection
     $conn = null;
     
-    //returns the user
-    return $result;
+    if ($result == null){
+        return false;
+    }else{
+        //returns the user
+        return $result;
+    }
 }
 }
