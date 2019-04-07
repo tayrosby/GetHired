@@ -25,7 +25,7 @@ class SecurityMiddleware
         $secureCheck = true;
         if($request->is('/') || $request->is('homepage') || $request->is('login') ||
             $request->is('loginpage') || $request->is('register') || $request->is('registrationpage')
-            || $request->is('profile/*')  || $request->is('jobs') || $request->is('jobs/*'))
+            || $request->is('profiles/*')  || $request->is('jobs') || $request->is('jobs/*'))
         { $secureCheck = false; }
         Logger::info($secureCheck ? "Security Middleware in handle() ..... Needs Security" : "Security Middleware in handle() ...... No security required");
         
