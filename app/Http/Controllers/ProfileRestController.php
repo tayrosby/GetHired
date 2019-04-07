@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\DTO;
+use App\Models\DTO;
 use Exception;
 use App\Services\Business\ProfileBusinessService;
 
@@ -24,10 +24,10 @@ class ProfileRestController extends Controller
             
             //create DTO
             if($profile == null){
-                $dto = new DTO(-1, "User Not Found", "");
+                $dto = new DTO(404, "Profile Not Found", "");
             }
             else{
-                $dto = new DTO(0, "OK", $profile);
+                $dto = new DTO(200, "OK", $profile);
             }
             
             //serialize the dto to json
