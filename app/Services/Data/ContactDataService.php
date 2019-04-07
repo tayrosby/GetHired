@@ -186,12 +186,12 @@ class ContactDataService
        
     }
     
-    public function findExperienceByID($id) {
+    public function findContactByID($id) {
         try {
             //MyLogger1::info("Entering SecurityDAO.findByUserID()");
             
             //select all users
-            $sth = $this->conn->prepare('SELECT * FROM EXPERIENCE WHERE USERS_ID = :id');
+            $sth = $this->conn->prepare('SELECT * FROM CONTACT WHERE USERS_ID = :id');
             $sth->bindParam(':id', $id);
             $sth->execute();
             
@@ -203,10 +203,10 @@ class ContactDataService
             else {
                 
                 $row = $sth->fetch(PDO::FETCH_ASSOC);
-                $xp = new UserExperienceModel($row["ID"], $row["POSITION"], $row["COMPANY"], $row["LOCATION"], $row["YEARS_ACTIVE"], $row["DUTIES"]);
+                $contact = new UserContactModel($row["ID"], $row["PHONE_NUMBER"], $row["EMAIL_ADDRESS"], $row["CITY"], $row["STATE"]);
                 
                 //MyLogger1::info("Exit SecurityDAO.findByUserID() with user");
-                return $xp;
+                return $contact;
             }
         } catch (PDOException $e) {
             //BEST PRACTICE Catch all exceptions (do not swallow exceptions), log the exception,
