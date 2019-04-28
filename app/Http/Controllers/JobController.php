@@ -36,7 +36,7 @@ class JobController extends Controller
         try {
             $this->logger->info("Entering JobController.addJob()");
             //validate the form data(will redirect back to login view if errors)
-            $this->validateForm($request);
+            //$this->validateForm($request);
 
             //takes information from the user
             $position = $request->input('position');
@@ -94,7 +94,7 @@ class JobController extends Controller
         try {
             $this->logger->info("Entering JobController.editJob()");
             //validate the form data(will redirect back to login view if errors)
-            $this->validateForm($request);
+           // $this->validateForm($request);
             
             //takes information from the user
             $id = $request->input('id');
