@@ -118,10 +118,10 @@ hr {
     </thead>
     <tbody>
           <tr>
-              <td> {{ $profile[$i]['PHONE_NUMBER'] }} </td>
-              <td> {{ $profile[$i]['EMAIL_ADDRESS'] }} </td>
-              <td> {{ $profile[$i]['CITY'] }} </td>
-              <td> {{ $profile[$i]['STATE'] }} </td>
+              <td> {{ $profile[$i]['contact']['PHONE_NUMBER'] }} </td>
+              <td> {{ $profile[$i]['contact']['EMAIL_ADDRESS'] }} </td>
+              <td> {{ $profile[$i]['contact']['CITY'] }} </td>
+              <td> {{ $profile[$i]['contact']['STATE'] }} </td>
 
               <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id08').style.display='block'">Edit</button>
@@ -134,13 +134,13 @@ hr {
     <div class="container">
       <h1>Edit Contact</h1>
       <hr>
-      <input type="hidden" name = "id" value = "{{ $profile[$i]['ID'] }}">
+      <input type="hidden" name = "id" value = "{{ $profile[$i]['contact']['ID'] }}">
       
        <label for="position"><b>Contact</b></label>
-      <input type="tel" placeholder="Enter Phone Number" name="phoneNumber"  value="{{ $profile[$i]['PHONE_NUMBER'] }} " required />{{ $errors->first('phoneNumber') }}
-      <input type="text" placeholder="Enter Email Address" name="email" value="{{ $profile[$i]['EMAIL_ADDRESS'] }}" required />{{ $errors->first('email') }}
-      <input type="text" placeholder="Enter City" name="city" value="{{ $profile[$i]['CITY'] }}" required />{{ $errors->first('city') }}
-      <input type="text" placeholder="Enter State" name="state" value="{{ $profile[$i]['STATE'] }}" required />{{ $errors->first('state') }}
+      <input type="tel" placeholder="Enter Phone Number" name="phoneNumber"  value="{{ $profile[$i]['contact']['PHONE_NUMBER'] }} " required />{{ $errors->first('phoneNumber') }}
+      <input type="text" placeholder="Enter Email Address" name="email" value="{{ $profile[$i]['contact']['EMAIL_ADDRESS'] }}" required />{{ $errors->first('email') }}
+      <input type="text" placeholder="Enter City" name="city" value="{{ $profile[$i]['contact']['CITY'] }}" required />{{ $errors->first('city') }}
+      <input type="text" placeholder="Enter State" name="state" value="{{ $profile[$i]['contact']['STATE'] }}" required />{{ $errors->first('state') }}
       
 
       <div class="clearfix">
