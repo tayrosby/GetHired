@@ -186,9 +186,15 @@ class ContactDataService
        
     }
     
+    /**
+     * 
+     * @param $id
+     * @throws DatabaseException
+     * @return NULL|\App\Model\UserContactModel
+     */
     public function findContactByID($id) {
         try {
-            //MyLogger1::info("Entering SecurityDAO.findByUserID()");
+            Log::info("Entering ContactDataService.findContactByID()");
             
             //select all users
             $sth = $this->conn->prepare('SELECT * FROM CONTACT WHERE USERS_ID = :id');
@@ -197,7 +203,7 @@ class ContactDataService
             
             //return an array of users
             if($sth->rowCount() == 0){
-                //MyLogger1::info("Exit SecurityDAO.findByUserID() with 0 row count");
+                Log::info("Leaving ContactDataService.findContactByID() with 0 rowCount");
                 return null;
             }
             else {
@@ -205,13 +211,13 @@ class ContactDataService
                 $row = $sth->fetch(PDO::FETCH_ASSOC);
                 $contact = new UserContactModel($row["ID"], $row["PHONE_NUMBER"], $row["EMAIL_ADDRESS"], $row["CITY"], $row["STATE"]);
                 
-                //MyLogger1::info("Exit SecurityDAO.findByUserID() with user");
+                Log::info("Leaving ContactDataService.findContactByID() with contact");
                 return $contact;
             }
         } catch (PDOException $e) {
             //BEST PRACTICE Catch all exceptions (do not swallow exceptions), log the exception,
             //do not throw technology specific exceptions, and throw a custom exception
-            //MyLogger1::error("Exception SecurityDAO:findByUserID(): ", array("message" => $e->getMessage()));
+            Log::error("Exception: ", array("message" => $e->getMessage()));
             throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
         }
     }
