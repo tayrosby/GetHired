@@ -2,10 +2,11 @@
 @section('title', 'Get Hired! | My Profile')
 
 @section('content')
-@for($i = 0; $i < count($profile); $i++)
 
-{{ $profile['user']['firstName'] }}
-{{ $profile['user']['lastName'] }}
+@foreach($profile as $profiles)
+
+{{ $profiles['user']['firstName'] }}
+{{ $profiles['user']['lastName'] }}
 
 <div class = "registerform">
 <table bgcolor="#A9A9A9">
@@ -20,7 +21,7 @@
     </thead>
     <tbody>
           <tr>
-              <td> {{ $profile[$i]['PHONE_NUMBER'] }} </td>
+              <td> {{ $profile['contact']['phoneNumber'] }} </td>
               <td> {{ $profile[$i]['EMAIL_ADDRESS'] }} </td>
               <td> {{ $profile[$i]['CITY'] }} </td>
               <td> {{ $profile[$i]['STATE'] }} </td>
@@ -367,5 +368,5 @@ window.onclick = function(event) {
 }
 </script>
 
-@endfor
+@endforeach
 @endsection
