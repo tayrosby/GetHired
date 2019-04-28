@@ -59,7 +59,7 @@ class JobController extends Controller
             if($success)
             {
                 $this->logger->info("Exiting JobController.addJob() with success");
-                return view("managejobs");
+                return redirect("/managejobs");
             }
             //if it fails stay on add jobs
             else
@@ -118,7 +118,7 @@ class JobController extends Controller
             if($success)
             {
                 $this->logger->info("Exiting JobController.editJob() with success");
-                return view("managejobs");
+                return redirect("/managejobs");
             }
             else
             {
