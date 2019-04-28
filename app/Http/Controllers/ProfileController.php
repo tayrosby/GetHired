@@ -17,7 +17,7 @@ class ProfileController extends Controller
             // Calls the business service
             $service = new ProfileBusinessService();
             
-            $profile = $service->getProfileByID(17);
+            $profile = $service->getProfileByID($id);
             
             $data = ['profile' => $profile];
             // redirects to the profile page
