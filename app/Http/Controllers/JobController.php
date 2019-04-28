@@ -11,12 +11,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\JobModel;
 use App\Services\Business\JobBusinessService;
+use App\Services\Utility\ILoggerService;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Log;
 use Exception;
 
 class JobController extends Controller
 {
+    /**
+     *
+     * @param ILoggerService $logger
+     */
+    public function __construct(ILoggerService $logger){
+        $this->logger = $logger;
+    }
+    
     /**
      * adds the job information to the database
      * @param Request $request
@@ -26,9 +34,9 @@ class JobController extends Controller
     public function addJob(Request $request)
     {
         try {
-            
+            $this->logger->info("Entering JobController.addJob()");
             //validate the form data(will redirect back to login view if errors)
-            //$this->validateForm($request);
+            $this->validateForm($request);
 
             //takes information from the user
             $position = $request->input('position');
@@ -50,11 +58,13 @@ class JobController extends Controller
             //if it succeeds take the admin to manage jobs
             if($success)
             {
+                $this->logger->info("Exiting JobController.addJob() with success");
                 return view("managejobs");
             }
             //if it fails stay on add jobs
             else
             {
+                $this->logger->info("Exiting JobController.addJob() with failure");
                 return view("addjobs");
             }
         }
@@ -65,9 +75,10 @@ class JobController extends Controller
         catch (Exception $e){
             //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
             //log the exception and display exception view
-            Log::error("Exception: ", array("message" => $e->getMessage()));
+            $this->logger->error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
             return view('exception')->with($data);
+            
         }
         
     }
@@ -81,9 +92,9 @@ class JobController extends Controller
     public function editJob(Request $request)
     {
         try {
-            
+            $this->logger->info("Entering JobController.editJob()");
             //validate the form data(will redirect back to login view if errors)
-            //$this->validateForm($request);
+            $this->validateForm($request);
             
             //takes information from the user
             $id = $request->input('id');
@@ -106,10 +117,12 @@ class JobController extends Controller
             //if it fails or succeeds return to the manage jobs
             if($success)
             {
+                $this->logger->info("Exiting JobController.editJob() with success");
                 return view("managejobs");
             }
             else
             {
+                $this->logger->info("Exiting JobController.editJob() with failure");
                 return view("managejobs");
             }
         }
@@ -120,9 +133,10 @@ class JobController extends Controller
         catch (Exception $e){
             //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
             //log the exception and display exception view
-            Log::error("Exception: ", array("message" => $e->getMessage()));
+            $this->logger->error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
             return view('exception')->with($data);
+            
         }
     }
     
@@ -134,6 +148,7 @@ class JobController extends Controller
     public function deleteJob(Request $request)
     {
         try {
+            $this->logger->info("Entering JobController.deleteJob()");
             //takes information from the user
             $id = $request->input('ID');
             
@@ -146,19 +161,22 @@ class JobController extends Controller
             //if it fails or succeeds return to the manage jobs
             if($success)
             {
+                $this->logger->info("Exiting JobController.deleteJob() with success");
                 return view("managejobs");
             }
             else
             {
+                $this->logger->info("Exiting JobController.deleteJob() with failure");
                 return view("managejobs");
             }
         }
         catch (Exception $e){
             //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
             //log the exception and display exception view
-            Log::error("Exception: ", array("message" => $e->getMessage()));
+            $this->logger->error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
             return view('exception')->with($data);
+            
         }
     }
     
@@ -170,6 +188,7 @@ class JobController extends Controller
     public function findAllJob(Request $request)
     {
         try {
+            $this->logger->info("Entering JobController.findAllJob()");
             //calls the job business service
             $service = new JobBusinessService();
             
@@ -182,11 +201,13 @@ class JobController extends Controller
             //if there are jobs go to manage view with the data
             if($jobs)
             {
+                $this->logger->info("Exiting JobController.findAllJob() with success");
                 return view("managejobs")->with($data);
             }
             //else just go to manage view
             else
             {
+                $this->logger->info("Exiting JobController.findAllJob() with failure");
                 return view("managejobs");
             }
             
@@ -194,9 +215,10 @@ class JobController extends Controller
         catch (Exception $e){
             //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
             //log the exception and display exception view
-            Log::error("Exception: ", array("message" => $e->getMessage()));
+            $this->logger->error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
             return view('exception')->with($data);
+            
         }
     }
     
@@ -205,8 +227,9 @@ class JobController extends Controller
      * @param Request $request
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
      */
-   public function findJobByDescription(Request $request){
+    public function findJobByDescription(Request $request){
         try {
+            $this->logger->info("Entering JobController.findJobByDescription()");
             //takes information from the user
             $description = $request->input('descriptionSearch');
             
@@ -222,29 +245,33 @@ class JobController extends Controller
             
             //if there are jobs to to a search results page
             if($jobs){
+                $this->logger->info("Exiting JobController.findJobByDescription() with success");
                 return view("jobresults")->with($data);
             }
             //else return a jobs not found page
             {
-                return view("nojobresults");
+                $this->logger->info("Exiting JobController.findJobByDescription() with failure");
+                return view("jobresults");
             }           
             
         }
         catch (Exception $e) {
-            Log::error("Exception: ", array("message" => $e->getMessage()));
+            $this->logger->error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
             return view('exception')->with($data);
+            
         }
         
     }
     
-      /**
+    /**
      * finds a job based on a matching id
      * @param Request $request
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
      */
     public function findJobByID(Request $request){
         try {
+            $this->logger->info("Entering JobController.findJobByID()");
             //takes information from the user
             $id = $request->input('id');
             
@@ -258,13 +285,15 @@ class JobController extends Controller
             // Puts the users in an associative array
             $data = ['jobs' => $jobs];
             
-                return view("jobdetails")->with($data);
+            $this->logger->info("Exiting JobController.findJobByID()");
+            return view("jobdetails")->with($data);
             
         }
         catch (Exception $e) {
-            Log::error("Exception: ", array("message" => $e->getMessage()));
+            $this->logger->error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
             return view('exception')->with($data);
+            
         }
         
     }
