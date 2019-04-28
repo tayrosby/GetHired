@@ -31,15 +31,9 @@ Route::get('/register', function()
 });
 Route::post('/registrationpage', 'RegisterController@register');
 
-Route::get('/profile', function () 
-{
-    return view('profilepage');
-});
+Route::get('/profile', 'ProfileController@showProfile');
 
-Route::post('/profileAdmin', function ()
-{
-    return view('profilepage');
-});
+Route::get('/profileAdmin', 'ProfileController@showProfileAdmin');
 
 Route::get('/admin', 'AdminController@index');
 // Takes you to the AdminController.suspendUser
