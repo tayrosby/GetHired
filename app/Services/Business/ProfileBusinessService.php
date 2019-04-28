@@ -11,6 +11,7 @@ use App\Services\Data\EducationDataService;
 use App\Services\Data\ExperienceDataService;
 
 use App\Services\Utility\Connection;
+use App\Services\Data\UserDataService;
 
 class ProfileBusinessService
 {
@@ -26,18 +27,20 @@ public function getProfileByID($id)
     $conn = $db->open();
     
     //calls the data service
+    $userService = new UserDataService($conn);
     $skillsService = new SkillsDataService($conn);
     $contactService = new ContactDataService($conn);
     $eduService = new EducationDataService($conn);
     $xpService = new ExperienceDataService($conn);
     
     //calls the get user method in the data service
+    $userResult = $userService->getUser($id);
     $skillsResult = $skillsService->findSkillByID($id);
     $contactResult = $contactService->findContactByID($id);
     $eduResult = $eduService->findEducationByID($id);
     $xpResult = $xpService->findExperienceByID($id);
     
-    $result = ['skills' => $skillsResult, 'contact' => $contactResult, 'education' => $eduResult, 'experience' => $xpResult];
+    $result = ['user' => $userResult['FIRST_NAME'], 'skills' => $skillsResult, 'contact' => $contactResult, 'education' => $eduResult, 'experience' => $xpResult];
     //closes the connection
     $conn = null;
     
