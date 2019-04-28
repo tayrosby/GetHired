@@ -11,11 +11,7 @@
 |
 */
 Route::get('/', function () {
-    return view('homepage');
-});
-
-Route::get('/homepage', function () {
-    return view('homepage');
+    return view('loginpage');
 });
 
 Route::get('/login', function() {
