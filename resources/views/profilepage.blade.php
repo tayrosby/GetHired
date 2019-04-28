@@ -1,34 +1,110 @@
-@php
-use App\Services\Business\SkillsBusinessService;
-use App\Services\Business\EducationBusinessService;
-use App\Services\Business\ContactBusinessService;
-use App\Services\Business\ExperienceBusinessService;
-@endphp
-
 @extends('layouts.maintemplate')
 @section('title', 'Get Hired! | My Profile')
 
-@php
-
-$cbs = new ContactBusinessService();
-
-$contact = $cbs->findAllContacts();
-
-$sbs = new SkillsBusinessService();
-
-$skills = $sbs->findAllSkills();
-
-$edbs = new EducationBusinessService();
-
-$education = $edbs->findAllEducation();
-
-$exbs = new ExperienceBusinessService();
-
-$experience = $exbs->findAllExperience();
-
-@endphp
+<style>
+h4 {
+	text-align:left;
+}
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+/* Set a style for all buttons */
+button {
+  background-color: #D3D3D3;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  opacity: 0.9;
+}
+button:hover {
+  opacity:1;
+}
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #EC340D;
+}
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+ 
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
+</style>
 
 @section('content')
+@for($x = 0; $x < count($profile); $x++)
 <div class = "registerform">
 <table bgcolor="#A9A9A9">
     <thead>
@@ -41,12 +117,11 @@ $experience = $exbs->findAllExperience();
         </tr>
     </thead>
     <tbody>
-          @for ($i = 0; $i < count($contact); $i++)
           <tr>
-              <td> {{ $contact[$i]['PHONE_NUMBER'] }} </td>
-              <td> {{ $contact[$i]['EMAIL_ADDRESS'] }} </td>
-              <td> {{ $contact[$i]['CITY'] }} </td>
-              <td> {{ $contact[$i]['STATE'] }} </td>
+              <td> {{ $profile[$i]['PHONE_NUMBER'] }} </td>
+              <td> {{ $profile[$i]['EMAIL_ADDRESS'] }} </td>
+              <td> {{ $profile[$i]['CITY'] }} </td>
+              <td> {{ $profile[$i]['STATE'] }} </td>
 
               <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id08').style.display='block'">Edit</button>
@@ -59,13 +134,13 @@ $experience = $exbs->findAllExperience();
     <div class="container">
       <h1>Edit Contact</h1>
       <hr>
-      <input type="hidden" name = "id" value = "{{ $contact[$i]['ID'] }}">
+      <input type="hidden" name = "id" value = "{{ $profile[$i]['ID'] }}">
       
        <label for="position"><b>Contact</b></label>
-      <input type="tel" placeholder="Enter Phone Number" name="phoneNumber"  value="{{ $contact[$i]['PHONE_NUMBER'] }} " required />{{ $errors->first('phoneNumber') }}
-      <input type="text" placeholder="Enter Email Address" name="email" value="{{ $contact[$i]['EMAIL_ADDRESS'] }}" required />{{ $errors->first('email') }}
-      <input type="text" placeholder="Enter City" name="city" value="{{ $contact[$i]['CITY'] }}" required />{{ $errors->first('city') }}
-      <input type="text" placeholder="Enter State" name="state" value="{{ $contact[$i]['STATE'] }}" required />{{ $errors->first('state') }}
+      <input type="tel" placeholder="Enter Phone Number" name="phoneNumber"  value="{{ $profile[$i]['PHONE_NUMBER'] }} " required />{{ $errors->first('phoneNumber') }}
+      <input type="text" placeholder="Enter Email Address" name="email" value="{{ $profile[$i]['EMAIL_ADDRESS'] }}" required />{{ $errors->first('email') }}
+      <input type="text" placeholder="Enter City" name="city" value="{{ $profile[$i]['CITY'] }}" required />{{ $errors->first('city') }}
+      <input type="text" placeholder="Enter State" name="state" value="{{ $profile[$i]['STATE'] }}" required />{{ $errors->first('state') }}
       
 
       <div class="clearfix">
@@ -78,7 +153,6 @@ $experience = $exbs->findAllExperience();
 </td>
               
           </tr>
-         @endfor
    </tbody>
 </table>
 
@@ -89,7 +163,9 @@ $experience = $exbs->findAllExperience();
     <tbody>
  <tr>
             <th> Skill</th>
-            <th><!-- Button to open the modal -->
+        </tr>
+              <td> {{ $profile[$i]['SKILL_NAME'] }} </td>
+              <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id01').style.display='block'">Add</button>    <!-- The Modal (contains the Sign Up form) -->
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">x</span>
@@ -99,7 +175,7 @@ $experience = $exbs->findAllExperience();
     <div class="container">
       <h1>Add Skill</h1>
       <hr>
-      <input type="hidden" name = "user_id" value = "{{ session('userID') }}">
+      <input type="hidden" name = "user_id" value = "{{ $profile[$i]['USERS_ID'] }}">
       <label for="position"><b>Skill</b></label>
       <input type="text" placeholder="Enter Skill" name="skillName" required>
       
@@ -110,10 +186,8 @@ $experience = $exbs->findAllExperience();
       </div>
     </div>
   </form>
-</div></th>
-        </tr>
-          @for ($i = 0; $i < count($skills); $i++)
-              <td> {{ $skills[$i]['SKILL_NAME'] }} </td>             
+</div>
+</td>
               <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id02').style.display='block'">Edit</button>
 
@@ -125,10 +199,10 @@ $experience = $exbs->findAllExperience();
     <div class="container">
       <h1>Edit Skill</h1>
       <hr>
-      <input type="hidden" name = "id" value = "{{ $skills[$i]['ID'] }}">
+      <input type="hidden" name = "id" value = "{{ $profile[$i]['ID'] }}">
       
        <label for="position"><b>Skill</b></label>
-      <input type="text" placeholder="Enter Skill" name="skillName"  value="{{ $skills[$i]['SKILL_NAME'] }} " required>
+      <input type="text" placeholder="Enter Skill" name="skillName"  value="{{ $profile[$i]['SKILL_NAME'] }} " required>
       
 
       <div class="clearfix">
@@ -148,7 +222,7 @@ $experience = $exbs->findAllExperience();
   <input type="hidden" name="_token" value="<?php echo csrf_token() ?>" />
     <div class="container">
       <h1>Delete Skill</h1>
-      <input type="hidden" name = "id" value = "{{ $skills[$i]['ID'] }}">
+      <input type="hidden" name = "id" value = "{{ $profile[$i]['ID'] }}">
       <hr>   
  	<p>Are you sure you want to delete?</p>
       <div class="clearfix">
@@ -160,7 +234,6 @@ $experience = $exbs->findAllExperience();
 </div>
 </td>
           </tr>
-         @endfor
    </tbody>
 </table>
 
@@ -171,7 +244,14 @@ $experience = $exbs->findAllExperience();
             <th> School Name</th>
             <th> Degree</th>
             <th> Graduation Year</th>
-            <th><!-- Button to open the modal -->
+        </tr>
+    </thead>
+    <tbody>
+          <tr>
+              <td> {{ $profile[$i]['SCHOOL_NAME'] }} </td>
+              <td> {{ $profile[$i]['DEGREE'] }} </td>
+              <td> {{ $profile[$i]['GRADUATION_YEAR'] }} </td>
+              <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id03').style.display='block'">Add</button>
 
 <!-- The Modal (contains the Sign Up form) -->
@@ -179,7 +259,7 @@ $experience = $exbs->findAllExperience();
   <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">x</span>
   <form class="modal-content" action="add_edu" method="post">
   <input type="hidden" name="_token" value="<?php echo csrf_token() ?>" />
-  <input type="hidden" name="user_id" value="{{ session('userID') }}" />
+  <input type="hidden" name="user_id" value="{{ $profile[$i]['USERS_ID'] }}" />
         
     <div class="container">
       <h1>Add Education</h1>
@@ -200,15 +280,8 @@ $experience = $exbs->findAllExperience();
       </div>
     </div>
   </form>
-</div></th>
-        </tr>
-    </thead>
-    <tbody>
-          @for ($i = 0; $i < count($education); $i++)
-          <tr>
-              <td> {{ $education[$i]['SCHOOL_NAME'] }} </td>
-              <td> {{ $education[$i]['DEGREE'] }} </td>
-              <td> {{ $education[$i]['GRADUATION_YEAR'] }} </td>
+</div>
+</td>
               <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id04').style.display='block'">Edit</button>
 
@@ -219,17 +292,17 @@ $experience = $exbs->findAllExperience();
   <input type="hidden" name="_token" value="<?php echo csrf_token() ?>" />
     <div class="container">
       <h1>Edit Education</h1>
-      <input type="hidden" name = "id" value = "{{$education[$i]['ID']}}">
+      <input type="hidden" name = "id" value = "{{$profile[$i]['ID']}}">
       <hr>
       
       <label for="position"><b>School Name</b></label>
-      <input type="text" placeholder="Enter School Name" name="schoolName" value="{{$education[$i]['SCHOOL_NAME']}}" required>
+      <input type="text" placeholder="Enter School Name" name="schoolName" value="{{$profile[$i]['SCHOOL_NAME']}}" required>
 
       <label for="company"><b>Degree</b></label>
-      <input type="text" placeholder="Enter Degree" name="degree" value="{{$education[$i]['DEGREE']}}"required>
+      <input type="text" placeholder="Enter Degree" name="degree" value="{{$profile[$i]['DEGREE']}}"required>
 
       <label for="Location"><b>Graduation Year</b></label>
-      <input type="text" placeholder="Enter Graduation Year" name="graduationYear" value="{{$education[$i]['GRADUATION_YEAR']}}" required>      
+      <input type="text" placeholder="Enter Graduation Year" name="graduationYear" value="{{$profile[$i]['GRADUATION_YEAR']}}" required>      
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id04').style.display='none'" class="cancelbtn">Cancel</button>
@@ -248,7 +321,7 @@ $experience = $exbs->findAllExperience();
   <input type="hidden" name="_token" value="<?php echo csrf_token() ?>" />
     <div class="container">
       <h1>Delete Education</h1>
-      <input type="hidden" name = "id" value = "{{ $education[$i]['ID'] }}">
+      <input type="hidden" name = "id" value = "{{ $profile[$i]['ID'] }}">
       <hr>   
  	<p>Are you sure you want to delete?</p>
       <div class="clearfix">
@@ -260,7 +333,6 @@ $experience = $exbs->findAllExperience();
 </div>
 </td>
           </tr>
-         @endfor
    </tbody>
 </table>
 
@@ -273,7 +345,17 @@ $experience = $exbs->findAllExperience();
             <th> Location</th>
             <th> Years Active</th>
             <th> Duties</th>
-            <th>  <!-- Button to open the modal -->
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+          <tr>
+              <td> {{ $profile[$i]['POSITION'] }} </td>
+              <td> {{ $profile[$i]['COMPANY'] }} </td>
+              <td> {{ $profile[$i]['LOCATION'] }} </td>
+              <td> {{ $profile[$i]['YEARS_ACTIVE'] }} </td>
+              <td> {{ $profile[$i]['DUTIES'] }} </td>
+              <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id05').style.display='block'">Add</button>    <!-- The Modal (contains the Sign Up form) -->
 <div id="id05" class="modal">
   <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">x</span>
@@ -282,7 +364,7 @@ $experience = $exbs->findAllExperience();
     <div class="container">
       <h1>Add Experience</h1>
       <hr>
-      <input type="hidden" name = "id" value = "{{ session('userID') }}">
+      <input type="hidden" name = "id" value = "{{ $profile[$i]['USERS_ID'] }}">
       
       <label for="position"><b>Position</b></label>
       <input type="text" placeholder="Enter Position" name="position" required>
@@ -297,7 +379,7 @@ $experience = $exbs->findAllExperience();
       <input type="text" placeholder="Enter Years Active" name="yearsActive" required>
 
       <label for="Location"><b>Duties</b></label>
-      <input type="text" placeholder="Duties" name="duties" required>
+      <input type="text" placeholder="Duties" name="duties1" required>
       
 
       <div class="clearfix">
@@ -306,17 +388,8 @@ $experience = $exbs->findAllExperience();
       </div>
     </div>
   </form>
-</div> </th>
-        </tr>
-    </thead>
-    <tbody>
-          @for ($i = 0; $i < count($experience); $i++)
-          <tr>
-              <td> {{ $experience[$i]['POSITION'] }} </td>
-              <td> {{ $experience[$i]['COMPANY'] }} </td>
-              <td> {{ $experience[$i]['LOCATION'] }} </td>
-              <td> {{ $experience[$i]['YEARS_ACTIVE'] }} </td>
-              <td> {{ $experience[$i]['DUTIES'] }} </td>
+</div>
+</td>
               <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id06').style.display='block'">Edit</button>
 
@@ -328,22 +401,22 @@ $experience = $exbs->findAllExperience();
     <div class="container">
       <h1>Edit Experience</h1>
       <hr>
-      <input type="hidden" name = "id" value = "{{ $experience[$i]['ID'] }}">
+      <input type="hidden" name = "id" value = "{{ $profile[$i]['ID'] }}">
       
       <label for="position"><b>Position</b></label>
-      <input type="text" placeholder="Enter Position" name="position" value="{{ $experience[$i]['POSITION'] }}" required>
+      <input type="text" placeholder="Enter Position" name="position" value="{{ $profile[$i]['POSITION'] }}" required>
 
       <label for="company"><b>Company</b></label>
-      <input type="text" placeholder="Enter Company" name="company" value="{{ $experience[$i]['COMPANY'] }}" required>
+      <input type="text" placeholder="Enter Company" name="company" value="{{ $profile[$i]['COMPANY'] }}" required>
 
       <label for="Location"><b>Location</b></label>
-      <input type="text" placeholder="Enter Location" name="location" value="{{ $experience[$i]['LOCATION'] }}" required>
+      <input type="text" placeholder="Enter Location" name="location" value="{{ $profile[$i]['LOCATION'] }}" required>
       
       <label for="yearsActive"><b>Years Active</b></label>
-      <input type="text" placeholder="Enter Years Active" name="yearsActive" value="{{ $experience[$i]['YEARS_ACTIVE'] }}" required>
+      <input type="text" placeholder="Enter Years Active" name="yearsActive" value="{{ $profile[$i]['YEARS_ACTIVE'] }}" required>
 
       <label for="Location"><b>Duties</b></label>
-      <input type="text" placeholder="Duties" name="duties" value="{{ $experience[$i]['DUTIES'] }}" required>
+      <input type="text" placeholder="Duties" name="duties" value="{{ $profile[$i]['DUTIES'] }}" required>
       
 
       <div class="clearfix">
@@ -363,7 +436,7 @@ $experience = $exbs->findAllExperience();
   <input type="hidden" name="_token" value="<?php echo csrf_token() ?>" />
     <div class="container">
       <h1>Delete Experience</h1>
-      <input type="hidden" name = "id" value = "{{ $experience[$i]['ID'] }}">
+      <input type="hidden" name = "id" value = "{{ $profile[$i]['ID'] }}">
       <hr>   
  	<p>Are you sure you want to delete?</p>
       <div class="clearfix">
@@ -375,7 +448,6 @@ $experience = $exbs->findAllExperience();
 </div>
 </td>
           </tr>
-         @endfor
    </tbody>
 </table>
 </div>
@@ -385,7 +457,6 @@ $experience = $exbs->findAllExperience();
 <script>
 // Get the modal
 var modal = document.getElementById('id01');
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
@@ -394,4 +465,5 @@ window.onclick = function(event) {
 }
 </script>
 
+@endfor
 @endsection
