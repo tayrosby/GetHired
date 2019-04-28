@@ -1,8 +1,8 @@
 <?php
 /*
  * Authors: Taylor Rosby
- * Date: February 24, 2019
- * Description: UserBusinessService is responsible for handling User related requests.
+ * Date: March 16, 2019
+ * Description: ProfileBusinessService is responsible for handling profile related requests.
  */
 namespace App\Services\Business;
 use App\Services\Data\SkillsDataService;
