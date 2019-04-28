@@ -4,11 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\Business\JobBusinessService;
+use App\Services\Utility\ILoggerService;
 use App\Model\DTO;
 use Exception;
 
 class JobRestController extends Controller
 {
+    protected $logger;
+    
+    /**
+     *
+     * @param ILoggerService $logger
+     */
+    public function __construct(ILoggerService $logger){
+        $this->logger = $logger;
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -18,6 +29,7 @@ class JobRestController extends Controller
     {
         
         try {
+            $this->logger->info("Entering JobRestController.index()");
             //call service to get all users
             $service = new JobBusinessService();
             $jobs = $service->findAllJobs();
@@ -34,6 +46,7 @@ class JobRestController extends Controller
             $json = json_encode($dto);
             
             //return json back to caller
+            $this->logger->info("Exiting JobRestController.index()");
             return $json;
             
         }
@@ -56,6 +69,7 @@ class JobRestController extends Controller
     public function show($id)
     {
         try {
+            $this->logger->info("Entering JobRestController.show()");
             //call service to get users by ID
             $service = new JobBusinessService();
             $job = $service->findJobByID($id);
@@ -72,12 +86,13 @@ class JobRestController extends Controller
             $json = json_encode($dto);
             
             //return json back to caller
+            $this->logger->info("Exiting JobRestController.show()");
             return $json;
             
         }
         catch (Exception $e){
             //log exception
-            //MyLogger2::error("Exception : ", array("message" => $e->getMessage()));
+            $this->logger->error("Exception : ", array("message" => $e->getMessage()));
             //return an error back to the user in the DTO
             $dto = new DTO(-2, $e->getMessage(), "");
             return json_encode($dto);
@@ -86,3 +101,4 @@ class JobRestController extends Controller
     
     }
 }
+
