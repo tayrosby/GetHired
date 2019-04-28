@@ -87,7 +87,7 @@ class ContactController extends Controller
         try {
         $this->logger->info("Entering ContactController.editContact()");
         //validate the form data(will redirect back to login view if errors)
-        $this->validateForm($request);
+        //$this->validateForm($request);
         
         //takes information from the user
         $id = $request->input('id');
@@ -230,7 +230,7 @@ class ContactController extends Controller
         
         $rules = ['phoneNumber' => 'Required | Between:1,11 | Numeric',
             'email' => 'Required | email',
-            'city' => 'Required | Between:5,50',
+            'city' => 'Required | Between:4,50',
             'state' => 'Required | Between:5,50'];
         
         //run data validation rules
