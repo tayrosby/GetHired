@@ -48,7 +48,7 @@ $groupMembers = $gbs->findAllGroupMembers();
 						@endfor
 						 </td>
 			</form>
-			@if(session('userID') != $groupMembers[$i]['USERS_ID'])
+			@if(session('userID') != $groupMembers[$i]['USERS_ID'] || $groupMembers[$i]['USERS_ID'] == NULL)
 					<td><input form="joinGroup{{$group[$i]['ID']}}" class="btn" type="submit" value="Join Group"/></td>
     
 			 @else
