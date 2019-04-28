@@ -3,10 +3,10 @@
 
 @section('content')
 
-@foreach($profile as $profiles)
+@for ($i = 0; $i < count($profile); $i++)
 
-{{ $profiles['user']['firstName'] }}
-{{ $profiles['user']['lastName'] }}
+{{ $profile['user']['firstName'] }}
+{{ $profile['user']['lastName'] }}
 
 <div class = "registerform">
 <table bgcolor="#A9A9A9">
