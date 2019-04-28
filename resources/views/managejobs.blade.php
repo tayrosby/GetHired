@@ -93,9 +93,7 @@
 				</tr>
  @endfor
 		</tbody>
-		
 	</table>
-</div>
 
 <script>
 // Get the modal
@@ -108,4 +106,5 @@ window.onclick = function(event) {
 }
 </script>
 
+</div>
 @endsection
