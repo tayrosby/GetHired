@@ -127,7 +127,7 @@ hr {
 @section('content')
 <div class = "registerform">
 
-<h1> Welcome {{ $user['FIRSTNAME'] }} {{ $user['LASTNAME'] }}</h1>
+<h1> Welcome {{ $user['user']['FIRSTNAME'] }} {{ $user['user']['LASTNAME'] }}</h1>
 <table bgcolor="#A9A9A9">
     <thead>
     <h4>Contact</h4>
