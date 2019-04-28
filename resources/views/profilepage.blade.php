@@ -16,7 +16,7 @@
     </thead>
     <tbody>
           <tr>
-              <td> {{ $profile[$i]['PHONE_NUMBER'] }} </td>
+              <td> {{ $profile[$i]['phoneNumber'] }} </td>
               <td> {{ $profile[$i]['EMAIL_ADDRESS'] }} </td>
               <td> {{ $profile[$i]['CITY'] }} </td>
               <td> {{ $profile[$i]['STATE'] }} </td>
