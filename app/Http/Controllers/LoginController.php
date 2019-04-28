@@ -54,7 +54,7 @@ class LoginController extends Controller
         if ($success)
         {
             $this->logger->info("Exit LoginController::index() with login passing");
-            return view('homepage');
+            return view('profilepage');
         }
         // if login is unsuccessful, keep user at the login page
         else
@@ -86,7 +86,7 @@ class LoginController extends Controller
         $this->logger->info("Entering LoginController.logout()");
         $request->session()->forget('userID');
         $this->logger->info("Exiting LoginController.logout()");
-        return view('homepage');
+        return view('loginpage');
     }
     
     /**
