@@ -40,7 +40,9 @@ public function getProfileByID($id)
     $eduResult = $eduService->findEducationByID($id);
     $xpResult = $xpService->findExperienceByID($id);
     
-    $result = ['user' => $userResult['user']['FIRSTNAME'], $userResult['user']['LASTNAME'], 'skills' => $skillsResult, 'contact' => $contactResult, 'education' => $eduResult, 'experience' => $xpResult];
+    $user = ['userFN' => $userResult['user']['FIRSTNAME'], 'userLN' => $userResult['user']['LASTNAME'] ];
+    
+    $result = ['user' => $user, 'skills' => $skillsResult, 'contact' => $contactResult, 'education' => $eduResult, 'experience' => $xpResult];
     //closes the connection
     $conn = null;
     
