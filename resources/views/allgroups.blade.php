@@ -20,7 +20,7 @@ $groupMembers = $gbs->findAllGroupMembers();
 
 <table class = "registerform">
  <thead>
-    <h4>Groups</h4>
+    <h1>Groups</h1>
         <tr>
             <th> Name</th>
             <th> Interest</th>
