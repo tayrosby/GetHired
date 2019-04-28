@@ -43,7 +43,7 @@ class AdminController extends Controller
         //log the exception and display exception view
         $this->logger->error("Exception: ", array("message" => $e->getMessage()));
         $data = ['errorMSG' => $e->getMessage()];
-        return ($data);
+        rreturn view('exception')->with($data);
     }
     }
     
@@ -72,7 +72,7 @@ class AdminController extends Controller
             //log the exception and display exception view
             $this->logger->error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
-            return ($data);
+            return view('exception')->with($data);
         }
     }
 
@@ -101,7 +101,7 @@ class AdminController extends Controller
             //log the exception and display exception view
             $this->logger->error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
-            return ($data);
+            return view('exception')->with($data);
         }
     }
 }
