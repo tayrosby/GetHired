@@ -31,7 +31,7 @@ Route::get('/register', function()
 });
 Route::post('/registrationpage', 'RegisterController@register');
 
-Route::get('/profile', 'ProfileController@showProfile');
+Route::post('/profile', 'ProfileController@showProfile');
 
 Route::get('/profileAdmin', 'ProfileController@showProfileAdmin');
 
