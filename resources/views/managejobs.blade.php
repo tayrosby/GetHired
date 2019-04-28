@@ -1,14 +1,5 @@
-@php
-use App\Services\Business\JobBusinessService;;
-@endphp
-
 @extends('layouts.maintemplate')
 @section('title', 'Get Hired! | Manage Jobs')
-
-@php
-$jbs = new JobBusinessService();
-$job = $jbs->findAllJobs();
-@endphp
 
 @section('content')
 <div class = "loginform">
@@ -28,7 +19,7 @@ $job = $jbs->findAllJobs();
 		</thead>
 		
 		<tbody>
-			 @for ($i = 0; $i < count($job); $i++)
+			 @for ($i = 0; $i < count($jobs); $i++)
           <tr>
               <td> {{ $job[$i]['POSITION'] }} </td>
               <td> {{ $job[$i]['COMPANY'] }} </td>
