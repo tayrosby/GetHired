@@ -231,4 +231,4 @@ class EducationController extends Controller
         $this->validate($request, $rules);
     }
 }
-}
+
