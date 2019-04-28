@@ -18,9 +18,14 @@ class ContactController extends Controller
 {
     protected $logger;
     
+    /**
+     * 
+     * @param ILoggerService $logger
+     */
     public function __construct(ILoggerService $logger){
         $this->logger = $logger;
     }
+    
     /**
      * /adds the contact information to the database
      * @param Request $request
