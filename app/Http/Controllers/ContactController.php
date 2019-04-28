@@ -10,14 +10,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\UserContactModel;
 use App\Services\Business\ContactBusinessService;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Log;
-use Exception;
 use App\Services\Utility\ILoggerService;
+use Illuminate\Validation\ValidationException;
+use Exception;
 
 class ContactController extends Controller
 {
- 
     protected $logger;
     
     public function __construct(ILoggerService $logger){
@@ -32,7 +30,7 @@ class ContactController extends Controller
     public function addContact(Request $request)
     {
         try {
-            
+        $this->logger->info("Entering ContactController.addContact()");
         //validate the form data(will redirect back to login view if errors)
         $this->validateForm($request);
         
@@ -55,13 +53,15 @@ class ContactController extends Controller
         //if it fails or succeeds return to the profile page
         if($success)
         {
+            $this->logger->info("Exiting ContactController.addContact() with success");
             return view("profilepage");
         }
         else
         {
+            $this->logger->info("Exiting ContactController.addContact() with failure");
             return view("profilepage");
         }
-       }
+    }
        catch (ValidationException $e1){
            //catch and rethrow the data validation exceptions (so we can catch all others in our next exception catch block)
            throw $e1;
@@ -69,9 +69,9 @@ class ContactController extends Controller
        catch (Exception $e){
            //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
            //log the exception and display exception view
-           Log::error("Exception: ", array("message" => $e->getMessage()));
+           $this->logger->error("Exception: ", array("message" => $e->getMessage()));
            $data = ['errorMSG' => $e->getMessage()];
-           return view('exception')->with($data);
+           return ($data);
        }
         
     }
@@ -85,7 +85,7 @@ class ContactController extends Controller
     public function editContact(Request $request)
     {
         try {
-            
+        $this->logger->info("Entering ContactController.editContact()");
         //validate the form data(will redirect back to login view if errors)
         $this->validateForm($request);
         
@@ -108,10 +108,12 @@ class ContactController extends Controller
         //if it fails or succeeds return to the profile page
         if($success)
         {
+            $this->logger->info("Exiting ContactController.editContact() with sucess");
             return view("profilepage");
         }
         else
         {
+            $this->logger->info("Exiting ContactController.editContact() with failure");
             return view("profilepage");
         }
         }
@@ -122,9 +124,9 @@ class ContactController extends Controller
         catch (Exception $e){
             //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
             //log the exception and display exception view
-            Log::error("Exception: ", array("message" => $e->getMessage()));
+            $this->logger->error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
-            return view('exception')->with($data);
+            return ($data);
         }
     }
     
@@ -137,6 +139,7 @@ class ContactController extends Controller
     public function deleteContact(Request $request)
     {
         try {
+        $this->logger->info("Entering ContactController.deleteContact()");
         //validate the form data(will redirect back to login view if errors)
         $this->validateForm($request);
         
@@ -159,10 +162,12 @@ class ContactController extends Controller
         //if it fails or succeeds return to the profile page
         if($success)
         {
+            $this->logger->info("Exiting ContactController.deleteContact() with sucess");
             return view("profilepage");
         }
         else
         {
+            $this->logger->info("Exiting ContactController.deleteContact() with failure");
             return view("profilepage");
         }
       }
@@ -173,9 +178,9 @@ class ContactController extends Controller
       catch (Exception $e){
           //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
           //log the exception and display exception view
-          Log::error("Exception: ", array("message" => $e->getMessage()));
+          $this->logger->error("Exception: ", array("message" => $e->getMessage()));
           $data = ['errorMSG' => $e->getMessage()];
-          return view('exception')->with($data);
+          return ($data);
       }
     }
     
@@ -187,7 +192,7 @@ class ContactController extends Controller
     public function findAllContact(Request $request)
     {
         try {
-        
+        $this->logger->info("Entering ContactController.findAllContact()");
             //calls the business service
         $service = new ContactBusinessService();
         
@@ -197,10 +202,12 @@ class ContactController extends Controller
        //if it fails or succeeds return to the profile page
         if($success)
         {
+            $this->logger->info("Exiting ContactController.findAllContact() with sucess");
             return view("profilepage");
         }
         else
         {
+            $this->logger->info("Exiting ContactController.findAllContact() with failure");
             return view("profilepage");
         }
         
@@ -208,9 +215,9 @@ class ContactController extends Controller
         catch (Exception $e){
             //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
             //log the exception and display exception view
-            Log::error("Exception: ", array("message" => $e->getMessage()));
+            $this->logger->error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
-            return view('exception')->with($data);
+            return ($data);
         }
     }
     
@@ -218,7 +225,7 @@ class ContactController extends Controller
      * validates the data in the form
      * @param Request $request
      */
-     private function validateForm(Request $request){
+    private function validateForm(Request $request){
         //setup data validation rules for form
         
         $rules = ['phoneNumber' => 'Required | Between:1,11 | Numeric',
