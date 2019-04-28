@@ -11,12 +11,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\UserSkillsModel;
 use App\Services\Business\SkillsBusinessService;
+use App\Services\Utility\ILoggerService;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Log;
 use Exception;
 
 class SkillsController extends Controller
 {
+    /**
+     *
+     * @param ILoggerService $logger
+     */
+    public function __construct(ILoggerService $logger){
+        $this->logger = $logger;
+    }
+    
     /**
      * adds skill information to the database
      * @param Request $request
@@ -26,33 +34,35 @@ class SkillsController extends Controller
     public function addSkill(Request $request)
     {
         try {
-            
+            $this->logger->info("Entering SkillsController.addSkill()");
             //validate the form data(will redirect back to login view if errors)
             $this->validateForm($request);
             
-           //takes information from the user
-        $skillName = $request->input('skillName');
-        $id = $request->input('user_id');
-        
-        //creates a skills object
-        $skills = new UserSkillsModel($id, $skillName);
-        
-        //calls the business service
-        $service = new SkillsBusinessService();
-        
-        //passes the model to the add method in the business service
-        $success = $service->addSkills($skills);
-        
-        //fail or succeed return to the profile page
-        if($success)
-        {
-            return view("profilepage");
-        }
-        else
-        {
-            return view("profilepage");
-        }
-        
+            //takes information from the user
+            $skillName = $request->input('skillName');
+            $id = $request->input('user_id');
+            
+            //creates a skills object
+            $skills = new UserSkillsModel($id, $skillName);
+            
+            //calls the business service
+            $service = new SkillsBusinessService();
+            
+            //passes the model to the add method in the business service
+            $success = $service->addSkills($skills);
+            
+            //fail or succeed return to the profile page
+            if($success)
+            {
+                $this->logger->info("Exiting SkillsController.addSkill() with success");
+                return view("profilepage");
+            }
+            else
+            {
+                $this->logger->info("Exiting SkillsController.addSkill() with failure");
+                return view("profilepage");
+            }
+            
         }
         catch (ValidationException $e1){
             //catch and rethrow the data validation exceptions (so we can catch all others in our next exception catch block)
@@ -61,7 +71,7 @@ class SkillsController extends Controller
         catch (Exception $e){
             //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
             //log the exception and display exception view
-            Log::error("Exception: ", array("message" => $e->getMessage()));
+            $this->logger->error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
             return view('exception')->with($data);
         }
@@ -76,32 +86,34 @@ class SkillsController extends Controller
     public function editSkill(Request $request)
     {
         try {
-            
+            $this->logger->info("Entering SkillsController.editSkill()");
             //validate the form data(will redirect back to login view if errors)
             $this->validateForm($request);
             
             //takes information from the user
-        $skillName = $request->input('skillName');
-        $id = $request->input('id');
-        
-        //creates a skills object
-        $skills = new UserSkillsModel($id, $skillName);
-        
-        //calls the business service
-        $service = new SkillsBusinessService();
-        
-        //passes the model to the edit method in the business service
-        $success = $service->editSkills($skills);
-        
-        //fail or succeed return to the profile page
-        if($success)
-        {
-            return view("profilepage");
-        }
-        else
-        {
-            return view("profilepage");
-        }
+            $skillName = $request->input('skillName');
+            $id = $request->input('id');
+            
+            //creates a skills object
+            $skills = new UserSkillsModel($id, $skillName);
+            
+            //calls the business service
+            $service = new SkillsBusinessService();
+            
+            //passes the model to the edit method in the business service
+            $success = $service->editSkills($skills);
+            
+            //fail or succeed return to the profile page
+            if($success)
+            {
+                $this->logger->info("Exiting SkillsController.editSkill() with success");
+                return view("profilepage");
+            }
+            else
+            {
+                $this->logger->info("Exiting SkillsController.editSkill() with failure");
+                return view("profilepage");
+            }
         }
         catch (ValidationException $e1){
             //catch and rethrow the data validation exceptions (so we can catch all others in our next exception catch block)
@@ -110,7 +122,7 @@ class SkillsController extends Controller
         catch (Exception $e){
             //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
             //log the exception and display exception view
-            Log::error("Exception: ", array("message" => $e->getMessage()));
+            $this->logger->error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
             return view('exception')->with($data);
         }
@@ -124,33 +136,36 @@ class SkillsController extends Controller
     public function deleteSkill(Request $request)
     {
         try {
+            $this->logger->info("Entering SkillsController.deleteSkill()");
             //takes information from the user
-        $skillName = $request->input('skillName');
-        $id = $request->input('id');
-        
-        //creates a skills object
-        $skills = new UserSkillsModel($id, $skillName);
-        
-        //calls the business service
-        $service = new SkillsBusinessService();;
-        
-        //passes the model to the delete method in the business service
-        $success = $service->deleteSkills($skills);
-        
-        //fail or succeed return to the profile page
-        if($success)
-        {
-            return view("profilepage");
-        }
-        else
-        {
-            return view("profilepage");
-        }
+            $skillName = $request->input('skillName');
+            $id = $request->input('id');
+            
+            //creates a skills object
+            $skills = new UserSkillsModel($id, $skillName);
+            
+            //calls the business service
+            $service = new SkillsBusinessService();;
+            
+            //passes the model to the delete method in the business service
+            $success = $service->deleteSkills($skills);
+            
+            //fail or succeed return to the profile page
+            if($success)
+            {
+                $this->logger->info("Exiting SkillsController.deleteSkill() with success");
+                return view("profilepage");
+            }
+            else
+            {
+                $this->logger->info("Exiting SkillsController.deleteSkill() with failure");
+                return view("profilepage");
+            }
         }
         catch (Exception $e){
             //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
             //log the exception and display exception view
-            Log::error("Exception: ", array("message" => $e->getMessage()));
+            $this->logger->error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
             return view('exception')->with($data);
         }
@@ -162,28 +177,31 @@ class SkillsController extends Controller
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
      */
     public function findAllSkill(Request $request)
-    {   
+    {
         try {
+            $this->logger->info("Entering SkillsController.findAllSkill()");
             //calls the business service
-        $service = new SkillsBusinessService();
-        
-        //calls the find all method in the business service
-        $success = $service->findAllSkills();
-        
-        //fail or succeed return to the profile page
-        if($success)
-        {
-            return view("profilepage");
-        }
-        else
-        {
-            return view("profilepage");
-        }
+            $service = new SkillsBusinessService();
+            
+            //calls the find all method in the business service
+            $success = $service->findAllSkills();
+            
+            //fail or succeed return to the profile page
+            if($success)
+            {
+                $this->logger->info("Exiting SkillsController.findAllSkill() with success");
+                return view("profilepage");
+            }
+            else
+            {
+                $this->logger->info("Exiting SkillsController.findAllSkill() with failure");
+                return view("profilepage");
+            }
         }
         catch (Exception $e){
             //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
             //log the exception and display exception view
-            Log::error("Exception: ", array("message" => $e->getMessage()));
+            $this->logger->error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
             return view('exception')->with($data);
         }
@@ -202,4 +220,3 @@ class SkillsController extends Controller
         $this->validate($request, $rules);
     }
 }
-
