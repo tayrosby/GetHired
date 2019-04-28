@@ -123,7 +123,7 @@ class JobController extends Controller
             else
             {
                 $this->logger->info("Exiting JobController.editJob() with failure");
-                return view("managejobs");
+                return redirect("/managejob");
             }
         }
         catch (ValidationException $e1){
@@ -162,12 +162,12 @@ class JobController extends Controller
             if($success)
             {
                 $this->logger->info("Exiting JobController.deleteJob() with success");
-                return view("managejobs");
+                return redirect("/managejob");
             }
             else
             {
                 $this->logger->info("Exiting JobController.deleteJob() with failure");
-                return view("managejobs");
+                return redirect("/managejob");
             }
         }
         catch (Exception $e){
