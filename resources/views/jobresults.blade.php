@@ -20,8 +20,8 @@
             <input type="hidden" name = "id" value = "{{ $jobs[$x]['ID'] }}">
             
             <button type = 'submit' class='btn btn-link'>{{ $jobs[$x]['POSITION'] }}</button><br>
-            <input type="text" value="{{ $jobs[$x]['COMPANY'] }}"><br>
-            <input type="text" value="{{ $jobs[$x]['LOCATION'] }}"><br>
+            {{ $jobs[$x]['COMPANY'] }}<br>
+            {{ $jobs[$x]['LOCATION'] }}<br>
             </div>
              <hr>
              </form>
