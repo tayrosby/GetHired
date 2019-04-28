@@ -43,7 +43,7 @@ class AdminController extends Controller
         //log the exception and display exception view
         $this->logger->error("Exception: ", array("message" => $e->getMessage()));
         $data = ['errorMSG' => $e->getMessage()];
-        rreturn view('exception')->with($data);
+        return view('exception')->with($data);
     }
     }
     
