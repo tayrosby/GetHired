@@ -21,7 +21,7 @@ class ProfileController extends Controller
             
             $data = ['profile' => $profile];
             // redirects to the profile page
-            return redirect("/profilepage")->with($data);
+            return view("profilepage")->with($data);
         }
         
         catch (Exception $e){
@@ -45,7 +45,7 @@ class ProfileController extends Controller
             
             $data = ['profile' => $profile];
             // redirects to the profile page
-            return redirect("/profilepage")->with($data);
+            return view("profilepage")->with($data);
         }
         
         catch (Exception $e){
