@@ -19,6 +19,9 @@ class ProfileController extends Controller
             
             $profile = $service->getProfileByID($id);
             
+            print_r($profile);
+            die();
+            
             $data = ['profile' => $profile];
             // redirects to the profile page
             return view("profilepage")->with($data);
