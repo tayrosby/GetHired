@@ -176,9 +176,15 @@ class SkillsDataService
         }
     }
     
+    /**
+     * 
+     * @param $id
+     * @throws DatabaseException
+     * @return NULL|\App\Model\UserSkillsModel
+     */
     public function findSkillByID($id) {
         try {
-            //MyLogger1::info("Entering SecurityDAO.findByUserID()");
+            Log::info("Entering SkillsDataService.deleteSkill()");
             
             //select all users
             $sth = $this->conn->prepare('SELECT * FROM SKILLS WHERE USERS_ID = :id');
@@ -187,7 +193,7 @@ class SkillsDataService
             
             //return an array of users
             if($sth->rowCount() == 0){
-                //MyLogger1::info("Exit SecurityDAO.findByUserID() with 0 row count");
+                Log::info("Leaving SkillsDataService.deleteSkill() with 0 rowCount");
                 return null;
             }
             else {
@@ -195,13 +201,13 @@ class SkillsDataService
                 $row = $sth->fetch(PDO::FETCH_ASSOC);
                 $skill = new UserSkillsModel($row["ID"], $row["SKILL_NAME"]);
                 
-                //MyLogger1::info("Exit SecurityDAO.findByUserID() with user");
+                Log::info("Leaving SkillsDataService.deleteSkill() with skill");
                 return $skill;
             }
         } catch (PDOException $e) {
             //BEST PRACTICE Catch all exceptions (do not swallow exceptions), log the exception,
             //do not throw technology specific exceptions, and throw a custom exception
-            //MyLogger1::error("Exception SecurityDAO:findByUserID(): ", array("message" => $e->getMessage()));
+            Log::error("Exception: ", array("message" => $e->getMessage()));
             throw new DatabaseException("Database Exception: " . $e->getMessage(), 0, $e);
         }
     }
