@@ -4,8 +4,8 @@
 @section('content')
 @for($i = 0; $i < count($profile); $i++)
 
-{{ $profile[$i]['FIRSTNAME'] }}
-{{ $profile[$i]['LASTNAME'] }}
+{{ $profile['user']['firstName'] }}
+{{ $profile['user']['lastName'] }}
 
 <div class = "registerform">
 <table bgcolor="#A9A9A9">
