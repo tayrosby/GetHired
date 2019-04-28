@@ -187,10 +187,7 @@ hr {
     <tbody>
  <tr>
             <th> Skill</th>
-        </tr>
-          @for ($i = 0; $i < count($skills); $i++)
-              <td> {{ $skills[$i]['SKILL_NAME'] }} </td>
-              <td> <!-- Button to open the modal -->
+            <th><!-- Button to open the modal -->
 <button onclick="document.getElementById('id01').style.display='block'">Add</button>    <!-- The Modal (contains the Sign Up form) -->
 <div id="id01" class="modal">
   <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">x</span>
@@ -200,7 +197,7 @@ hr {
     <div class="container">
       <h1>Add Skill</h1>
       <hr>
-      <input type="hidden" name = "user_id" value = "{{ $skills[$i]['USERS_ID'] }}">
+      <input type="hidden" name = "user_id" value = "{{ session('userID') }}">
       <label for="position"><b>Skill</b></label>
       <input type="text" placeholder="Enter Skill" name="skillName" required>
       
@@ -211,8 +208,10 @@ hr {
       </div>
     </div>
   </form>
-</div>
-</td>
+</div></th>
+        </tr>
+          @for ($i = 0; $i < count($skills); $i++)
+              <td> {{ $skills[$i]['SKILL_NAME'] }} </td>             
               <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id02').style.display='block'">Edit</button>
 
@@ -270,15 +269,7 @@ hr {
             <th> School Name</th>
             <th> Degree</th>
             <th> Graduation Year</th>
-        </tr>
-    </thead>
-    <tbody>
-          @for ($i = 0; $i < count($education); $i++)
-          <tr>
-              <td> {{ $education[$i]['SCHOOL_NAME'] }} </td>
-              <td> {{ $education[$i]['DEGREE'] }} </td>
-              <td> {{ $education[$i]['GRADUATION_YEAR'] }} </td>
-              <td> <!-- Button to open the modal -->
+            <th><!-- Button to open the modal -->
 <button onclick="document.getElementById('id03').style.display='block'">Add</button>
 
 <!-- The Modal (contains the Sign Up form) -->
@@ -286,7 +277,7 @@ hr {
   <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">x</span>
   <form class="modal-content" action="add_edu" method="post">
   <input type="hidden" name="_token" value="<?php echo csrf_token() ?>" />
-  <input type="hidden" name="user_id" value="{{ $education[$i]['USERS_ID'] }}" />
+  <input type="hidden" name="user_id" value="{{ session('userID') }}" />
         
     <div class="container">
       <h1>Add Education</h1>
@@ -307,8 +298,15 @@ hr {
       </div>
     </div>
   </form>
-</div>
-</td>
+</div></th>
+        </tr>
+    </thead>
+    <tbody>
+          @for ($i = 0; $i < count($education); $i++)
+          <tr>
+              <td> {{ $education[$i]['SCHOOL_NAME'] }} </td>
+              <td> {{ $education[$i]['DEGREE'] }} </td>
+              <td> {{ $education[$i]['GRADUATION_YEAR'] }} </td>
               <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id04').style.display='block'">Edit</button>
 
@@ -373,18 +371,7 @@ hr {
             <th> Location</th>
             <th> Years Active</th>
             <th> Duties</th>
-            <th> </th>
-        </tr>
-    </thead>
-    <tbody>
-          @for ($i = 0; $i < count($experience); $i++)
-          <tr>
-              <td> {{ $experience[$i]['POSITION'] }} </td>
-              <td> {{ $experience[$i]['COMPANY'] }} </td>
-              <td> {{ $experience[$i]['LOCATION'] }} </td>
-              <td> {{ $experience[$i]['YEARS_ACTIVE'] }} </td>
-              <td> {{ $experience[$i]['DUTIES'] }} </td>
-              <td> <!-- Button to open the modal -->
+            <th>  <!-- Button to open the modal -->
 <button onclick="document.getElementById('id05').style.display='block'">Add</button>    <!-- The Modal (contains the Sign Up form) -->
 <div id="id05" class="modal">
   <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">x</span>
@@ -393,7 +380,7 @@ hr {
     <div class="container">
       <h1>Add Experience</h1>
       <hr>
-      <input type="hidden" name = "id" value = "{{ $experience[$i]['USERS_ID'] }}">
+      <input type="hidden" name = "id" value = "{{ session('userID') }}">
       
       <label for="position"><b>Position</b></label>
       <input type="text" placeholder="Enter Position" name="position" required>
@@ -408,7 +395,7 @@ hr {
       <input type="text" placeholder="Enter Years Active" name="yearsActive" required>
 
       <label for="Location"><b>Duties</b></label>
-      <input type="text" placeholder="Duties" name="duties1" required>
+      <input type="text" placeholder="Duties" name="duties" required>
       
 
       <div class="clearfix">
@@ -417,8 +404,17 @@ hr {
       </div>
     </div>
   </form>
-</div>
-</td>
+</div> </th>
+        </tr>
+    </thead>
+    <tbody>
+          @for ($i = 0; $i < count($experience); $i++)
+          <tr>
+              <td> {{ $experience[$i]['POSITION'] }} </td>
+              <td> {{ $experience[$i]['COMPANY'] }} </td>
+              <td> {{ $experience[$i]['LOCATION'] }} </td>
+              <td> {{ $experience[$i]['YEARS_ACTIVE'] }} </td>
+              <td> {{ $experience[$i]['DUTIES'] }} </td>
               <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id06').style.display='block'">Edit</button>
 
@@ -487,6 +483,7 @@ hr {
 <script>
 // Get the modal
 var modal = document.getElementById('id01');
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
@@ -496,3 +493,4 @@ window.onclick = function(event) {
 </script>
 
 @endsection
+
