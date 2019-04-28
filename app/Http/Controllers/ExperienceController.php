@@ -28,9 +28,9 @@ class ExperienceController extends Controller
     public function addExperience(Request $request)
     {
         try {
-            $this->logger->info("Entering EducationController.addExperience()");
+            $this->logger->info("Entering ExperienceController.addExperience()");
             //validate the form data(will redirect back to login view if errors)
-             $this->validateForm($request);
+             //$this->validateForm($request);
             
             //takes info from the user
             $id = $request->input('id');
@@ -52,12 +52,12 @@ class ExperienceController extends Controller
             //fail or succeed return to profile page
             if($success)
             {
-                $this->logger->info("Exiting EducationController.addExperience() with success");
+                $this->logger->info("Exiting ExperienceController.addExperience() with success");
                 return view("profilepage");
             }
             else
             {
-                $this->logger->info("Exiting EducationController.addExperience() with failure");
+                $this->logger->info("Exiting ExperienceController.addExperience() with failure");
                 return view("profilepage");
             }
         }
@@ -83,9 +83,9 @@ class ExperienceController extends Controller
     public function editExperience(Request $request)
     {
         try {
-            $this->logger->info("Entering EducationController.editExperience()");
+            $this->logger->info("Entering ExperienceController.editExperience()");
             //validate the form data(will redirect back to login view if errors)
-            $this->validateForm($request);
+            //$this->validateForm($request);
             
             //takes info from the user
             $id = $request->input('id');
@@ -107,12 +107,12 @@ class ExperienceController extends Controller
             //fail or succeed return to profile page
             if($success)
             {
-                $this->logger->info("Exiting EducationController.editExperience() with success");
+                $this->logger->info("Exiting ExperienceController.editExperience() with success");
                 return view("profilepage");
             }
             else
             {
-                $this->logger->info("Exiting EducationController.editExperience() with failure");
+                $this->logger->info("Exiting ExperienceController.editExperience() with failure");
                 return view("profilepage");
             }
         }
@@ -137,7 +137,7 @@ class ExperienceController extends Controller
     public function deleteExperience(Request $request)
     {
         try {
-            $this->logger->info("Entering EducationController.deleteExperience()");
+            $this->logger->info("Entering ExperienceController.deleteExperience()");
             //takes info from the user
             $id = $request->input('id');
             $position = $request->input('position');
@@ -158,12 +158,12 @@ class ExperienceController extends Controller
             //fail or succeed return to profile page
             if($success)
             {
-                $this->logger->info("Exiting EducationController.deleteExperience() with success");
+                $this->logger->info("Exiting ExperienceController.deleteExperience() with success");
                 return view("profilepage");
             }
             else
             {
-                $this->logger->info("Exiting EducationController.deleteExperience() with failure");
+                $this->logger->info("Exiting ExperienceController.deleteExperience() with failure");
                 return view("profilepage");
             }
         }
@@ -184,7 +184,7 @@ class ExperienceController extends Controller
     public function findAllExperience(Request $request)
     {
         try {
-            $this->logger->info("Entering EducationController.findAllExperience()");
+            $this->logger->info("Entering ExperienceController.findAllExperience()");
             //calls the business service
             $service = new ExperienceBusinessService();
             
@@ -194,12 +194,12 @@ class ExperienceController extends Controller
             //fail or succeed return to profile page
             if($success)
             {
-                $this->logger->info("Exiting EducationController.findAllExperience() with success");
+                $this->logger->info("Exiting ExperienceController.findAllExperience() with success");
                 return view("profilepage");
             }
             else
             {
-                $this->logger->info("Exiting EducationController.findAllExperience() with failure");
+                $this->logger->info("Exiting ExperienceController.findAllExperience() with failure");
                 return view("profilepage");
             }
             
@@ -223,7 +223,7 @@ class ExperienceController extends Controller
         $rules = ['position' => 'Required | Between:5,50',
             'company' => 'Required | Between:4,50',
             'location' => 'Required | Between:5,50',
-            'yearsActive' => 'Required | Between:1,2 | Numeric',
+            'yearsActive' => 'Required | Max:2 | Numeric',
             'duties' => 'Required | Between:5,50'];
         
         //run data validation rules
