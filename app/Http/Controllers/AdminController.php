@@ -16,9 +16,14 @@ class AdminController extends Controller
 {
     protected $logger;
     
+   /**
+     * 
+     * @param ILoggerService $logger
+     */
     public function __construct(ILoggerService $logger){
         $this->logger = $logger;
     }
+    
     /**
      * Goes from the navbar to the AdminPage
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory|NULL[]
