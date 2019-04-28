@@ -19,6 +19,10 @@ class EducationController extends Controller
 {
     protected $logger;
     
+   /**
+     * 
+     * @param ILoggerService $logger
+     */
     public function __construct(ILoggerService $logger){
         $this->logger = $logger;
     }
