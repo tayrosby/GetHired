@@ -48,10 +48,10 @@ $groupMembers = $gbs->findAllGroupMembers();
 						@endfor
 						 </td>
 			</form>
-			@if(session('userID') != $groupMembers[$i]['USERS_ID'] || $groupMembers[$i]['USERS_ID'] == NULL)
+			
 					<td><input form="joinGroup{{$group[$i]['ID']}}" class="btn" type="submit" value="Join Group"/></td>
     
-			 @else
+	
                <form id="leaveGroup{{$group[$i]['ID']}}" action="deletemember" method="POST">
 						<input type="hidden" name="_token" value="{{csrf_token()}}"/>
 						<input type="hidden" name="groupID" value="{{$group[$i]['ID']}}"/>
@@ -59,7 +59,7 @@ $groupMembers = $gbs->findAllGroupMembers();
 			</form>
             
 			<td><input form="leaveGroup{{$group[$i]['ID']}}" class="btn" type="submit" value="Leave Group"/></td>
-            @endif
+            
              </tr>
                             <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id02').style.display='block'">Edit Group</button>
