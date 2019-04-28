@@ -3,6 +3,10 @@
 
 @section('content')
 @for($i = 0; $i < count($profile); $i++)
+
+{{ $profile[$i]['FIRSTNAME'] }}
+{{ $profile[$i]['LASTNAME'] }}
+
 <div class = "registerform">
 <table bgcolor="#A9A9A9">
     <thead>
@@ -16,7 +20,7 @@
     </thead>
     <tbody>
           <tr>
-              <td> {{ $profile[$i]['phoneNumber'] }} </td>
+              <td> {{ $profile[$i]['PHONE_NUMBER'] }} </td>
               <td> {{ $profile[$i]['EMAIL_ADDRESS'] }} </td>
               <td> {{ $profile[$i]['CITY'] }} </td>
               <td> {{ $profile[$i]['STATE'] }} </td>
