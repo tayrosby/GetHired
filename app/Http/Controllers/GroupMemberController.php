@@ -50,7 +50,7 @@ class GroupMemberController extends Controller
             //log the exception and display exception view
             Log::error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
-            return ($data);
+            return view('exception')->with($data);
         }
     }
     
@@ -91,7 +91,7 @@ class GroupMemberController extends Controller
             //log the exception and display exception view
             Log::error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
-            return ($data);
+            return view('exception')->with($data);
         }
     }
 }
