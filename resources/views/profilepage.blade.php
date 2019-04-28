@@ -368,5 +368,5 @@ window.onclick = function(event) {
 }
 </script>
 
-@endforeach
+@endfor
 @endsection
