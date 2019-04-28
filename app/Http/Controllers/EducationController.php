@@ -11,12 +11,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\UserEducationModel;
 use App\Services\Business\EducationBusinessService;
+use App\Services\Utility\ILoggerService;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Facades\Log;
 use Exception;
 
 class EducationController extends Controller
 {
+    protected $logger;
+    
+    public function __construct(ILoggerService $logger){
+        $this->logger = $logger;
+    }
+    
     /**
      * adds the education information to the database
      * @param Request $request
@@ -26,6 +32,7 @@ class EducationController extends Controller
     public function addEducation(Request $request)
     {
         try { 
+            $this->logger->info("Entering EducationController.addEducation()");
             //validate the form data(will redirect back to login view if errors)
             $this->validateForm($request);
         
@@ -47,10 +54,12 @@ class EducationController extends Controller
         //if it fails or succeeds return to the profile page
         if($success)
         {
+            $this->logger->info("Exiting EducationController.addEducation() with success");
             return view("profilepage");
         }
         else
         {
+            $this->logger->info("Exiting EducationController.addEducation() with failure");
             return view("profilepage");
         }
         }
@@ -61,7 +70,7 @@ class EducationController extends Controller
         catch (Exception $e){
             //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
             //log the exception and display exception view
-            Log::error("Exception: ", array("message" => $e->getMessage()));
+            $this->logger->error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
             return view('exception')->with($data);
         }
@@ -76,6 +85,7 @@ class EducationController extends Controller
     public function editEducation(Request $request)
     {
         try {
+            $this->logger->info("Entering EducationController.editEducation()");
             //validate the form data(will redirect back to login view if errors)
             $this->validateForm($request);
             
@@ -97,10 +107,12 @@ class EducationController extends Controller
         //if it fails or succeeds return to the profile page
         if($success)
         {
+            $this->logger->info("Exiting EducationController.editEducation() with success");
             return view("profilepage");
         }
         else
         {
+            $this->logger->info("Exiting EducationController.editEducation() with failure");
             return view("profilepage");
         }
     }
@@ -111,7 +123,7 @@ class EducationController extends Controller
         catch (Exception $e){
             //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
             //log the exception and display exception view
-            Log::error("Exception: ", array("message" => $e->getMessage()));
+            $this->logger->error("Exception: ", array("message" => $e->getMessage()));
             $data = ['errorMSG' => $e->getMessage()];
             return view('exception')->with($data);
         }
@@ -125,7 +137,7 @@ class EducationController extends Controller
     public function deleteEducation(Request $request)
     {
         try {
-            
+            $this->logger->info("Entering EducationController.deleteEducation()");
             //takes information from the user
         $id = $request->input('id');
         $schoolName = $request->input('schoolName');
@@ -144,17 +156,19 @@ class EducationController extends Controller
         //if it fails or succeeds return to the profile page
         if($success)
         {
+            $this->logger->info("Exiting EducationController.deleteEducation() with success");
             return view("profilepage");
         }
         else
         {
+            $this->logger->info("Exiting EducationController.deleteEducation() with failure");
             return view("profilepage");
         }
     }
     catch (Exception $e){
         //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
         //log the exception and display exception view
-        Log::error("Exception: ", array("message" => $e->getMessage()));
+        $this->logger->error("Exception: ", array("message" => $e->getMessage()));
         $data = ['errorMSG' => $e->getMessage()];
         return view('exception')->with($data);
     }
@@ -168,6 +182,7 @@ class EducationController extends Controller
     public function findAllEducation(Request $request)
     {
         try {
+            $this->logger->info("Entering EducationController.findAllEducation()");
         
             //calls the education business service
         $service = new EducationBusinessService();
@@ -178,17 +193,19 @@ class EducationController extends Controller
         //if it fails or succeeds return to the profile page
         if($success)
         {
+            $this->logger->info("Exiting EducationController.findAllEducation() with success");
             return view("profilepage");
         }
         else
         {
+            $this->logger->info("Exiting EducationController.findAllEducation() with failure");
             return view("profilepage");
         }
     }
     catch (Exception $e){
         //Best practice: catch all exceptions, log the exception, and display the common error page (or use global exception handling
         //log the exception and display exception view
-        Log::error("Exception: ", array("message" => $e->getMessage()));
+        $this->logger->error("Exception: ", array("message" => $e->getMessage()));
         $data = ['errorMSG' => $e->getMessage()];
         return view('exception')->with($data);
     }
@@ -209,4 +226,5 @@ class EducationController extends Controller
         //run data validation rules
         $this->validate($request, $rules);
     }
+}
 }
