@@ -16,10 +16,10 @@
     </thead>
     <tbody>
           <tr>
-              <td> {{ $contact[$i]['PHONE_NUMBER'] }} </td>
-              <td> {{ $contact[$i]['EMAIL_ADDRESS'] }} </td>
-              <td> {{ $contact[$i]['CITY'] }} </td>
-              <td> {{ $contact[$i]['STATE'] }} </td>
+              <td> {{ $profile[$i]['PHONE_NUMBER'] }} </td>
+              <td> {{ $profile[$i]['EMAIL_ADDRESS'] }} </td>
+              <td> {{ $profile[$i]['CITY'] }} </td>
+              <td> {{ $profile[$i]['STATE'] }} </td>
 
               <td> <!-- Button to open the modal -->
 <button onclick="document.getElementById('id08').style.display='block'">Edit</button>
@@ -32,7 +32,7 @@
     <div class="container">
       <h1>Edit Contact</h1>
       <hr>
-      <input type="hidden" name = "id" value = "{{ $contact[$i]['ID'] }}">
+      <input type="hidden" name = "id" value = "{{ $profile[$i]['ID'] }}">
       
        <label for="position"><b>Contact</b></label>
       <input type="tel" placeholder="Enter Phone Number" name="phoneNumber"  value="{{ $profile[$i]['contact']['PHONE_NUMBER'] }} " required />{{ $errors->first('phoneNumber') }}
