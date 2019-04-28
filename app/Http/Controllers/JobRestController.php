@@ -1,5 +1,9 @@
 <?php
-
+/*
+ * Authors: Taylor Rosby
+ * Date: March 16, 2019
+ * Description: JobRestController is responsible for showing jobs over an api
+ */
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
