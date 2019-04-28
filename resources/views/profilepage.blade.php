@@ -104,7 +104,7 @@ hr {
 </style>
 
 @section('content')
-@for($x = 0; $x < count($profile); $x++)
+@for($i = 0; $i < count($profile); $i++)
 <div class = "registerform">
 <table bgcolor="#A9A9A9">
     <thead>
