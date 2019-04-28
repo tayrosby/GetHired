@@ -50,14 +50,14 @@ $groupMembers = $gbs->findAllGroupMembers();
 			</form>
 			@if(session('userID') != $groupMembers[$i]['USERS_ID'])
 					<td><input form="joinGroup{{$group[$i]['ID']}}" class="btn" type="submit" value="Join Group"/></td>
-                   
-                        
-                        <form id="leaveGroup{{$group[$i]['ID']}}" action="deletemember" method="POST">
+    
+			 @else
+               <form id="leaveGroup{{$group[$i]['ID']}}" action="deletemember" method="POST">
 						<input type="hidden" name="_token" value="{{csrf_token()}}"/>
 						<input type="hidden" name="groupID" value="{{$group[$i]['ID']}}"/>
 						<input type="hidden" name="userID" value="{{ session()->get('userID') }}"/>
 			</form>
-			 @else
+            
 			<td><input form="leaveGroup{{$group[$i]['ID']}}" class="btn" type="submit" value="Leave Group"/></td>
             @endif
              </tr>
